@@ -1,0 +1,200 @@
+button{
+    background-color: #1c3653; /* #213852; */
+    color: white;
+}
+
+.btn-image{
+    background-image: url('../dhis2logoimg.827e79aacba6.png') !important;
+    background-size: 230px;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 68px; max-width: 205px;
+    flex: 1 1 auto;
+    border: 0px;
+   } 
+
+   @media screen {
+    .btn-image{ 
+    background-size: 130px;
+    background-position: center;
+    /* background-repeat: no-repeat; */
+    min-height: 30px; min-width: 105px;
+    flex: 1 1 auto;
+    border: 0px; 
+    }
+   }
+
+   .workspace-card{
+       width: 740px;
+       height: 405px;
+       background-color: #030e1a;
+   }
+
+   .answer-card{
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 720px;
+    height: 369px;
+    color: white;
+    background-color: #00000000;
+}
+
+.workspace-card1{
+    width: 740px;
+    height: 215px;
+    background-color: #030e1a;
+}
+
+.answer-card1{
+ margin-left: 10px;
+ margin-right: 10px;
+ width: 720px;
+ height: 179px;
+ color: white;
+ background-color: #00000000;
+}
+
+
+
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+  .example-icon{
+      margin-left: 10px;
+  }
+
+  mat-button-toggle-group {
+    /* margin-left: 12px; */
+    width: 100%;
+    border-radius: 0pt 0pt;
+    color:white;
+    background-color: #1c3653;
+    /* margin: 0px 10px 10px 12px; width: inherit; */
+  }
+
+  mat-button-toggle {
+    margin: 0px;
+    border: 0px;
+    color:white;
+
+  }
+
+  mat-button-toggle:hover {
+    /* border: 1px #00000000 solid !important; */
+    background-color: #b884da !important;
+    /* border-radius: 5px !important; */
+}
+
+.mat-button-toggle-checked {
+	  /* box-shadow: 0 0 30px #000 !important;
+    border: 1px #000 solid !important;
+    border-radius: 5px !important;
+    background-color: rgb(128, 22, 22) !important; */
+    background-color: #030e1a ; /* #061d33;*/
+    color: white;
+}
+
+.mat-button-toggle-input {
+    background-color: none !important;
+    padding-left: 32px !important;
+}
+
+ /* .active {
+    background-color: #030e1a ; 
+    color: white;
+  } */
+
+
+  button:hover {
+    /* border: 1px #00000000 solid !important; */
+    background-color: #b884da !important;   
+  } 
+
+  mat-button{
+    border-radius: 0pt 0pt;
+  }
+
+  mat-option{
+    color: #dddddd !important;
+    font-weight: bold;
+    background-color: #1c3653;
+
+  }
+
+mat-option:hover{
+    background-color: #b884da !important;
+}
+
+.mat-option.mat-active {
+    color:#1c3653 !important; 
+      background-color: #dddddd !important;
+      font-weight: bold;
+  }
+
+  ::ng-deep .mat-select-arrow {
+    color: #f5f5f5 !important;
+}
+  
+  :host /deep/ .mat-select-value-text {
+    color: whitesmoke !important;
+  }
+
+.myPanelClass{
+    margin-top: 30px !important; 
+}
+
+
+::ng-deep .mat-tooltip{
+    content: '';
+   color:#1c3653 !important; 
+   background-color: #dddddd !important;
+   font-weight: bold;
+   padding: 10px 10px 10px 10px;
+   font-size: 11pt;
+
+ 
+
+}
+/* tooltip-pd */
+
+
+
+  a.tip {
+    position: relative;
+  }
+  
+  a.tip span {
+    display: none;
+    position: absolute;
+    top: -5px;
+    left: 60px;
+    width: 125px;
+    padding: 5px;
+    z-index: 100;
+    color:#1c3653 !important; 
+    background-color: #dddddd !important;
+
+  }
+  
+  a.tip span:before {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    position: absolute;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-right: 8px solid #000000;
+    left: -8px;
+    top: 7px;
+  }
+  
+  a:hover.tip {
+    font-size: 99%;
+      /* this is just for IE */
+}
+
+a:hover.tip span {
+  display: block;
+}

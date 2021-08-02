@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>DHIS2 AlgoExpert</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+  /* Tooltip */
+  .test + .tooltip > .tooltip-inner {
+    background-color: #73AD21; 
+    color: #FFFFFF; 
+    border: 1px solid green; 
+    padding: 15px;
+    font-size: 20px;
+  }
+  /* Tooltip on top */
+  .test + .tooltip.top > .tooltip-arrow {
+    border-top: 5px solid green;
+  }
+  /* Tooltip on bottom */
+  .test + .tooltip.bottom > .tooltip-arrow {
+    border-bottom: 5px solid blue;
+  }
+  /* Tooltip on left */
+  .test + .tooltip.left > .tooltip-arrow {
+    border-left: 5px solid red;
+  }
+  /* Tooltip on right */
+  .test + .tooltip.right > .tooltip-arrow {
+    border-right: 5px solid black;
+  }
+  </style>
+
+</head>
+<body class="mat-typography">
+  <app-root></app-root>
+
+</body>
+
+<script>
+  $(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+  });
+  </script>
+
+</html>
