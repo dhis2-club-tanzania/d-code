@@ -1,0 +1,18 @@
+{
+  "targets": {
+    "fir-demo-project": {
+      "hosting": {
+        "yesplease": [
+          "fir-demo-project"
+        ]
+      }
+    },
+    "d-code-d9b92": {
+      "hosting": {
+        "yesplease": [
+          "d-code-d9b92"
+        ]
+      }
+    }
+  }
+}

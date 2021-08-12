@@ -1,28 +1,102 @@
+<!-- <div *ngIf="!home">
+  <p>You are logged In</p>
+  <button (click)="logout()">logout</button>
+</div> -->
+<div *ngIf="home" style="height: 80%;">
+
+<!--[formGroup]="registerForm" (submit)="tryRegister(registerForm.value)"-->
+  <!-- <form [formGroup]="registerForm">
+    <div class="form-group">
+      <label>Email address</label>
+      <input type="email" value="email" formControlName="email" class="form-control" required>
+    </div>
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" value="password" class="form-control" formControlName="password" required>
+      <label class="error">{{errorMessage}}</label>
+      <label class="success">{{successMessage}}</label>
+    </div>
+    <button type="submit" (click)="tryRegister(registerForm.value)" class="btn btn-default">Register</button>
+ </form> -->
 
 
-        <!--Getting started-->
-        <div  fxLayout="column" fxLayoutAlign="space-evenly center" class="wrapper" style="padding: 50px; padding-inline: 20px; font-size: 12pt; background-color: #001f3f; padding: 50px; color: whitesmoke; ">
-        <h3 style="font-size: 25pt; font-weight: bold;" >Getting started at AlgoExpert?</h3>
-        <br/>
-        <p>First start by loging into your account to save your progress.
-        </p>
-        <br/>
-        <button mat-raised-button color="">LOGIN</button>
-        <br/>
-        </div>
 
-        <!--Questions page-->
-        <app-questions-page></app-questions-page>
 
-        <!--Buttons and WorkSpace-->
-        <div class="wrapper"  style="background-color: #03213d; ">
-        <h2 style="  font-weight:bold; font-size: 40pt; color: whitesmoke; text-align: center;">Algo-WorkSpace</h2>
-        <p style="padding-inline: 20px; line-height: 2.5; font-size: 12pt; text-align: center; color: whitesmoke;">
-          Pick a language. Read the prompt. Write your solution.  <br/>
-          Get some hints.Run your code again. Check the output. <br/>
-          Pass the tests. View our solution. Watch our video. <br/>
-          All within the same workspace.
-        </p>
-        <app-workspace-page></app-workspace-page>
-        </div>
-        <!-- <app-workspace-page></app-workspace-page> -->
+                  <!--wrapper1-Heading-->
+                  <div class= "wrapper" color ="accent" style=" background-color: #f8f8f8;  font-size: 18pt; padding: 50px;  text-align: center;">
+                    <div fxFill fxLayout="row" fxLayoutAlign="center stretch" >
+
+
+                        <mat-card class="example-card" style="width: auto;  background-color: #f8f8f802; border: none;" >
+                          <h2 style="  font-weight:bolder; font-size: 60pt; color: #2381fc;">d-code</h2>
+                          <p style="padding-inline: 20px; line-height: 1.5;">
+                            The ultimate resource to prepare for coding interviews.
+                            <br/> Everything you need, in one streamlined platform.
+                            </p>
+                        </mat-card>
+
+                        <div class="btn-image" >
+                        </div>
+
+                    </div>
+                  </div>
+
+
+                  <!--Getting started-->
+                  <div  fxLayout="column" fxLayoutAlign="space-evenly center" class="wrapper" style="padding: 50px; padding-inline: 20px; font-size: 12pt; background-color: #001f3f; padding: 50px; color: whitesmoke; ">
+                  <h3 style="font-size: 25pt; font-weight: bold;" >Getting started at d-code?</h3>
+                  <br/>
+                  <p>First start by loging into your account to save your progress.
+                  </p>
+                  <br/>
+                  <button mat-raised-button (click)="openDialog()" style="color: #001f3f; font-weight: bold;">LOGIN</button>
+                  <br/>
+                  </div>
+
+                  <!--Questions page-->
+                  <div class="wrapper" style="background-color: #f8f8f8;  " fxLayout="column" fxLayoutAlign="space-evenly center">
+
+                    <h2 style="  font-weight:bolder; font-size: 40pt; color: #0a1431; text-align: center;">D-CODE Questions</h2>
+                    <p style="padding-inline: 20px; line-height: 2.5; font-size: 12pt; text-align: center;">
+                      With questions spanning, different categories and 4 difficulty levels, we've got you covered. 
+                      <br/>
+                      Now choose the question you want to challenge yourself with.
+                    </p>
+
+                    <br/>
+                    <button mat-raised-button color ="accent" style="background-color: #001f3f; font-weight: bold;" 
+                    routerLink="/questions-page-component" routerLinkActive="active" (click)="pageFunction()">View D-CODE Questions</button>
+                    <br/>
+                  </div >
+
+                  <!--Buttons and WorkSpace-->
+                  <div class="wrapper"  style="background-color: #03213d; " fxLayout="column" fxLayoutAlign="space-evenly center">
+                      <h2 style="  font-weight:bold; font-size: 40pt; color: whitesmoke; text-align: center;">d-code WorkSpace</h2>
+                      <p style="padding-inline: 20px; line-height: 2.5; font-size: 12pt; text-align: center; color: whitesmoke;">
+                        Pick a language. Read the prompt. Write your solution.  <br/>
+                        Get some hints.Run your code again. Check the output. <br/>
+                        Pass the tests. View our solution. Watch our video. <br/>
+                        All within the same workspace.
+                      </p>
+
+                      <br/>
+                      <button mat-raised-button style="color: #001f3f; font-weight: bold;"
+                      routerLink="/workspace-page-component" routerLinkActive="active" (click)="pageFunction()">View D-CODE Workspace</button>
+                      <br/>
+                  </div>
+ 
+</div>                
+                  <!-- <router-outlet></router-outlet> -->
+
+          <!-- <mat-tab-group mat-align-tabs="center" style="background-color: #eeeded">
+
+          <mat-tab label="Home" >
+          </mat-tab>
+          <mat-tab label="Questions">
+              <app-questions-page></app-questions-page>
+          </mat-tab>
+          <mat-tab label="WorkSpace" >
+              <app-workspace-page></app-workspace-page>
+          </mat-tab>
+     
+     </mat-tab-group> -->

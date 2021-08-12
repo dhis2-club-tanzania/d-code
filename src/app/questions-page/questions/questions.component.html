@@ -1,0 +1,14 @@
+<!-- <p>questions works!</p> --> 
+
+<div *ngIf="questions?.length > 0;else noQuestions">
+    <ul *ngFor = "let question of questions | async" class="collection">
+        <li class="collection-question"><strong>{{question.Difficulty}}</strong>
+            {{question.Category}} <strong>{{question.Name}}</strong>
+        </li>
+    </ul>
+</div>
+
+<ng-template #noQuestions>
+    <hr>
+    <h5>There are no questions to list</h5>
+</ng-template> 

@@ -1,13 +1,13 @@
-<body style="background-color: #03213d; "> <!--022949-->
+<div style=" height: 720px; background-color: #03213d;"> <!--022949-->
 
 
 
-<div style=" margin-left: 10px; margin-right: 10px;">
+<div style=" margin-left: 10px; margin-right: 10px; height: 700px; background-color: #03213d;">
     <!--Buttons-Header-->
         <div fxLayoutGap fxLayout="row" fxLayoutAlign="space-between stretch">
                 <button mat-raised-button type="button" class="btn-image" style="background-color:#b884da; width: 150px;" ></button>
                 
-                <button mat-raised-button class="example-icon " matTooltip="Menu"  aria-label="Example icon-button with menu icon" >
+                <button mat-raised-button class="example-icon " matTooltip="Questions List"  aria-label="Example icon-button with menu icon" >
                     <mat-icon>list</mat-icon>
                 </button>
 
@@ -100,74 +100,125 @@
         </div>
         <br/>
     <!--Cards-->
-    <div > 
-        <div fxLayout="row" fxLayoutAlign="start center">
+    <div *ngIf="fullscreen" > 
+        <div fxLayout="row" fxLayoutAlign="start center" >
             <div  fxLayout="column" fxLayoutAlign="start stretch" class="workspace-card" >
                 <!-- style=" min-width: 45%; min-height: 50%;" -->
-                    <!-- <mat-tab-group >
-
-                        <mat-tab  label="First" style="background-color: #f8f8f8;" > Content 1 
-                            <p>
-                                Default appearance:
-                                Default appearance:
-                                Default appearance:
-                            </p>
-                        </mat-tab>
-                        <mat-tab  label="Second"> Content 2
-                            <p>
-                                Default appearance:
-                                Default appearance:
-                                Default appearance:
-                            </p>
-                        </mat-tab>
-                    </mat-tab-group> -->
-                    
+                        
                     <div>
                     <mat-button-toggle-group appearance="legacy" fxLayout="row" fxLayoutAlign="start start" #group="matButtonToggleGroup" [value]="selectedVal1" (change)="onVal1Change(group.value)" >
-                        <mat-button-toggle value="Prompt">Prompt</mat-button-toggle>
-                        <mat-button-toggle value="Scratchpad">Scratchpad</mat-button-toggle>
-                        <mat-button-toggle value="Our Solution(s)">Our Solution(s)</mat-button-toggle>
-                        <mat-button-toggle value="Video Explanation">Video Explanation</mat-button-toggle>
+                        <mat-button-toggle value="Prompt" (click)="promptFunction()">Prompt</mat-button-toggle>
+                        <mat-button-toggle value="Scratchpad" (click)="openDialog()" (click)="scratchpadFunction()">Scratchpad</mat-button-toggle>
+                        <mat-button-toggle value="Our Solution(s)" (click)="solutionFunction()">Our Solution(s)</mat-button-toggle>
+                        <mat-button-toggle value="Video Explanation" (click)="videoFunction()">Video Explanation</mat-button-toggle>
                         
-                        <!-- <span class="example-spacer"> </span>
-                        <button mat-button style="background-color: #0e639c; border-radius: 0pt 0pt;" >Run Code</button> -->
+                        <span class="example-spacer"> </span>
+                        <button mat-button style="background-color: #0e639c; border-radius: 0pt 0pt;" *ngIf="solution" >Run Code</button>
                     </mat-button-toggle-group>
                     </div>
                     <div style="background-color: #030e1a;" class="answer-card"> 
-                        <p> Content content content</p>
+                        <p>//display here</p>
+                        <!-- <mat-checkbox >Check me!
+                            <mat-icon>favorite_border</mat-icon>
+                        </mat-checkbox>
+                        <a href="https://www.jdoodle.com/embed/v0/3tAO">R</a> -->
                     </div>
              </div>        
             <span class="example-spacer"></span>
-             <div fxLayout="column" fxLayoutAlign="start stretch" class="workspace-card" >
-                <div >
-                    <mat-button-toggle-group appearance="legacy" fxLayout="row" fxLayoutAlign="start start" #group="matButtonToggleGroup" [value]="selectedVal2" (change)="onVal2Change(group.value)">
-                        <mat-button-toggle  value="Your Solutions">Your Solutions</mat-button-toggle>
-                        <span class="example-spacer"> </span>
-                        <button mat-button style="border-radius: 0pt 0pt;"> <mat-icon>fullscreen</mat-icon> </button>
-                        <button mat-button style="border-radius: 0pt 0pt;"> <mat-icon>replay</mat-icon> </button>
-                        <button mat-button style="border-radius: 0pt 0pt; background-color: #0e639c;" >Run Code</button>
-                    </mat-button-toggle-group>
+
+            <!-- <div id="myNav" class="overlay" > 
+            onclick="closeNav()" class="closebtn"    
+            -->
+             
+                <div fxLayout="column" fxLayoutAlign="start stretch" class="workspace-card" *ngIf="fullscreen"  >
+                    <div >
+                        <mat-button-toggle-group appearance="legacy" fxLayout="row" fxLayoutAlign="start start"
+                         #group="matButtonToggleGroup" [value]="selectedVal2" (change)="onVal2Change(group.value)">
+                            <mat-button-toggle  value="Your Solutions">Your Solutions</mat-button-toggle>
+                            <span class="example-spacer"> </span>
+                            <button mat-button style="border-radius: 0pt 0pt;"
+                             (click)="fullscreenFunction()" *ngIf="fullscreen" >
+                                <mat-icon>fullscreen</mat-icon> </button>
+
+                                <button mat-button style="border-radius: 0pt 0pt;" 
+                                *ngIf="fullscreen_exit" (click)="fullscreen_exitFunction()" >
+                                 <mat-icon>fullscreen_exit</mat-icon> 
+                                </button>
+
+                            <button mat-button style="border-radius: 0pt 0pt;"  > <mat-icon>replay</mat-icon> </button>
+                            <button mat-button style="border-radius: 0pt 0pt; background-color: #0e639c;"  >Run Code</button>
+                        </mat-button-toggle-group>
+                    </div>
+                    <div style="background-color: #030e1a; color: #f8f8f8;" class="answer-card"   >
+                            <p > Content content content</p>
+                    </div>
                 </div>
-                <div style="background-color: #030e1a; color: #f8f8f8;" class="answer-card" >
-                        <p> Content content content</p>
-                </div>
-            </div>
+            <!-- </div> -->
+
         </div>
+
+<script>
+
+// function openNav() {
+//   document.getElementById("myNav").style.width = "100%";
+// }
+
+// function closeNav() {
+//   document.getElementById("myNav").style.width = "0%";
+// }
+
+// $(document).ready(function(){
+// //   $("#toggle").click(function(){
+// //     $("#fullscreen").toggle();
+// //   });
+  
+//     $("#full").click(function(){
+//     $("#content").show();
+//   });
+  
+//     $("#hide").click(function(){
+//     $("#fullscreen").hide();
+//   });
+// });
+
+        //     $('#myDiv').click(function(e){
+        //     $('#myDiv1').toggleClass(fullscreen); 
+        // });
+</script>
+
+
+
 
         <br/>
 
         <div  fxLayout="row" fxLayoutAlign="start center">
             <div fxLayout="column" fxLayoutAlign="start stretch" class="workspace-card1" >
-                <mat-button-toggle-group appearance="legacy" fxLayout="row" fxLayoutAlign="start start" #group="matButtonToggleGroup" [value]="selectedVal3" (change)="onVal3Change(group.value)" >
-                    <mat-button-toggle  value="Tests">Tests</mat-button-toggle>
-                    <mat-button-toggle  value="Quick Test">Quick Test</mat-button-toggle>
-                    <mat-button-toggle  value="Sandbox">Sandbox</mat-button-toggle>
+                <mat-button-toggle-group appearance="legacy" fxLayout="row" fxLayoutAlign="start start" 
+                #group="matButtonToggleGroup" [value]="selectedVal3" (change)="onVal3Change(group.value)" >
+                    <mat-button-toggle  value="Tests" (click)="testFunction()" >Tests</mat-button-toggle>
+                    <mat-button-toggle  value="Quick Test" (click)="quicktestFunction()" >Quick Test</mat-button-toggle>
+                    <mat-button-toggle  value="Sandbox" (click)="infoFunction()" >Sandbox</mat-button-toggle>
                     <span class="example-spacer"> </span>
-                    <!-- <button mat-button style="border-radius: 0pt 0pt;"> <mat-icon>replay</mat-icon> </button> -->
-                    <button mat-button style="border-radius: 0pt 0pt;"> <mat-icon>remove_red_eye</mat-icon> </button>
-                    <button mat-button style="border-radius: 0pt 0pt;"> <mat-icon>info</mat-icon> </button>
+                    <button mat-button style="border-radius: 0pt 0pt;" *ngIf="test" > <mat-icon>remove_red_eye</mat-icon> </button>
+                    <button mat-button style="border-radius: 0pt 0pt;" *ngIf="quicktest"  > <mat-icon>replay</mat-icon> </button>
+                    <button mat-button style="border-radius: 0pt 0pt;" *ngIf="info" > <mat-icon>info</mat-icon> </button>
                 </mat-button-toggle-group>
                 <div style="background-color: #030e1a; color: #f8f8f8;" class="answer-card1" >
+
+                    <!-- <div *ngIf="div1">
+                        ABC
+                    </div>
+                    <div *ngIf="div2" >
+                        DEF
+                    </div>
+                    <div *ngIf="div3">
+                        GHI
+                    </div>
+                    <button (click)="div1Function()"></button>
+                    <button (click)="div2Function()"></button>
+                    <button (click)="div3Function()"></button> -->
+
+
                     <p> Content content content</p>
                 </div>
             </div>
@@ -189,7 +240,41 @@
     </div>
     <br/>
 </div>
-</body> 
+
+
+
+<div fxLayout="row" fxLayoutAlign="start stretch"  *ngIf="fullscreen_exit">
+    <div fxLayout="column" fxLayoutAlign="start stretch" class="workspace-card3">
+        <mat-button-toggle-group appearance="legacy" fxLayout="row" fxLayoutAlign="start start"
+         #group="matButtonToggleGroup" [value]="selectedVal2" (change)="onVal2Change(group.value)">
+            <mat-button-toggle  value="Your Solutions">Your Solutions</mat-button-toggle>
+            <span class="example-spacer"> </span>
+            <button mat-button style="border-radius: 0pt 0pt;" 
+             (click)="fullscreenFunction()" *ngIf="fullscreen" >
+                <mat-icon>fullscreen</mat-icon> </button>
+
+                <button mat-button style="border-radius: 0pt 0pt;" 
+                *ngIf="fullscreen_exit" (click)="fullscreen_exitFunction()" >
+                 <mat-icon>fullscreen_exit</mat-icon> 
+                </button>
+
+            <button mat-button style="border-radius: 0pt 0pt;"  > <mat-icon>replay</mat-icon> </button>
+            <button mat-button style="border-radius: 0pt 0pt; background-color: #0e639c;"  >Run Code</button>
+        </mat-button-toggle-group>
+        <div style="background-color: #030e1a; color: #f8f8f8;" class="answer-card3" >
+            <!-- <div id="content" *ngIf="fullscreen_data">
+
+            </div> -->
+            <p> Content content content</p> 
+    </div>
+    </div>
+
+</div>
+
+
+
+
+</div> 
 
 
 

@@ -4,29 +4,40 @@ button{
 }
 
 .btn-image{
-    background-image: url('../dhis2logoimg.827e79aacba6.png') !important;
-    background-size: 230px;
-    background-position: center;
-    background-repeat: no-repeat;
-    min-height: 68px; max-width: 205px;
-    flex: 1 1 auto;
-    border: 0px;
-   } 
+  background-image: url('/assets/images/logo.png') !important;
 
-   @media screen {
-    .btn-image{ 
-    background-size: 130px;
-    background-position: center;
-    /* background-repeat: no-repeat; */
-    min-height: 30px; min-width: 105px;
-    flex: 1 1 auto;
-    border: 0px; 
-    }
-   }
+
+  /* background-repeat: no-repeat; */
+   /* background-position: left;  */
+   background-color: #367dce00;
+    min-width: 200px;
+     min-height: 200px;
+
+
+  background-size: 1000px;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* min-height: 64px; max-width: 205px; */
+  flex: 1 1 auto;
+  border: 0px;
+ } 
+
+ @media screen {
+  .btn-image{ 
+  background-size: 130px;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 30px; min-width: 105px;
+  flex: 1 1 auto;
+  border: 0px; 
+  }
+ }
+
+
 
    .workspace-card{
-       width: 740px;
-       height: 405px;
+      min-width: 740px;
+       min-height: 405px;
        background-color: #030e1a;
    }
 
@@ -40,16 +51,16 @@ button{
 }
 
 .workspace-card1{
-    width: 740px;
-    height: 215px;
+    min-width: 740px;
+    min-height: 215px;
     background-color: #030e1a;
 }
 
 .answer-card1{
  margin-left: 10px;
  margin-right: 10px;
- width: 720px;
- height: 179px;
+ min-width: 720px;
+ min-height: 179px;
  color: white;
  background-color: #00000000;
 }
@@ -197,4 +208,84 @@ mat-option:hover{
 
 a:hover.tip span {
   display: block;
+}
+
+
+#myDiv1.fullscreen{
+  z-index: 9999; 
+  width: 90%; 
+  height: 100%; 
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+}
+#myDiv1{background:transparent; width:500px; height:200px;}
+
+.workspace-card.fullscreen{
+  
+  background-color: #030e1a;
+}
+
+.answer-card1.fullscreen{
+margin-left: 10px;
+margin-right: 10px;
+width: 720px;
+height: 179px;
+color: white;
+background-color: #00000000;
+}
+
+
+.overlay {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #c74c4c;
+  background-color: rgba(78, 4, 4, 0.9);
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.overlay-content {
+  position: relative;
+  top: 25%;
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.overlay button {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
+  
+  .workspace-card3{
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 100%;
+    min-height: 645px;
+    background-color: #030e1a;
+}
+
+.answer-card3{
+ margin-left: 10px;
+ margin-right: 10px;
+ width: 80%;
+ min-height: 609px;
+ color: white;
+ background-color: #00000000;
 }

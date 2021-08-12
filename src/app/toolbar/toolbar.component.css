@@ -5,12 +5,14 @@
       margin-left: 10px
   }
 
-  .btn-image{
-    background-image: url('../dhis2logoimg.827e79aacba6.png') !important;
+  .btn-image{ 
+    background-image: url('/assets/images/dhis2logoimg.827e79aacba6.png') !important;
+    /* background-image: url('/assets/images/logo.png') !important; */
     background-size: 230px;
     background-position: center;
     background-repeat: no-repeat;
-    min-height: 64px; max-width: 205px;
+    /* width: 205px; height: 200px; */
+    min-height: 4px; max-width: 5px;
     flex: 1 1 auto;
     border: 0px;
    } 
@@ -19,9 +21,28 @@
     .btn-image{ 
     background-size: 130px;
     background-position: center;
-    /* background-repeat: no-repeat; */
+    background-repeat: no-repeat;
     min-height: 30px; min-width: 105px;
     flex: 1 1 auto;
     border: 0px; 
     }
    }
+
+
+   
+  .example-container {
+    width: 500px;
+    height: 300px;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+  }
+  
+  .example-sidenav-content {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .example-sidenav {
+    padding: 20px;
+  }

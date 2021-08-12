@@ -1,0 +1,173 @@
+     <!--REGISTER-->
+
+ <div *ngIf="register" style="background-color: #356db38a;">
+
+
+
+        <div fxLayout="row" fxLayoutAlign="space-between stretch" >
+          <div class="btn-image" style="background-color:transparent; width: 150px; height: 50px;"> 
+          </div>
+          <!-- <span class="example-spacer"> </span> -->
+          <button mat-button mat-dialog-close style="background-color:transparent; align-items: flex-end;">
+            <mat-icon>close</mat-icon>
+          </button>
+        </div>
+        <div fxLayoutGap  *ngIf="!isSignedIn"  fxLayout="column"  fxLayoutAlign="start center" style="align-items: center; padding: 5px 5px 5px 5px; width: auto; height: auto;" >
+
+            
+          <p mat-dialog-title>D-CODE</p>
+            
+          <div mat-dialog-content>Log In or Register to save your progress</div>
+          <!-- <br/>
+
+            <div >
+              <mat-button-toggle-group  appearance="legacy" fxLayout="row " fxLayoutAlign="start stretch" #group="matButtonToggleGroup"
+               [value]="selectedVal1" (change)="onVal1Change(group.value)" style="min-width: 700px; " >
+                  <mat-button-toggle value="login" (click)="loginFunction()" style="width: 50%;"
+                 >LOG IN</mat-button-toggle>
+                  <mat-button-toggle value="register" style="width: 50%;"
+                  >REGISTER</mat-button-toggle>
+              </mat-button-toggle-group>
+              </div> -->
+
+    
+            <br/>
+          <div >
+           
+              <div fxLayout="row" fxLayoutAlign="space-evenly stretch" >
+                <mat-form-field appearance="fill" style="min-width: 345px; margin-right: 5px; background-color: #356db38a;">
+                  <mat-label>Username</mat-label>
+                  <input matInput type="text " >
+                </mat-form-field>
+                <span class="example-spacer"></span>
+                <mat-form-field appearance="fill" style="min-width: 345px; margin-left: 5px; background-color: #356db38a;">
+                  <mat-label>Enter your Email</mat-label>
+                  <input matInput placeholder="pat@example.com" [formControl]="email"  required #emailSignup>
+                  <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                </mat-form-field>
+              </div>
+              <br/>
+              <div fxLayout="row" fxLayoutAlign="space-evenly stretch">
+                <form [formGroup]="myForm">
+                  <!-- <mat-form-field appearance="fill" style="min-width: 345px; margin-right: 5px;background-color: #356db38a;">
+                    <mat-label>Password</mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'" placeholder="New password" formControlName="password" #passwordSignup required>
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                    <mat-error *ngIf="myForm.hasError('required', 'password')">
+                      Please enter your newpassword. It should be more than six characters.
+                    </mat-error>
+                  </mat-form-field>
+                  <span class="example-spacer"></span>
+                  <mat-form-field appearance="fill" style="min-width: 345px; margin-left: 5px; background-color: #356db38a;">
+                    <mat-label>Confirm Password</mat-label>
+                    <input matInput [type]="c_hide ? 'password' : 'text'" placeholder="Confirm password" formControlName="confirmPassword" 
+                    [errorStateMatcher]="matcher">
+                    <button mat-icon-button matSuffix (click)="c_hide = !c_hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="c_hide">
+                      <mat-icon>{{c_hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                   <mat-error *ngIf="myForm.hasError('notSame')">
+                      Passwords do not match
+                    </mat-error>  
+                  </mat-form-field> -->
+                  <button type="button" class="btn googleBtn" (click)="authService.GoogleAuth()">
+                    <i class="fab fa-google-plus-g"></i>
+                    Continue with Google
+                  </button>
+
+
+                  <button  mat-raised-button style="min-width: 150px; background-color: #021936; color: whitesmoke;  margin-right: 10px;"
+                  (click)="loginWithFacebook()" > 
+                    <mat-icon>facebook</mat-icon>
+                    Sign Up with Facebook
+                  </button>
+
+
+
+                </form>
+      
+                <div class="redirectToLogin">
+                  <span>Already have an account? <span class="redirect" routerLink="/login">Log In</span></span>
+                </div>
+            
+
+              </div>
+
+
+              <br/>
+              <div fxLayout="column" fxLayoutAlign="space-around center">
+                <button  mat-raised-button style="min-width: 250px; background-color: #021936; color: whitesmoke;"
+                (click)="onSignup(emailSignup.value,passwordSignup.value)">REGISTER</button> 
+                <br/>
+                <p>Already have an account? 
+                  <a  style="color: #021936; "  (click)="loginFunction()" >Log In</a> <!-- type="button" value="alogin" (click)="aloginFunction()" -->
+                </p>
+              
+                <mat-divider></mat-divider>
+                <p> You may also do the following </p>
+              </div>
+      
+      
+              <!-- <div fxLayout="row" fxLayoutAlign="space-evenly stretch" >
+              
+        
+                <button  mat-raised-button (click)="loginWithGoogle()" style="min-width: 150px; background-color: #021936; color: whitesmoke;  margin-left: 5px;" > 
+                  <mat-icon>google</mat-icon>Sign up with Google
+                </button>
+      
+                <span class="example-spacer"></span>
+                <br/>
+                <button  mat-raised-button (click)="loginWithGithub()" style="min-width: 150px; background-color: #021936; color: whitesmoke;  margin-left: 5px;" > 
+                  <mat-icon></mat-icon>Sign up with GitHub
+                </button>
+      
+                <span class="example-spacer"></span>
+               <br/>
+                <button  mat-raised-button style="min-width: 150px; background-color: #021936; color: whitesmoke;  margin-right: 10px;"
+                (click)="loginWithFacebook()" > 
+                  <mat-icon>facebook</mat-icon>
+                  Sign Up with Facebook
+                </button>
+              </div> -->
+
+
+
+          </div>
+           
+
+    
+       
+
+          <p *ngIf="isSignedIn" (isLogout) = "handleLogout()" > You are Logged In!</p>
+
+            <!-- <div *ngIf="isSignedIn">
+              <div class="form-group">
+                <label>First Name</label>
+                <input type="text" class="form-control" [value]="socialUser.firstName" id="firstname" readonly>
+              </div>
+              <div class="form-group">
+                <label>Last Name</label>
+                <input type="text" class="form-control" [value]="socialUser.lastName" id="lastname" readonly>
+              </div>
+              <div class="form-group">
+                <label>Email</label>
+                <input type="text" class="form-control" [value]="socialUser.email" id="email" readonly>
+              </div>
+          
+              <button type="button" (click)="logOut()" class="btn btn-primary">Log Out</button>
+            </div> -->
+          </div>
+</div>
+   
+<!-- <app-homepage  ></app-homepage> -->
+
+            
+
+            <div *ngIf="login" style="background-color: #ccfcfc86;">
+                <app-login></app-login>
+            </div>
+     
+     
+
+ <!-- </div> -->
