@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SocialAuthService, FacebookLoginProvider, GoogleLoginProvider,  SocialUser } from 'angularx-social-login';
-// import { AuthServiceService } from '../services/auth-service.service';
+
 
 //email validator
 import {FormControl, FormGroupDirective, NgForm, Validators, FormGroup, FormBuilder } from '@angular/forms';
@@ -32,18 +32,14 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class LoginComponent implements OnInit {
 
-
-isSignedIn= false
-loginForm: FormGroup ;
+  // isLoggedin: boolean = false;
+  isSignedIn= false
+  loginForm: FormGroup ;
   socialUser: SocialUser = new SocialUser;
 
 ngOnInit(){
   //button-toggle
       this.selectedVal1 ='login';
-
-     
-     
-
 
       if(localStorage.getItem('user') != null)
       this.isSignedIn = true

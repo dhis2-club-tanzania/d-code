@@ -1,138 +1,130 @@
 
 <div *ngIf="login" style="background-color: #ccfcfc86;">
 
-  <div fxLayout="row" fxLayoutAlign="space-between stretch" >
-    <div class="btn-image" style="background-color:transparent; width: 150px; height: 50px;"> 
-    
+    <div fxLayout="row" fxLayoutAlign="space-between stretch" >
+      <!-- <div class="btn-image" style="background-color:transparent; width: 150px; height: 50px;"> </div> -->
+      
+      <!-- <span class="example-spacer"> </span> -->
+      <button  mat-dialog-close style=" border:none; background-color:transparent; align-items: flex-end;">
+        <mat-icon>close</mat-icon>
+      </button>
     </div>
     
-    <!-- <span class="example-spacer"> </span> -->
-    <button  mat-dialog-close style=" border:none; background-color:transparent; align-items: flex-end;">
-      <mat-icon>close</mat-icon>
-    </button>
-  </div>
-  
-  
-        <!--LOG IN-->
-  
-        <div *ngIf="!isSignedIn" fxLayout="column" fxLayoutAlign="start center" style="align-items: center; padding: 5px 5px 5px 5px; width: auto; height: auto;">
-  
-          <p mat-dialog-title>D-CODE</p>
-            
-          <div mat-dialog-content>Connect to save your progress</div>
-          <br/>
-          <!-- <div  >
-            <mat-button-toggle-group  appearance="legacy" fxLayout="row " fxLayoutAlign="start stretch" #group="matButtonToggleGroup"
-             [value]="selectedVal1" (change)="onVal1Change(group.value)" style="min-width: 350px; " >
-                <mat-button-toggle value="login"  style="width: 50%;"
-          
-                >LOG IN</mat-button-toggle>
-                <mat-button-toggle value="register" (click)="registerFunction()" style="width: 50%;"
-               
-                >REGISTER</mat-button-toggle>
-            </mat-button-toggle-group>
-          </div> -->
-
-          <div fxLayout="column" fxLayoutAlign="space-around center"  >
-
-            <button type="button" class="btn googleBtn" (click)="authService.GoogleAuth()">
-              <i class="fab fa-google-plus-g"></i>
-              Log in with Google
-            </button>
-
-            <!-- <button  mat-raised-button (click)="loginWithGoogle()" style="min-width: 350px; background-color: teal;" > 
-              <mat-icon>google</mat-icon>Connect with Google
-            </button> -->
-            <br/>
-            <button  mat-raised-button style="min-width: 350px; background-color: teal;"
-            (click)="loginWithFacebook()" > 
-              <mat-icon>facebook</mat-icon>
-              Connect with Facebook
-            </button>
-
-            <div class="redirectToLogin">
-              <span>Don't have an account?<span class="redirect" routerLink="/register"> Sign Up</span></span>
-            </div>
-
-            <!-- <div>
-              <mat-form-field appearance="fill" style="min-width: 350px; background-color: #0080808a;">
-                <mat-label>Enter Email</mat-label>
-                <input matInput type="text | email"  #email>
-              </mat-form-field>
-            </div>
-            <br/>
-            <div>
-                <mat-form-field appearance="fill" style="min-width: 350px; background-color: #0080808a;">
-                  <mat-label>Password</mat-label>
-                  <input matInput [type]="hide ? 'password' : 'text'" #password>
-                  <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                  </button>
-                  
-                </mat-form-field>
-            </div>
-              <br/>
-               
-              <button  mat-raised-button style="min-width: 350px; background-color: #008080;"
-              (click)="onSignin(email.value,password.value)">LOG IN</button> 
-              <br/>
-
-              <div fxLayout="column" fxLayoutAlign="space-around center" >
-             
-                
-                <a href="#">Forgot password? </a>
-  
-                <p>New to D-CODE? 
-                  <a (click)="registerFunction()"  >Register </a> 
-                </p> -->
-                <!-- routerLink="/questions-page-component" routerLinkActive="active" -->
-                <!-- <mat-divider></mat-divider> -->
-                <!-- <p> You may also do the following </p>   -->
-  
-             
-                <!-- <br/>
-                <button  mat-raised-button style="min-width: 350px; background-color: teal;" > 
-                  <mat-icon></mat-icon>Log in with GitHub
-                </button> -->
+    
+          <!--LOG IN-->
+    
+          <div  fxLayout="column" fxLayoutAlign="start center" style="align-items: center; padding: 5px 5px 5px 5px; width: auto; height: auto;">
+    
+            <p mat-dialog-title>D-CODE</p>
               
-              <!-- </div> -->
-
-          </div>
-
-         
-
-
+            <div mat-dialog-content>Connect to save your progress</div>
+            <br/>
+            <!-- <div  >
+              <mat-button-toggle-group  appearance="legacy" fxLayout="row " fxLayoutAlign="start stretch" #group="matButtonToggleGroup"
+               [value]="selectedVal1" (change)="onVal1Change(group.value)" style="min-width: 350px; " >
+                  <mat-button-toggle value="login"  style="width: 50%;"
             
+                  >LOG IN</mat-button-toggle>
+                  <mat-button-toggle value="register" (click)="registerFunction()" style="width: 50%;"
+                 
+                  >REGISTER</mat-button-toggle>
+              </mat-button-toggle-group>
+            </div> -->
   
-        </div>
-        <p *ngIf="isSignedIn" (isLogout) = "handleLogout()" > You are Logged In!</p>
-
-        <!-- <div *ngIf="isSignedIn">
-          <div class="form-group">
-            <label>First Name</label>
-            <input type="text" class="form-control" [value]="socialUser.firstName" id="firstname" readonly>
-          </div>
-          <div class="form-group">
-            <label>Last Name</label>
-            <input type="text" class="form-control" [value]="socialUser.lastName" id="lastname" readonly>
-          </div>
-          <div class="form-group">
-            <label>Email</label>
-            <input type="text" class="form-control" [value]="socialUser.email" id="email" readonly>
-          </div>
+            <div fxLayout="column" fxLayoutAlign="space-around center"  >
+  
+                <button mat-raised-button style="min-width: 150px; background-color: #021936; color: whitesmoke;  margin-right: 10px;"
+                type="button" class="btn googleBtn" (click)="authservice.GoogleAuth()">
+                  <mat-icon class="fab fa-google-plus-g">fab fa-google-plus-g</mat-icon>
+                  Continue with Google
+                </button> 
       
-          <button type="button" (click)="logOut()" class="btn btn-primary">Log Out</button>
-        </div> -->
-
-</div>
-
-
-
-<div fxLayoutGap *ngIf="register" fxLayout="column" fxLayoutAlign="space-evenly center" style="background-color: #356db38a;">
-  <app-register ></app-register>
+                  <br/>
+                  <button  mat-raised-button style="min-width: 350px; background-color: teal;"
+                  (click)="loginWithFacebook()" > 
+                    <mat-icon>facebook</mat-icon>
+                    Connect with Facebook
+                  </button>
+      
+  
+              <!-- <div>
+                <mat-form-field appearance="fill" style="min-width: 350px; background-color: #0080808a;">
+                  <mat-label>Enter Email</mat-label>
+                  <input matInput type="text | email"  #email>
+                </mat-form-field>
+              </div>
+              <br/>
+              <div>
+                  <mat-form-field appearance="fill" style="min-width: 350px; background-color: #0080808a;">
+                    <mat-label>Password</mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'" #password>
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                    
+                  </mat-form-field>
+              </div>
+                <br/>
+                 
+                <button  mat-raised-button style="min-width: 350px; background-color: #008080;"
+                (click)="onSignin(email.value,password.value)">LOG IN</button> 
+                <br/>
+                <div fxLayout="column" fxLayoutAlign="space-around center" >
+               
+                  
+                  <a href="#">Forgot password? </a>
+    
+                  <p>New to D-CODE? 
+                    <a (click)="registerFunction()"  >Register </a> 
+                  </p> -->
+                  <!-- routerLink="/questions-page-component" routerLinkActive="active" -->
+                  <!-- <mat-divider></mat-divider> -->
+                  <!-- <p> You may also do the following </p>   -->
+    
+               
+                  <!-- <br/>
+                  <button  mat-raised-button style="min-width: 350px; background-color: teal;" > 
+                    <mat-icon></mat-icon>Log in with GitHub
+                  </button> -->
+                
+                <!-- </div> -->
+  
+            </div>
+  
+           
+  
+  
+              
+    
+          </div>
+          <p *ngIf="!isSignedIn" (isLogout) = "handleLogout()" > You are Logged In!</p>
+  
+          <!-- <div *ngIf="isSignedIn">
+            <div class="form-group">
+              <label>First Name</label>
+              <input type="text" class="form-control" [value]="socialUser.firstName" id="firstname" readonly>
+            </div>
+            <div class="form-group">
+              <label>Last Name</label>
+              <input type="text" class="form-control" [value]="socialUser.lastName" id="lastname" readonly>
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="text" class="form-control" [value]="socialUser.email" id="email" readonly>
+            </div>
+        
+            <button type="button" (click)="logOut()" class="btn btn-primary">Log Out</button>
+          </div> -->
+  
   </div>
-      <!-- <div mat-dialog-actions>
-      routerLink="/login-component" routerLinkActive="active"
-         routerLink="/register-component" routerLinkActive="active"
-        <button mat-button mat-dialog-close>Close</button>
-      </div> -->
+  
+  <app-user *ngIf="!isSignedIn" ></app-user> 
+  
+  <div fxLayoutGap *ngIf="register" fxLayout="column" fxLayoutAlign="space-evenly center" style="background-color: #356db38a;">
+    <app-register ></app-register>
+    </div>
+        <!-- <div mat-dialog-actions>
+        routerLink="/login-component" routerLinkActive="active"
+           routerLink="/register-component" routerLinkActive="active"
+          <button mat-button mat-dialog-close>Close</button>
+        </div> -->

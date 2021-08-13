@@ -1,14 +1,54 @@
 <!-- <p>questions works!</p> --> 
 
-<div *ngIf="questions?.length > 0;else noQuestions">
-    <ul *ngFor = "let question of questions | async" class="collection">
-        <li class="collection-question"><strong>{{question.Difficulty}}</strong>
-            {{question.Category}} <strong>{{question.Name}}</strong>
+<!-- <div *ngIf="$any(questions)?.length > 0;else noQuestions" >
+    <ul *ngFor = "let question of questions " class="collection">
+        <li   class="collection-question">
+            <strong>{{question.Difficulty}}</strong>
+            {{question.Category}} 
+            <strong>{{question.Name}}</strong>
+          
         </li>
     </ul>
+</div> -->
+<br/>
+
+<div fxLayout="column" fxLayoutAlign="space-around center" >
+    <div fxLayout="row" fxLayoutAlign="space-around center" *ngIf="$any(questions)?.length > 0;else noQuestions" >
+        <!-- <h2 style=" text-align: center; ">Name</h2> -->
+        <div class="collection-question" *ngFor = "let question of questions " class="collection">
+            <mat-card style="margin: 10px;"> <strong><a routerLink="/workspace-page-component" routerLinkActive="active">{{question.Name}}<br/></a></strong> </mat-card>
+             
+        </div>
+    </div>
+
+    <!-- <div fxLayout="column" fxLayoutAlign="space-around center" *ngIf="$any(questions)?.length > 0;else noQuestions" >
+        <h2 style=" text-align: center; ">Difficulty</h2>
+        <div class="collection-question" *ngFor = "let question of questions " class="collection">
+            <strong>{{question.Difficulty}}</strong>
+        </div>
+    </div>
+
+    <div fxLayout="column" fxLayoutAlign="space-around center" *ngIf="$any(questions)?.length > 0;else noQuestions" >
+        <h2 style=" text-align: center; ">Category</h2>
+        <div class="collection-question" *ngFor = "let question of questions " class="collection">
+              <strong>{{question.Category}}</strong>
+        </div> 
+    </div> -->
+     
+    <!-- <div class="collection-question"> <h2 style=" text-align: center; ">Difficulty</h2><strong>{{question.Difficulty}}</strong></div>
+    <div class="collection-question"> <h2 style=" text-align: center; ">Category</h2>{{question.Category}}  </div> -->
 </div>
 
+
+
+<!-- *ngIf="questions?.length > 0;else noQuestions" -->
 <ng-template #noQuestions>
     <hr>
     <h5>There are no questions to list</h5>
 </ng-template> 
+
+
+
+  <!-- {{question.Description}} -->
+            <!-- {{question.functionName}} -->
+            <!-- {{question.Tests?.Inputs}} -->

@@ -2,33 +2,15 @@
   <p>You are logged In</p>
   <button (click)="logout()">logout</button>
 </div> -->
-<div *ngIf="home" style="height: 80%;">
+<div style="height: 80%;">
 
-<!--[formGroup]="registerForm" (submit)="tryRegister(registerForm.value)"-->
-  <!-- <form [formGroup]="registerForm">
-    <div class="form-group">
-      <label>Email address</label>
-      <input type="email" value="email" formControlName="email" class="form-control" required>
-    </div>
-    <div class="form-group">
-      <label>Password</label>
-      <input type="password" value="password" class="form-control" formControlName="password" required>
-      <label class="error">{{errorMessage}}</label>
-      <label class="success">{{successMessage}}</label>
-    </div>
-    <button type="submit" (click)="tryRegister(registerForm.value)" class="btn btn-default">Register</button>
- </form> -->
-
-
-
-
-                  <!--wrapper1-Heading-->
+                  <!--wrapper1-Heading   *ngIf="home" -->
                   <div class= "wrapper" color ="accent" style=" background-color: #f8f8f8;  font-size: 18pt; padding: 50px;  text-align: center;">
                     <div fxFill fxLayout="row" fxLayoutAlign="center stretch" >
 
 
                         <mat-card class="example-card" style="width: auto;  background-color: #f8f8f802; border: none;" >
-                          <h2 style="  font-weight:bolder; font-size: 60pt; color: #2381fc;">d-code</h2>
+                          <h2 style="  font-weight:bolder; font-size: 50pt; color: #2381fc;">d-code</h2>
                           <p style="padding-inline: 20px; line-height: 1.5;">
                             The ultimate resource to prepare for coding interviews.
                             <br/> Everything you need, in one streamlined platform.
@@ -44,7 +26,7 @@
 
                   <!--Getting started-->
                   <div  fxLayout="column" fxLayoutAlign="space-evenly center" class="wrapper" style="padding: 50px; padding-inline: 20px; font-size: 12pt; background-color: #001f3f; padding: 50px; color: whitesmoke; ">
-                  <h3 style="font-size: 25pt; font-weight: bold;" >Getting started at d-code?</h3>
+                  <h2 style="font-size: 20pt; font-weight: bold;" >Getting started at d-code?</h2>
                   <br/>
                   <p>First start by loging into your account to save your progress.
                   </p>

@@ -34,17 +34,16 @@ import { environment } from '../environments/environment';
 import { RouterModule } from '@angular/router';
 import { RegisterComponent } from './register/register.component';
 import { UserComponent } from './user/user.component';
-// import { AngularFireAuth } from '@angular/fire/auth';
 import { AuthServiceService } from './services/auth-service.service';
 import { FacebookLoginProvider, SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
 import { GoogleLoginProvider } from 'angularx-social-login';
 import { QuestionsComponent } from './questions-page/questions/questions.component';
-// import { AngularFireList } from '@angular/fire/database';
-// import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
-// import firebase from 'firebase/app';
-import { AngularFirestore } from '@angular/fire/firestore';
+//import { AngularFirestore } from '@angular/fire/firestore';
 import { QuestionsService } from './services/questions.service';
 import { AuthGuardService } from './guards/auth-guard.service';
+// import {  AngularFirestoreDocument } from '@angular/fire/firestore';
+import {MatTableModule} from '@angular/material/table';
+import {MatSortModule} from '@angular/material/sort';
 
 
 
@@ -90,7 +89,7 @@ import { AuthGuardService } from './guards/auth-guard.service';
       { path: '', redirectTo: '/login', pathMatch: 'full' },
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent},
-      { path: 'User', component: UserComponent, canActivate: [AuthGuardService]},
+      { path: 'user-component', component: UserComponent, canActivate: [AuthGuardService]},
       { path: 'homepage-component',
       component: HomepageComponent
       },
@@ -100,17 +99,19 @@ import { AuthGuardService } from './guards/auth-guard.service';
        { path: 'workspace-page-component',
          component: WorkspacePageComponent
          },
-         { path: 'login-component',
-           component:  LoginComponent
-        }
+        //  { path: 'login-component',
+        //    component:  LoginComponent
+        // }
      ]),
-   AngularFireModule.initializeApp(environment.firebaseConfig),
+   AngularFireModule.initializeApp(environment.firebaseConfig, 'yesplease'),
    AngularFirestoreModule, // imports firebase/firestore, only needed for database features  , 'yesplease'
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
-    SocialLoginModule,AngularFirestore
+    SocialLoginModule, MatTableModule, MatSortModule
+    // AngularFirestore
   
   ],
-  providers: [AuthServiceService, QuestionsService,
+  providers: [AuthServiceService, 
+    QuestionsService,
    { provide: 'SocialAuthServiceConfig',
     useValue: {
       autoLogin: false,

@@ -28,7 +28,7 @@
               </li>
               <!-- Calling SignOut() Api from AuthService -->
               <li class="nav-item">
-                <a class="nav-link" (click)="authService.SignOut()">
+                <a class="nav-link" (click)="authservice.SignOut()">
                   <i class="fas fa-sign-out-alt"></i>Log out
                 </a>
               </li>
@@ -71,7 +71,7 @@
             </li>
             <!-- Calling SignOut() Api from AuthService -->
             <li class="nav-item">
-              <a class="nav-link" (click)="authService.SignOut()">
+              <a class="nav-link" (click)="authservice.SignOut()">
                 <i class="fas fa-sign-out-alt"></i>Log out
               </a>
             </li>
@@ -118,9 +118,6 @@
    </button>
    <button type="button" class="btn-image" ></button>
    <span class="example-spacer"></span>
-
-
-
    <span> D-CODE</span>
  <span class="example-spacer"></span>
     <button mat-button [matMenuTriggerFor]="belowMenu">Questions</button>
@@ -131,7 +128,6 @@
           <button mat-menu-item>Expert</button>
         </mat-menu>
   <button mat-button  >WorkSpace</button> 
-
   <button mat-raised-button (click)="openDialog()" color ="accent" style="background-color: #001f3f;">
     Login
   </button>

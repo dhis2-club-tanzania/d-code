@@ -2,6 +2,8 @@ import { Injectable, NgZone  } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 // import { Observable } from 'rxjs';
 // import  auth  from 'firebase/app';
+
+
 import { User } from '../shared/services/user';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Router } from "@angular/router";
@@ -15,17 +17,17 @@ import  firebase from 'firebase/app';
 export class AuthServiceService {
   // userData: Observable<firebase.User>;
 
-  isLoggedIn = false
+  isLoggedIn = false //*ngIf="!isSignedIn"
   doRegister: any;
   userData: any; // Save logged in user data
 
   constructor(    
-    public afs: AngularFirestore,   // Inject Firestore service
+   public afs: AngularFirestore,   // Inject Firestore service
     public afAuth: AngularFireAuth, // Inject Firebase auth service
     public router: Router,  
     public ngZone: NgZone // NgZone service to remove outside scope warning 
     ) 
-    {
+     {
 
       this.afAuth.authState.subscribe(user => {
         if (user) {
@@ -37,28 +39,17 @@ export class AuthServiceService {
           localStorage.setItem('user',"email");
           JSON.parse(localStorage.getItem('user')  || '{}');
         }
-      })
+      }  )
 
-  }
-  
-
-    // doGoogleLogin(){
-  //   return new Promise<any>((resolve, _reject) => {
-  //     let provider = new firebase.auth.GoogleAuthProvider();
-  //     provider.addScope('profile');
-  //     provider.addScope('email');
-  //     this.afAuth
-  //     .signInWithPopup(provider)
-  //     .then(res => {
-  //       resolve(res);
-  //     })
-  //   })
-  //   }
-
+     }
 
  // Sign in with Google
  GoogleAuth() {
   return this.AuthLogin(new firebase.auth.GoogleAuthProvider());
+}
+
+FacebookAuth() {
+  return this.AuthLogin(new firebase.auth.FacebookAuthProvider());
 }
 
 // Auth logic to run auth providers
@@ -66,7 +57,7 @@ export class AuthServiceService {
   try {
     const result = await this.afAuth.signInWithPopup(provider);
     this.ngZone.run(() => {
-      this.router.navigate(['User']);
+      this.router.navigate(['user-component']);
     });
     this.SetUserData(result.user);
   } catch (error) {
@@ -90,14 +81,17 @@ SetUserData(user : any) {
   }
   return userRef.set(userData, {
     merge: true
-  })
+  });
 }
 
 // Sign out 
   async SignOut() {
-  await this.afAuth.signOut();
+  await this.afAuth.signOut().then(() => {
+
   localStorage.removeItem('user');
   this.router.navigate(['login']);
+})
+
 }
 
 

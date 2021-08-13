@@ -14,8 +14,8 @@ import { Router } from "@angular/router";
   styleUrls: ['./toolbar.component.css']
 })
 export class ToolbarComponent implements OnInit {
-  isSignedIn= false
-
+  isSignedIn= false;
+  // isLoggedIn= false;
   showFiller = false;
 
   home:boolean=true;
@@ -32,13 +32,15 @@ export class ToolbarComponent implements OnInit {
   constructor(public dialog: MatDialog,  public authservice: AuthServiceService,
     public afs: AngularFirestore,   // Inject Firestore service
     public afAuth: AngularFireAuth, // Inject Firebase auth service
-    public router: Router) { }
+    public router: Router
+    ) { }
 
   openDialog() {
     this.dialog.open(LoginComponent);
     this.blogout=true;
-    this.login=false;
+    this.login= false;
     this.isSignedIn = false;
+    // this.isLoggedIn = false;
   }
 
   handleLogout(){
@@ -47,12 +49,12 @@ export class ToolbarComponent implements OnInit {
     // this.login=false;
   }
 
-  ngOnInit() {
+    ngOnInit() {
     if(localStorage.getItem('user') != null)
     this.isSignedIn = true
     else
     this.isSignedIn = false
-  }
+   }
 
   
   logout(){

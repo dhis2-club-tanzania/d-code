@@ -15,7 +15,7 @@ import { QuestionsComponent } from '../questions-page/questions/questions.compon
     { path: '', redirectTo: '/login', pathMatch: 'full' },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent},
-    { path: 'User', component: UserComponent, canActivate: [AuthGuardService]},
+    { path: 'user-component', component: UserComponent, canActivate: [AuthGuardService]},
    { path: 'homepage-component',
    component: HomepageComponent
    },
@@ -31,9 +31,9 @@ import { QuestionsComponent } from '../questions-page/questions/questions.compon
      { path: 'register-component',
      component:  RegisterComponent
     },
-     { path: 'user-component',
-  component:  UserComponent
-    },
+  //    { path: 'user-component',
+  // component:  UserComponent
+  //   },
     { path: 'questions',
     component:  QuestionsComponent
       }
