@@ -15,6 +15,9 @@ import  firebase from 'firebase/app';
   providedIn: 'root'
 })
 export class AuthServiceService {
+  logout() {
+    throw new Error('Method not implemented.');
+  }
   // userData: Observable<firebase.User>;
 
   isLoggedIn = false //*ngIf="!isSignedIn"

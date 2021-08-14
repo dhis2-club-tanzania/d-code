@@ -12,7 +12,7 @@ import { QuestionsComponent } from './questions-page/questions/questions.compone
 
 
    const routes: Routes = [
-    { path: '', redirectTo: '/login', pathMatch: 'full' },
+    { path: '', redirectTo: '/homepage-component', pathMatch: 'full' },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent},
     { path: 'user-component', component: UserComponent, canActivate: [AuthGuardService]},
@@ -31,9 +31,7 @@ import { QuestionsComponent } from './questions-page/questions/questions.compone
      { path: 'register-component',
      component:  RegisterComponent
     },
-  //    { path: 'user-component',
-  // component:  UserComponent
-  //   },
+
     { path: 'questions',
     component:  QuestionsComponent
       }

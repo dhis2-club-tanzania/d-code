@@ -20,36 +20,40 @@
     
             <!-- The following menu items will be hidden on both SM and XS screen sizes -->
 
-            <ul class="nav flex-column">
-              <li class="nav-item">
-                <a class="nav-link active">
-                  <i class="fas fa-user"></i>User Profile
-                </a>
-              </li>
-              <!-- Calling SignOut() Api from AuthService -->
-              <li class="nav-item">
-                <a class="nav-link" (click)="authservice.SignOut()">
-                  <i class="fas fa-sign-out-alt"></i>Log out
-                </a>
-              </li>
-            </ul>
+
         
-            <button mat-button style="background-color: #eeeded00;"  
+            <button mat-button style="background-color: #cfd8e2; margin-left: 4px;"
             routerLink="/questions-page-component" routerLinkActive="active"
             (click)="pageFunction()">Questions</button> 
             <span class="example-spacer"></span>
-            <button mat-button style="background-color: #eeeded00;" 
+            <button mat-button style="background-color: #cfd8e2; margin-left: 4px; " 
             routerLink="/workspace-page-component" routerLinkActive="active" 
             (click)="pageFunction()">WorkSpace</button> 
-            <span class="example-spacer"></span>
-          <button mat-button *ngIf="login" (click)="openDialog()"    style="background-color: #001f3f; color: white;">
+            <!--buttons--> 
+          <!-- <button mat-button *ngIf="login" (click)="openDialog()"    style="background-color: #001f3f; color: white; margin-left: 4px;">
             Login
           </button>
-          <button mat-button *ngIf="blogout" (click)="logout()" (isLogout) = "handleLogout()" 
-           style="background-color: #001f3f; color: white;">
+          <button mat-button *ngIf="blogout" (click)="logout()"  (isLogout) = "handleLogout()" 
+           style="background-color: #001f3f; color: white; margin-left: 4px;">
            <mat-icon>logout</mat-icon>
             Logout
-          </button>
+          </button>   -->
+          <!-- (click)="logout()" -->
+          <span class="example-spacer"></span>
+    
+                <button mat-button class="nav-link active" style="background-color: #cfd8e2;  margin-left: 4px;"
+                routerLink="/user-component" routerLinkActive="active" >
+                <mat-icon>account_box</mat-icon>User Profile
+                </button>
+                <span class="example-spacer"></span>
+                <button mat-button  (click)="openDialog()"    style="background-color: #001f3f; color: white; margin-left: 4px;">
+                  Login
+                </button>
+                <button mat-button  class="nav-link"   (click)="authservice.SignOut()" 
+                style="background-color: #001f3f; color: white; margin-left: 4px;">
+                  <mat-icon>logout</mat-icon>Log out
+                </button>
+        
       </div>
 
     </mat-toolbar>
@@ -58,49 +62,45 @@
     <mat-sidenav-container fxFlexFill class="example-container">
   
       <mat-sidenav #sidenav fxLayout="column"  style="background-color: #eeeded; width: 250px;" mode="side" >
-        <!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="sidenav.toggle()">
-          <mat-icon>close</mat-icon>
-        </button> -->
-        <div fxLayout="column"  style="background-color: #eeeded; width: 250px;">
-
-          <ul class="nav flex-column">
-            <li class="nav-item">
-              <a class="nav-link active">
-                <i class="fas fa-user"></i>User Profile
-              </a>
-            </li>
-            <!-- Calling SignOut() Api from AuthService -->
-            <li class="nav-item">
-              <a class="nav-link" (click)="authservice.SignOut()">
-                <i class="fas fa-sign-out-alt"></i>Log out
-              </a>
-            </li>
-          </ul>
+   
+        <div fxLayout="column" fxLayoutAlign="space-around none"  style="background-color: #eeeded; width: 250px; margin-bottom: 4px;">
 
 
-          <button mat-raised-button style="background-color: #eeeded00;"  
+
+
+          <button mat-raised-button style="background-color: #cfd8e2;"  
           routerLink="/homepage-component" routerLinkActive="active" 
            (click)="pageFunction()">Home</button> 
-          <button mat-raised-button style="background-color: #eeeded00;" 
+           
+          <button mat-raised-button style="background-color: #cfd8e2;" 
           routerLink="/questions-page-component" routerLinkActive="active" 
           (click)="pageFunction()" >Questions</button> 
-            <button mat-raised-button style="background-color: #eeeded00;"  
+            <button mat-raised-button style="background-color: #cfd8e2;"  
             routerLink="/workspace-page-component" routerLinkActive="active" 
            (click)="pageFunction()">WorkSpace</button> 
       
-            <button mat-raised-button *ngIf="login" (click)="openDialog()" color ="accent" style="background-color: #001f3f;">
-              Login
-            </button>
-            <button mat-raised-button *ngIf="blogout" (click)="logout()" (isLogout) = "handleLogout()"    style="background-color: #001f3f; color: white;">
-             <mat-icon>logout</mat-icon> Logout
-            </button>
+                <button  mat-raised-button style="background-color: #cfd8e2;" class="nav-link active"
+                routerLink="/user-component" routerLinkActive="active" >
+                <mat-icon>account_box</mat-icon>User Profile
+                </button>
+
+                <button mat-raised-button (click)="openDialog()" color ="accent" style="background-color: #001f3f;">
+                  Login
+                </button>
+         
+                <button mat-raised-button style="background-color: #001f3f; color: white;"  class="nav-link" (click)="authservice.SignOut()">
+                  <mat-icon>logout</mat-icon>Log out
+                </button>
+       
+
+
         </div>
   
       </mat-sidenav>
       <mat-sidenav-content fxFlexFill>
         <router-outlet></router-outlet>
        
-       <app-homepage *ngIf="home" ></app-homepage>
+       <!-- <app-homepage *ngIf="home" ></app-homepage> -->
       </mat-sidenav-content>
  
       

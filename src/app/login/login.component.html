@@ -1,10 +1,12 @@
 
-<div *ngIf="login" style="background-color: #ccfcfc86;">
+<div  style="background-color: #ccfcfc86;">
 
-    <div fxLayout="row" fxLayoutAlign="space-between stretch" >
-      <!-- <div class="btn-image" style="background-color:transparent; width: 150px; height: 50px;"> </div> -->
+    <div fxLayout="column" fxLayoutAlign="space-around end"  >
+      <!-- <div  style="background-color:transparent; width: 150px; height: 50px; color: black; font-weight: bold; align-items: center;"> 
+        
+       </div> *ngIf="login" -->
       
-      <!-- <span class="example-spacer"> </span> -->
+      
       <button  mat-dialog-close style=" border:none; background-color:transparent; align-items: flex-end;">
         <mat-icon>close</mat-icon>
       </button>
@@ -13,7 +15,7 @@
     
           <!--LOG IN-->
     
-          <div  fxLayout="column" fxLayoutAlign="start center" style="align-items: center; padding: 5px 5px 5px 5px; width: auto; height: auto;">
+          <div *ngIf="isSignedIn" fxLayout="column" fxLayoutAlign="start center" style="align-items: center; padding: 5px 5px 5px 5px; width: auto; height: auto;">
     
             <p mat-dialog-title>D-CODE</p>
               
@@ -29,18 +31,20 @@
                  
                   >REGISTER</mat-button-toggle>
               </mat-button-toggle-group>
-            </div> -->
+            </div>   <colour background-color: #021936;> -->
   
             <div fxLayout="column" fxLayoutAlign="space-around center"  >
   
-                <button mat-raised-button style="min-width: 150px; background-color: #021936; color: whitesmoke;  margin-right: 10px;"
-                type="button" class="btn googleBtn" (click)="authservice.GoogleAuth()">
+                <button mat-raised-button style="background-color: teal; color: whitesmoke;  margin-right: 10px;"
+                type="button" class="btn googleBtn" (click)="authservice.GoogleAuth()" 
+                routerLink="/user-component" routerLinkActive="active">
                   <mat-icon class="fab fa-google-plus-g">fab fa-google-plus-g</mat-icon>
                   Continue with Google
                 </button> 
       
                   <br/>
-                  <button  mat-raised-button style="min-width: 350px; background-color: teal;"
+                  <button  mat-raised-button style=" background-color: teal;"
+                  routerLink="/user-component" routerLinkActive="active"
                   (click)="loginWithFacebook()" > 
                     <mat-icon>facebook</mat-icon>
                     Connect with Facebook

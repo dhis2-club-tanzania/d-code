@@ -86,7 +86,7 @@ import {MatSortModule} from '@angular/material/sort';
     FormsModule, ReactiveFormsModule, MatSidenavModule,
      AngularFireDatabaseModule,
      RouterModule.forRoot([
-      { path: '', redirectTo: '/login', pathMatch: 'full' },
+      { path: '', redirectTo: '/homepage-component', pathMatch: 'full' },
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent},
       { path: 'user-component', component: UserComponent, canActivate: [AuthGuardService]},

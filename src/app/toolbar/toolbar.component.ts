@@ -46,7 +46,7 @@ export class ToolbarComponent implements OnInit {
   handleLogout(){
     this.isSignedIn = false;
     this.blogout=false;
-    // this.login=false;
+    this.login=true;
   }
 
     ngOnInit() {
@@ -58,10 +58,10 @@ export class ToolbarComponent implements OnInit {
 
   
   logout(){
-    // this.authservice.logout()
+    this.authservice.logout()
     this.isLogout.emit()
-    this.blogout=false;
-    this.login=true;
+    // this.blogout=false;
+    // this.login=true;
     // this.isSignedIn = false
   }
 
