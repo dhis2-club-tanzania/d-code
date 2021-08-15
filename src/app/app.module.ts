@@ -38,50 +38,37 @@ import { AuthServiceService } from './services/auth-service.service';
 import { FacebookLoginProvider, SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
 import { GoogleLoginProvider } from 'angularx-social-login';
 import { QuestionsComponent } from './questions-page/questions/questions.component';
-//import { AngularFirestore } from '@angular/fire/firestore';
 import { QuestionsService } from './services/questions.service';
 import { AuthGuardService } from './guards/auth-guard.service';
 // import {  AngularFirestoreDocument } from '@angular/fire/firestore';
 import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
-
-
-
+import { PromptComponent } from './workspace-page/prompt/prompt.component';
+import { YourSolutionsComponent } from './workspace-page/your-solutions/your-solutions.component';
+import { TestsSamplesComponent } from './workspace-page/tests-samples/tests-samples.component';
+import { CodeOutputsComponent } from './workspace-page/code-outputs/code-outputs.component';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {TextFieldModule} from '@angular/cdk/text-field';
+import { TextareaAutosizeModule } from 'ngx-textarea-autosize';
 
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    ToolbarComponent,
-    QuestionsPageComponent,
-    WorkspacePageComponent,
-    HomepageComponent,
-    LoginComponent,
-    RegisterComponent,
-    UserComponent,
-    QuestionsComponent
+    AppComponent,  ToolbarComponent,  QuestionsPageComponent,
+    WorkspacePageComponent,  HomepageComponent, LoginComponent,
+    RegisterComponent,  UserComponent, QuestionsComponent,
+    PromptComponent, YourSolutionsComponent, TestsSamplesComponent,
+    CodeOutputsComponent
     
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatButtonModule,
-    MatMenuModule,
-    MatDialogModule,
-    MatCardModule,
-    FlexLayoutModule,
-    MatSelectModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatTabsModule,
-    MatTooltipModule,
-    MatButtonToggleModule,
-    MatCheckboxModule,
-    MatDividerModule,
+    BrowserModule,AppRoutingModule, BrowserAnimationsModule,
+    MatToolbarModule, MatIconModule, MatButtonModule,
+    MatMenuModule,  MatDialogModule, MatCardModule,
+    FlexLayoutModule, MatSelectModule, MatFormFieldModule,
+    MatInputModule,  MatTabsModule, MatTooltipModule,
+    MatButtonToggleModule, MatCheckboxModule, MatDividerModule,
     MatListModule,
     FormsModule, ReactiveFormsModule, MatSidenavModule,
      AngularFireDatabaseModule,
@@ -106,7 +93,8 @@ import {MatSortModule} from '@angular/material/sort';
    AngularFireModule.initializeApp(environment.firebaseConfig, 'yesplease'),
    AngularFirestoreModule, // imports firebase/firestore, only needed for database features  , 'yesplease'
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
-    SocialLoginModule, MatTableModule, MatSortModule
+    SocialLoginModule, MatTableModule, MatSortModule,
+    MatGridListModule, TextFieldModule, TextareaAutosizeModule
     // AngularFirestore
   
   ],

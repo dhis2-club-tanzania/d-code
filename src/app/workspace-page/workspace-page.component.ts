@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-
-import {MatDialog} from '@angular/material/dialog';
-import { LoginComponent } from '../login/login.component';
+import {CdkTextareaAutosize} from '@angular/cdk/text-field';
+import { NgZone, ViewChild} from '@angular/core';
+import {take} from 'rxjs/operators';
+// import {MatDialog} from '@angular/material/dialog';
+// import { LoginComponent } from '../login/login.component';
 
 
 
@@ -49,7 +51,7 @@ export class WorkspacePageComponent implements OnInit {
     {value: 'TypeScript-5', viewValue: 'TypeScript'}
   ];
 
-  selectedLanguage = this.languages[3].value;
+  selectedLanguage = this.languages[0].value;
 
 
   wlayouts: WLayout[] = [
@@ -92,110 +94,144 @@ export class WorkspacePageComponent implements OnInit {
   selectedSyntaxTheme = this.syntaxthemes[0].value;
 
 //toggle-active
-  public selectedVal1: string | undefined;
-  public selectedVal2: string | undefined;
-  public selectedVal3: string | undefined;
-  public selectedVal4: string | undefined;
+  // public selectedVal1: string | undefined;
+  // public selectedVal2: string | undefined;
+  // public selectedVal3: string | undefined;
+  // public selectedVal4: string | undefined;
 
 
   home:boolean=false;
 
 //div-mat-card-buttons1
-  solution:boolean=false;
+    //   solution:boolean=false;
 
 
-  promptFunction(){
-    this.solution=false
-}
+    //   promptFunction(){
+    //     this.solution=false
+    // }
 
-scratchpadFunction(){
-  this.solution=false
-}
+    // scratchpadFunction(){
+    //   this.solution=false
+    // }
 
-solutionFunction(){
-  this.solution=true
-}
+    // solutionFunction(){
+    //   this.solution=true
+    // }
 
-videoFunction(){
-  this.solution=false
-}
+    // videoFunction(){
+    //   this.solution=false
+    // }
 
 
 
-  //div-mat-card-buttons2
-  fullscreen:boolean=true;
-  fullscreen_exit:boolean=false;
-  // fullscreen_data:boolean=true;
+    //div-mat-card-buttons2
+    fullscreen:boolean=true;
+    fullscreen_exit:boolean=false;
+    // fullscreen_data:boolean=true;
 
-  fullscreenFunction(){
-    this.fullscreen=false;
-    this.fullscreen_exit=true;
-    // this.fullscreen_data=true
+    fullscreenFunction(){
+      this.fullscreen=false;
+      this.fullscreen_exit=true;
+      // this.fullscreen_data=true
+    }
+
+    fullscreen_exitFunction(){
+      this.fullscreen=true;
+      this.fullscreen_exit=false;
+      // this.fullscreen_data=true
+    }
+
+  
+
+
+  //   //div-mat-card-buttons3
+  //   test:boolean=true;
+  //   quicktest:boolean=false;
+  //   info:boolean=true;
+
+  //   testFunction(){
+  //     this.test=true;
+  //     this.quicktest=false;
+  //     this.info=true
+  // }
+
+  // quicktestFunction(){
+  //     this.test=false;
+  //     this.quicktest=false;
+  //     this.info=true
+  // }
+
+  // infoFunction(){
+  //     this.test=false;
+  //     this.quicktest=true;
+  //     this.info=true
+  // }
+
+
+
+  constructor(
+    // public dialog: MatDialog
+    private _ngZone: NgZone
+    ) { }
+  // openDialog() {
+  //   this.dialog.open(LoginComponent);
+  // }
+
+  // openDialog() {
+  //   this.dialog.open(LoginComponent);
+  // }
+  // openDialog() {
+  //   this.dialog.open(LoginComponent);
+  // }
+  // openDialog() {
+  //   this.dialog.open(LoginComponent);
+  // }
+  @ViewChild('autosize')
+  autosize!: CdkTextareaAutosize;
+
+  triggerResize() {
+    // Wait for changes to be applied, then trigger textarea resize.
+    this._ngZone.onStable.pipe(take(1))
+        .subscribe(() => this.autosize.resizeToFitContent(true));
   }
-
-  fullscreen_exitFunction(){
-    this.fullscreen=true;
-    this.fullscreen_exit=false;
-    // this.fullscreen_data=true
-  }
-
-  //div-mat-card-buttons3
-  test:boolean=true;
-  quicktest:boolean=false;
-  info:boolean=true;
-
-  testFunction(){
-    this.test=true;
-    this.quicktest=false;
-    this.info=true
-}
-
-quicktestFunction(){
-    this.test=false;
-    this.quicktest=false;
-    this.info=true
-}
-
-infoFunction(){
-    this.test=false;
-    this.quicktest=true;
-    this.info=true
-}
-
-
-
-  constructor(public dialog: MatDialog) { }
-  openDialog() {
-    this.dialog.open(LoginComponent);
-  }
-
   // : void 
   ngOnInit() {
-    this.selectedVal1 ='Prompt';
-    this.selectedVal2 ='Your Solutions';
-    this.selectedVal3 ='Tests';
-    this.selectedVal4 ='Custom Output'
+    // this.selectedVal1 ='Prompt';
+    // this.selectedVal2 ='Your Solutions';
+    // this.selectedVal3 ='Tests';
+    // this.selectedVal4 ='Custom Output';
   } 
   
-  public onVal1Change(val1: string) {
-    this.selectedVal1 = val1
+  // public onVal1Change(val1: string) {
+  //   this.selectedVal1 = val1
 
-  }
+  // }
 
-  public onVal2Change(val2: string) {
-    this.selectedVal2 = val2
+  // public onVal2Change(val2: string) {
+  //   this.selectedVal2 = val2
   
-  }
+  // }
 
-  public onVal3Change(val3: string) {
-    this.selectedVal3 = val3
+  // public onVal3Change(val3: string) {
+  //   this.selectedVal3 = val3
 
-  }
+  // }
 
-  public onVal4Change(val4: string) {
-    this.selectedVal4 = val4
+  // public onVal4Change(val4: string) {
+  //   this.selectedVal4 = val4
   
+  // }
+
+
+  button_header:boolean=false;
+  button_headerFunction(){
+  
+    this.button_header=true
   }
+
+
+
+
 }
 
 

@@ -1,0 +1,38 @@
+
+             <!-- Output Space-->
+
+ <!-- <div #box class="resizable-draggable"
+[style.width.px]="width"
+[style.height.px]="height"
+[style.transform]="'translate3d(' + left + 'px,' + top + 'px,' + '0px)'"
+[class.active]="status === 1 || status === 2"
+(mousedown)="setStatus($event, 2)"
+(window:mouseup)="setStatus($event, 0)"> -->
+<div fxLayout="column" fxLayoutAlign="start stretch" class="workspace-card1" >
+    <mat-button-toggle-group appearance="legacy" fxLayout="row" fxLayoutAlign="start start" #group="matButtonToggleGroup" [value]="selectedVal4" (change)="onVal4Change(group.value)" >
+        <mat-button-toggle  value="Custom Output">Custom Output</mat-button-toggle>
+        <!-- <mat-button-toggle value="Raw Output">Raw Output</mat-button-toggle> -->
+        
+        <span class="example-spacer"> </span>
+        <button mat-button style="background-color: #18ad38; color: white; border-radius: 0pt 0pt;" >Submit Code</button>
+    </mat-button-toggle-group>
+    <div style="background-color: #030e1a" class="answer-card1">
+        <mat-form-field  appearance="fill" class="example-full-width"> 
+            
+            <!-- <mat-label>Autosize textarea</mat-label>  style="height: 340px;"-->
+
+            <input type="tel" matInput placeholder="555-555-1234">
+                
+          </mat-form-field>
+    </div>
+</div> 
+   <!-- <div class="resize-action" (mousedown)="setStatus($event, 1)">
+
+    <span>{{width | number:'1.0-0'}}px</span>
+    <span>{{height | number:'1.0-0'}}px</span>
+    <span>({{left}}, {{top}})</span>
+
+
+   </div> -->
+<!-- </div> -->
+        

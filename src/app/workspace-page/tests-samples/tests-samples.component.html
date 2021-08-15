@@ -1,0 +1,25 @@
+   <!-- Tests Space-->
+   <div fxLayout="column" fxLayoutAlign="start stretch" class="workspace-card1" >
+    <mat-button-toggle-group appearance="legacy" fxLayout="row" fxLayoutAlign="start start" 
+    #group="matButtonToggleGroup" [value]="selectedVal3" (change)="onVal3Change(group.value)" >
+        <mat-button-toggle  value="Tests" (click)="testFunction()" >Tests</mat-button-toggle>
+        <!-- <mat-button-toggle  value="Quick Test" (click)="quicktestFunction()" >Quick Test</mat-button-toggle>
+        <mat-button-toggle  value="Sandbox" (click)="infoFunction()" >Sandbox</mat-button-toggle> -->
+        <span class="example-spacer"> </span>
+        <button mat-button style="border-radius: 0pt 0pt;" *ngIf="test" > <mat-icon>remove_red_eye</mat-icon> </button>
+        <!-- <button mat-button style="border-radius: 0pt 0pt;" *ngIf="quicktest"  > <mat-icon>replay</mat-icon> </button> -->
+        <button mat-button style="border-radius: 0pt 0pt;" *ngIf="info" > <mat-icon>info</mat-icon> </button>
+    </mat-button-toggle-group>
+    <div style="background-color: #030e1a; color: #f8f8f8;" class="answer-card1" >
+        
+        <mat-form-field  appearance="fill" class="example-full-width"> 
+            
+            <!-- <mat-label>Autosize textarea</mat-label>  style="height: 340px;"-->
+            <textarea matInput >
+           //tests here 
+                     
+                </textarea>
+          </mat-form-field>
+
+    </div>
+</div>

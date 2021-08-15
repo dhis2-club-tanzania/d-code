@@ -78,11 +78,11 @@ h6 {
     /* background-repeat: no-repeat; */
      /* background-position: left;  */
      background-color: #367dce00;
-      min-width: 200px;
+      min-width: 500px;
        min-height: 200px;
 
 
-    background-size: 1000px;
+    background-size: 100px;
     background-position: center;
     background-repeat: no-repeat;
     /* min-height: 64px; max-width: 205px; */

@@ -6,7 +6,6 @@
         
        </div> *ngIf="login" -->
       
-      
       <button  mat-dialog-close style=" border:none; background-color:transparent; align-items: flex-end;">
         <mat-icon>close</mat-icon>
       </button>
@@ -17,7 +16,26 @@
     
           <div *ngIf="isSignedIn" fxLayout="column" fxLayoutAlign="start center" style="align-items: center; padding: 5px 5px 5px 5px; width: auto; height: auto;">
     
-            <p mat-dialog-title>D-CODE</p>
+            <!-- <p mat-dialog-title>D-CODE</p> -->
+
+            <button mat-button  routerLink="/homepage-component"
+
+            routerLinkActive="active" >
+     
+             <div  
+             style="background-image: url('/assets/images/logo.png') !important;
+              /* background-color: #808c99e8;  */
+            min-width: 155px;
+            background-size: 40px;
+            background-position: left;
+            background-repeat: no-repeat;
+            "  >
+          <div style="font-size: 20px; font-weight: bold; color: #2381fc;"> D-CODE</div>
+       
+             
+            </div>
+      
+         </button>
               
             <div mat-dialog-content>Connect to save your progress</div>
             <br/>
@@ -35,15 +53,15 @@
   
             <div fxLayout="column" fxLayoutAlign="space-around center"  >
   
-                <button mat-raised-button style="background-color: teal; color: whitesmoke;  margin-right: 10px;"
+                <button mat-raised-button style="background-color: teal; color: whitesmoke;"
                 type="button" class="btn googleBtn" (click)="authservice.GoogleAuth()" 
                 routerLink="/user-component" routerLinkActive="active">
-                  <mat-icon class="fab fa-google-plus-g">fab fa-google-plus-g</mat-icon>
-                  Continue with Google
+                  <mat-icon class="fab fa-google-plus-g">Google_plus</mat-icon>
+                  Connect with Google
                 </button> 
       
                   <br/>
-                  <button  mat-raised-button style=" background-color: teal;"
+                  <button  mat-raised-button style=" background-color: teal; color: whitesmoke;"
                   routerLink="/user-component" routerLinkActive="active"
                   (click)="loginWithFacebook()" > 
                     <mat-icon>facebook</mat-icon>
@@ -97,11 +115,20 @@
   
            
   
-  
+       
               
     
           </div>
-          <p *ngIf="!isSignedIn" (isLogout) = "handleLogout()" > You are Logged In!</p>
+          <div *ngIf="!isSignedIn">
+            <p  (isLogout) = "handleLogout()" > You are Logged In!</p>
+            <br/>
+            <img src="{{ socialUser.photoUrl }}">
+            <div>
+              <h4>{{ socialUser.name }}</h4>
+              <p>{{ socialUser.email }}</p>
+            </div>
+          </div>
+         
   
           <!-- <div *ngIf="isSignedIn">
             <div class="form-group">

@@ -1,79 +1,57 @@
+
+  /* buttons-header css */
+
 button{
     background-color: #1c3653; /* #213852; */
     color: white;
+    /* min-width: 7%; */
+    /* min-width: 90px; */
+    margin-right: 5.5pt;
+    margin-bottom: 5.5pt;
+   
 }
 
-.btn-image{
-  background-image: url('/assets/images/logo.png') !important;
+button:hover {
+  /* border: 1px #00000000 solid !important; */
+  background-color: #b884da !important;   
+} 
+
+mat-button{
+  border-radius: 0pt 0pt;
+}
 
 
-  /* background-repeat: no-repeat; */
-   /* background-position: left;  */
-   background-color: #367dce00;
-    min-width: 200px;
-     min-height: 200px;
+.button-header{
+  background-color: #4c4e5200; /* #213852; */
+  /* color: white; */
+  /* margin-right: 6pt; */
+}
 
-
-  background-size: 1000px;
-  background-position: center;
-  background-repeat: no-repeat;
-  /* min-height: 64px; max-width: 205px; */
-  flex: 1 1 auto;
-  border: 0px;
- } 
-
- @media screen {
-  .btn-image{ 
-  background-size: 130px;
-  background-position: center;
-  background-repeat: no-repeat;
-  min-height: 30px; min-width: 105px;
-  flex: 1 1 auto;
-  border: 0px; 
-  }
+@media screen {
+  .button-header{
+    background-color: #0a4563; /* #213852; */
+    min-width: 400px;
+    min-height: 150px;
+    padding-top: 6pt;
+    padding-inline-start: 9pt;
+  
+}
  }
 
 
-
-   .workspace-card{
-      min-width: 740px;
-       min-height: 405px;
-       background-color: #030e1a;
-   }
-
-   .answer-card{
-    margin-left: 10px;
-    margin-right: 10px;
-    width: 720px;
-    height: 369px;
-    color: white;
-    background-color: #00000000;
-}
-
-.workspace-card1{
-    min-width: 740px;
-    min-height: 215px;
-    background-color: #030e1a;
-}
-
-.answer-card1{
- margin-left: 10px;
- margin-right: 10px;
- min-width: 720px;
- min-height: 179px;
- color: white;
- background-color: #00000000;
-}
-
-
-
+ 
 .example-spacer {
-    flex: 1 1 auto;
-  }
+  flex: 1 1 auto;
+}
 
-  .example-icon{
-      margin-left: 10px;
-  }
+.example-icon{
+    margin-left: 10px;
+}
+
+
+
+  /* mat-button-toggle(-group) css*/
+
 
   mat-button-toggle-group {
     /* margin-left: 12px; */
@@ -111,20 +89,9 @@ button{
     padding-left: 32px !important;
 }
 
- /* .active {
-    background-color: #030e1a ; 
-    color: white;
-  } */
 
 
-  button:hover {
-    /* border: 1px #00000000 solid !important; */
-    background-color: #b884da !important;   
-  } 
-
-  mat-button{
-    border-radius: 0pt 0pt;
-  }
+/* mat-options and mat-select css */
 
   mat-option{
     color: #dddddd !important;
@@ -155,7 +122,7 @@ mat-option:hover{
     margin-top: 30px !important; 
 }
 
-
+  /* mat-tooltip css */
 ::ng-deep .mat-tooltip{
     content: '';
    color:#1c3653 !important; 
@@ -164,11 +131,81 @@ mat-option:hover{
    padding: 10px 10px 10px 10px;
    font-size: 11pt;
 
- 
+}
+
+
+
+
+ /* workspace-card top row */
+   /* .workspace-card{
+      min-width: 740px;
+       min-height: 405px;
+       background-color: #030e1a;
+   }
+
+   .answer-card{
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 720px;
+    height: 369px;
+    color: white;
+    background-color: #00000000;
+} */
+
+ /* workspace-card bottom row */
+/* .workspace-card1{
+    min-width: 740px;
+    min-height: 215px;
+    background-color: #030e1a;
+}
+
+.answer-card1{
+ margin-left: 10px;
+ margin-right: 10px;
+ min-width: 720px;
+ min-height: 179px;
+ color: white;
+ background-color: #00000000;
+} */
+
+
+/* grids */
+mat-grid-tile {
+  background: lightblue;
+  margin-right: 9pt;
 
 }
-/* tooltip-pd */
 
+.box-container {
+  position: absolute;
+  width: 600px;
+  height: 450px;
+  outline: 1px solid black;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+mat-form-field {
+  margin-right: 12px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* tooltip-pd */
 
 
   a.tip {
@@ -210,6 +247,9 @@ a:hover.tip span {
   display: block;
 }
 
+
+
+  /* fullscreen-card css */
 
 #myDiv1.fullscreen{
   z-index: 9999; 

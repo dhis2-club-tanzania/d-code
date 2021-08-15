@@ -1,0 +1,99 @@
+ <!-- Your Solutions Space-->
+ <div fxLayout="column" fxLayoutAlign="start stretch" class="workspace-card"   id="theDiv" > <!--*ngIf="fullscreen"-->
+    <div >
+        <mat-button-toggle-group appearance="legacy" fxLayout="row" fxLayoutAlign="start start"
+         #group="matButtonToggleGroup" [value]="selectedVal2" (change)="onVal2Change(group.value)">
+            <mat-button-toggle  value="Your Solutions">Your Solutions</mat-button-toggle>
+            <span class="example-spacer"> </span>
+            <button mat-button style="border-radius: 0pt 0pt;"
+            (click)="fullscreenFunction()" *ngIf="fullscreen"  id="theButton"> <!--(click)="fullscreenFunction()" *ngIf="fullscreen"-->
+                <mat-icon>fullscreen</mat-icon> </button>
+
+                <button mat-button style="border-radius: 0pt 0pt;" 
+                *ngIf="fullscreen_exit" (click)="fullscreen_exitFunction()" >
+                 <mat-icon>fullscreen_exit</mat-icon> 
+                </button>
+
+            <button mat-button style="border-radius: 0pt 0pt;"  > <mat-icon>replay</mat-icon> </button>
+            <button mat-button style="border-radius: 0pt 0pt; background-color: #0e639c;"  >Run Code</button>
+        </mat-button-toggle-group>
+    </div>
+    <div style="background-color: #030e1a; color: #f8f8f8;" class="answer-card"   >
+            
+            <mat-form-field  appearance="fill" class="example-full-width"> 
+            
+                <!-- <mat-label>Autosize textarea</mat-label>  style="height: 340px;"-->
+                <textarea matInput >
+                         
+                           function maxProfitWithKTransactions(prices, k) {
+                           
+                                // Write your code here.
+                             
+                              
+                              // Do not edit the line below.
+                           
+                              exports.maxProfitWithKTransactions = maxProfitWithKTransactions; 
+                         
+                    </textarea>
+              </mat-form-field>
+    </div>
+</div>
+
+<script>
+
+    // function openNav() {
+    //   document.getElementById("myNav").style.width = "100%";
+    // }
+    
+    // function closeNav() {
+    //   document.getElementById("myNav").style.width = "0%";
+    // }
+    
+    // $(document).ready(function(){
+    // //   $("#toggle").click(function(){
+    // //     $("#fullscreen").toggle();
+    // //   });
+      
+    //     $("#full").click(function(){
+    //     $("#content").show();
+    //   });
+      
+    //     $("#hide").click(function(){
+    //     $("#fullscreen").hide();
+    //   });
+    // });
+    
+            //     $('#myDiv').click(function(e){
+            //     $('#myDiv1').toggleClass(fullscreen); 
+            // });
+</script>
+
+
+        <!--on fullscreens appear your solutions card-->
+
+          <!-- <div fxLayout="row" fxLayoutAlign="start stretch"  *ngIf="fullscreen_exit">
+        <div fxLayout="column" fxLayoutAlign="start stretch" class="workspace-card3">
+            <mat-button-toggle-group appearance="legacy" fxLayout="row" fxLayoutAlign="start start"
+            #group="matButtonToggleGroup" [value]="selectedVal2" (change)="onVal2Change(group.value)">
+                <mat-button-toggle  value="Your Solutions">Your Solutions</mat-button-toggle>
+                <span class="example-spacer"> </span>
+                <button mat-button style="border-radius: 0pt 0pt;" 
+                (click)="fullscreenFunction()" *ngIf="fullscreen" >
+                    <mat-icon>fullscreen</mat-icon> </button>
+
+                    <button mat-button style="border-radius: 0pt 0pt;" 
+                    *ngIf="fullscreen_exit" (click)="fullscreen_exitFunction()" >
+                    <mat-icon>fullscreen_exit</mat-icon> 
+                    </button>
+
+                <button mat-button style="border-radius: 0pt 0pt;"  > <mat-icon>replay</mat-icon> </button>
+                <button mat-button style="border-radius: 0pt 0pt; background-color: #0e639c;"  >Run Code</button>
+            </mat-button-toggle-group>
+            <div style="background-color: #030e1a; color: #f8f8f8;" class="answer-card3" >
+            
+                <p> Content content content</p> 
+        </div>
+        </div>
+
+    </div> -->
+

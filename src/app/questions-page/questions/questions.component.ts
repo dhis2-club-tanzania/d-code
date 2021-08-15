@@ -1,8 +1,7 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
-// import { Question } from 'src/app/models/Question';
+import { Question } from 'src/app/models/Question';
 import { QuestionsService } from 'src/app/services/questions.service';
-// import { AngularFirestore } from '@angular/fire/firestore';
-// import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-questions',
@@ -39,18 +38,4 @@ export class QuestionsComponent implements OnInit {
 
 }
 
-export interface Question{
-  id?:string;
-  Difficulty:string;
-  Category?:string;
-  Name?:string;
-  Description?:string;
-  functionName?:string;
-  OUtput? : string
-  Tests:[{
-    Inputs: any, Output: string
-  }];
-  // Tests?:Array<Map<Inputs, Output>>;
-  // Tests?:Array<Map<Inputs, Output>>;
-
-}
+// export interface Question{ }

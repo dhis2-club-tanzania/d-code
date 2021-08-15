@@ -35,11 +35,17 @@ export class LoginComponent implements OnInit {
   // isLoggedin: boolean = false;
   isSignedIn= false
   loginForm: FormGroup ;
-  socialUser: SocialUser = new SocialUser;
+  socialUser!: SocialUser;
+  // = new SocialUser
 
 ngOnInit(){
   //button-toggle
       this.selectedVal1 ='login';
+
+      this.socialAuthService.authState.subscribe((user) => {
+        this.socialUser = user;
+        this.isSignedIn = (user != null);
+      });
 
       if(localStorage.getItem('user') != null)
       this.isSignedIn = true
@@ -48,6 +54,27 @@ ngOnInit(){
 
     } 
     
+     fbLoginOptions = {
+      scope: 'pages_messaging,pages_messaging_subscriptions,email,pages_show_list,manage_pages',
+      return_scopes: true,
+      enable_profile_selector: true
+    };
+     // https://developers.facebook.com/docs/reference/javascript/FB.login/v2.11
+     config = [
+    
+      {
+        id: FacebookLoginProvider.PROVIDER_ID,
+        provider: new FacebookLoginProvider("Facebook-App-Id", this.fbLoginOptions)
+      }
+    ];
+
+    // const fbLoginOptions = {
+    //   scope: 'pages_messaging,pages_messaging_subscriptions,email,pages_show_list,manage_pages'
+    // }; // https://developers.facebook.com/docs/reference/javascript/FB.login/v2.11
+    
+    // this.authService.signIn(FacebookLoginProvider.PROVIDER_ID, fbLoginOptions);
+    
+
 // async onSignup(email: string,password:string){
 //   await this.authservice.signup(email, password)
 //   if(this.authservice.isLoggedIn)
@@ -152,6 +179,10 @@ matcher = new MyErrorStateMatcher();
 
   loginWithFacebook(): void {
     this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID);
+  }
+
+  refreshToken(): void {
+    this.socialAuthService.refreshAuthToken(FacebookLoginProvider.PROVIDER_ID);
   }
 
 

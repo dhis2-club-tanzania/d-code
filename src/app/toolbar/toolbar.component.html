@@ -5,15 +5,34 @@
         <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="sidenav.toggle()">
           <mat-icon>menu</mat-icon>
         </button>
-      <!-- </div> -->
+      <!-- </div> style="background-image: url('/assets/images/logo.png') !important;
+      /* background-color: #808c99e8; */
+       /* max-width: 130px;
+        min-height: 40px; */
+     background-size: 40px;
+     background-position: left;
+     background-repeat: no-repeat;
+     flex: 1 1 auto;
+     border: 0px;"  -->
 
-      <button type="button" class="btn-image" routerLink="/homepage-component"
-      style="height: 5px; width: 1px;"
-       routerLinkActive="active" (click)="pageFunction()"></button>
-      <span class="example-spacer"></span>
-    
-      <span> D-CODE</span>
-    
+      <button mat-button  routerLink="/homepage-component"
+
+       routerLinkActive="active" (click)="pageFunction()">
+
+        <div  
+        style="background-image: url('/assets/images/logo.png') !important;
+         /* background-color: #808c99e8;  */
+       min-width: 155px;
+       background-size: 40px;
+       background-position: left;
+       background-repeat: no-repeat;
+       "  >
+     <div style="font-size: 20px; font-weight: bold; color: #2381fc;"> D-CODE</div>
+  
+        
+       </div>
+ 
+    </button>
       <span class="example-spacer"></span>
     
       <div fxShow="true" fxHide.lt-md="true" fxLayout="row" fxLayoutAlign="space-between stretch">

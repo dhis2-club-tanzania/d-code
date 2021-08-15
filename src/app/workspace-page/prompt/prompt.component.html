@@ -1,0 +1,28 @@
+ <!-- Prompt Space-->
+ <div  fxLayout="column" fxLayoutAlign="start stretch" class="workspace-card" >
+    <!-- style=" min-width: 45%; min-height: 50%;" -->
+            
+        <div>
+        <mat-button-toggle-group appearance="legacy" fxLayout="row" fxLayoutAlign="start start" #group="matButtonToggleGroup" [value]="selectedVal1" (change)="onVal1Change(group.value)" >
+            <mat-button-toggle value="Prompt" (click)="promptFunction()">Prompt</mat-button-toggle>
+            <!-- <mat-button-toggle value="Scratchpad" (click)="openDialog()" (click)="scratchpadFunction()">Scratchpad</mat-button-toggle>
+            <mat-button-toggle value="Our Solution(s)" (click)="solutionFunction()">Our Solution(s)</mat-button-toggle>
+            <mat-button-toggle value="Video Explanation" (click)="videoFunction()">Video Explanation</mat-button-toggle>
+            
+            <span class="example-spacer"> </span>
+            <button mat-button style="background-color: #0e639c; border-radius: 0pt 0pt;" *ngIf="solution" >Run Code</button> -->
+        </mat-button-toggle-group>
+        </div>
+        <div style="background-color: #030e1a;" class="answer-card"> 
+            <mat-form-field  appearance="fill" class="example-full-width"> 
+            
+                <!-- <mat-label>Autosize textarea</mat-label>  style="height: 340px;"-->
+                <textarea matInput >
+                           
+                                // Display Question Here.
+                           
+                         
+                    </textarea>
+              </mat-form-field>
+        </div>
+ </div>        

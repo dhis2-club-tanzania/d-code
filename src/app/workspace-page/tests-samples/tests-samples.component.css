@@ -1,0 +1,103 @@
+ 
+.example-spacer {
+    flex: 1 1 auto;
+  }
+  
+  .example-icon{
+      margin-left: 10px;
+  }
+  
+  
+  
+    /* mat-button-toggle(-group) css*/
+  
+  
+    mat-button-toggle-group {
+      /* margin-left: 12px; */
+      width: 100%;
+      border-radius: 0pt 0pt;
+      color:white;
+      background-color: #1c3653;
+      /* margin: 0px 10px 10px 12px; width: inherit; */
+    }
+  
+    mat-button-toggle {
+      margin: 0px;
+      border: 0px;
+      color:white;
+  
+    }
+  
+    mat-button-toggle:hover {
+      /* border: 1px #00000000 solid !important; */
+      background-color: #b884da !important;
+      /* border-radius: 5px !important; */
+  }
+  
+  .mat-button-toggle-checked {
+        /* box-shadow: 0 0 30px #000 !important;
+      border: 1px #000 solid !important;
+      border-radius: 5px !important;
+      background-color: rgb(128, 22, 22) !important; */
+      background-color: #030e1a ; /* #061d33;*/
+      color: white;
+  }
+  
+  .mat-button-toggle-input {
+      background-color: none !important;
+      padding-left: 32px !important;
+  }
+ 
+   /* workspace-card bottom row */
+
+      
+.wcard1{
+    /* max-width: 740px; */
+    min-width: 460px;
+    min-height: 215px;
+    background-color: #030e1a;
+    margin-right: 10pt;
+}
+
+.acard1{
+ margin-left: 10px;
+ margin-right: 10px;
+ min-width: 45%;
+ min-height: 179px;
+ color: white;
+ background-color: #00000000;
+}
+
+
+.workspace-card1{
+    /* max-width: 700px; */
+    min-height: 215px;
+    background-color: #030e1a;
+    margin-right: 8px;
+    color: white;
+}
+
+.answer-card1{
+ margin-left: 10px;
+ margin-right: 10px;
+ /* min-width: 700px;
+ min-height: 179px; */
+ color: white;
+ background-color: #00000000;
+}
+
+mat-form-field {
+  margin-right: 12px;
+}
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+   
+}
+
+.example-full-width {
+  width: 100%;
+  min-height: 179px;
+}

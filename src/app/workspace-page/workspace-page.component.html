@@ -1,282 +1,401 @@
-<div style=" height: 720px; background-color: #03213d;"> <!--022949-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<div style=" background-color: #03213d; min-width: 100%;" > <!--   022949 style=" margin-left: 10px; margin-right: 10px; height: 700px; background-color: #03213d;" -->
 
 
 
-<div style=" margin-left: 10px; margin-right: 10px; height: 700px; background-color: #03213d;">
-    <!--Buttons-Header-->
-        <div fxLayoutGap fxLayout="row" fxLayoutAlign="space-between stretch">
-                <button mat-raised-button type="button" class="btn-image" style="background-color:#b884da; width: 150px;" ></button>
+    <div >
+    
+        <!--Buttons-Header max & min  fxLayoutGap-->
+
+        <div style=" margin-left: 10px; margin-right: 10px; ">
+                        <!--on large screen-->
+                    <div  fxLayout="row" fxLayoutAlign="start stretch" style=" max-width: 200px;" >
                 
-                <button mat-raised-button class="example-icon " matTooltip="Questions List"  aria-label="Example icon-button with menu icon" >
-                    <mat-icon>list</mat-icon>
-                </button>
-
-                <!-- <a href="http://google.com/" class="tip">Link!<span>Hi its me!</span></a> -->
-
-                <!-- <a mat-raised-button href="#"  class="tip">Hover over me </a> matTooltip="WorkSpace Layout"  -->
-
-                <!-- <a mat-raised-button href="#" data-toggle="tooltip" data-placement="bottom" title="Hooray!">Hover over me</a> -->
-                <button mat-raised-button class="example-icon" matTooltip="Next Question"  aria-label="Example icon-button with menu icon" > 
-                    <!--[matTooltipClass]="'tooltip-pd'" -->
-                    <mat-icon>arrow_forward</mat-icon> <!--trending_flat  style="margin-top: 30px !important; " class="mat-toolpit-panel-above"-->
-                </button>
-                <span class="example-spacer"></span>
-
-
-                <button mat-raised-button style="width: 130px;" matTooltip="Workspace" > 
-                    <mat-select [(value)]="selectedWLayout" disableOptionCentering  panelClass="myPanelClass" > 
+                            <button  mat-raised-button routerLink="/homepage-component" routerLinkActive="active" style="background-color:#37045a; min-width: 115px;"  >
                         
-                    <mat-option [value]="wlayout.value" *ngFor="let wlayout of wlayouts" >
-                        {{wlayout.viewValue}}
-                    </mat-option>
-                    </mat-select> 
-                </button>
-                <span class="example-spacer"></span>
-                <button mat-raised-button matTooltip="Programming Languages" style="width: 130px;" > 
-                    <mat-select name="Programming Languages" disableOptionCentering  panelClass="myPanelClass" 
-                    [(value)]="selectedLanguage" > 
+                            <div  style="background-image: url('/assets/images/logo.png') !important;
+                                /* background-color: #808c99e8;  */
+                                min-width: 115px;
+                                background-size: 30px;
+                                background-position: left;
+                                background-repeat: no-repeat;
+                                /* flex: 1 1 auto;
+                                border: 0px; */
+                                /* margin-right: 10px; */
+                                "  >
+                                <!-- <div class="btn-image"> </div> -->
+                            <div style="font-size: 14px; font-weight: bold; color: #2381fc;"> D-CODE</div>          
+                                
+                            </div>
                         
-                    <mat-option [value]="language.value" 
-                    *ngFor="let language of languages" >
-                        {{language.viewValue}}
-                    </mat-option>
-                    </mat-select>
-                </button>
-                <span class="example-spacer"></span>
-                <button mat-raised-button matTooltip="Editor Font Size" style="width: 90px;" >  
-                
-                    <mat-select [(value)]="selectedFont" disableOptionCentering  panelClass="myPanelClass"> 
-                        
-                    <mat-option [value]="font.value"
-                    *ngFor="let font of fonts"  >
-                        {{font.viewValue}}
-                    </mat-option>
-                    </mat-select>
-                </button>
-                <span class="example-spacer"></span>
-                <button mat-raised-button matTooltip="Editor Key Maps"  style="width: 110px;" >  
-                    <mat-select [(value)]="selectedEditor" disableOptionCentering  panelClass="myPanelClass" > 
-                        
-                    <mat-option [value]="editor.value"
-                    *ngFor="let editor of editors" >
-                        {{editor.viewValue}}
-                    </mat-option>
-                    </mat-select>
-                </button>
-                <span class="example-spacer"></span>
-                <button mat-raised-button matTooltip="light theme"  >
-                    <mat-icon>sunny</mat-icon> 
-                </button>
-                <span class="example-spacer"></span>
-                <button mat-raised-button matTooltip="Syntax Highlighting Theme" style="width: 110px;" >  
-                
-                    <mat-select  [(value)]="selectedSyntaxTheme" disableOptionCentering  panelClass="myPanelClass" > 
-                        
-                    <mat-option [value]="syntaxtheme.value"
-                    *ngFor="let syntaxtheme of syntaxthemes">
-                        {{syntaxtheme.viewValue}}
-                    </mat-option>
-                    </mat-select>
-                </button>
-                <span class="example-spacer"></span>
-                <button mat-raised-button matTooltip="Whiteboard Mode"  >
-                    <mat-icon>tv</mat-icon> 
-                </button>
-                <span class="example-spacer"></span>
-                <button mat-raised-button matTooltip="Data Structure Visualizer"  >
-                    <mat-icon>share</mat-icon> 
-                </button>
-                <span class="example-spacer"></span>
-                <span class="example-spacer"></span>
-                <span class="example-spacer"></span>
-
-                <button mat-raised-button matTooltip="Timer | Stopwatch"  >
-                    <mat-icon>alarm</mat-icon> 00:00:00 | 00:00:00
-                </button>
-                <span class="example-spacer"></span>
-                <button mat-raised-button matTooltip="Bug Report"  >
-                    <mat-icon>bug_report</mat-icon> 
-                </button>
-        </div>
-        <br/>
-    <!--Cards-->
-    <div *ngIf="fullscreen" > 
-        <div fxLayout="row" fxLayoutAlign="start center" >
-            <div  fxLayout="column" fxLayoutAlign="start stretch" class="workspace-card" >
-                <!-- style=" min-width: 45%; min-height: 50%;" -->
-                        
-                    <div>
-                    <mat-button-toggle-group appearance="legacy" fxLayout="row" fxLayoutAlign="start start" #group="matButtonToggleGroup" [value]="selectedVal1" (change)="onVal1Change(group.value)" >
-                        <mat-button-toggle value="Prompt" (click)="promptFunction()">Prompt</mat-button-toggle>
-                        <mat-button-toggle value="Scratchpad" (click)="openDialog()" (click)="scratchpadFunction()">Scratchpad</mat-button-toggle>
-                        <mat-button-toggle value="Our Solution(s)" (click)="solutionFunction()">Our Solution(s)</mat-button-toggle>
-                        <mat-button-toggle value="Video Explanation" (click)="videoFunction()">Video Explanation</mat-button-toggle>
-                        
-                        <span class="example-spacer"> </span>
-                        <button mat-button style="background-color: #0e639c; border-radius: 0pt 0pt;" *ngIf="solution" >Run Code</button>
-                    </mat-button-toggle-group>
-                    </div>
-                    <div style="background-color: #030e1a;" class="answer-card"> 
-                        <p>//display here</p>
-                        <!-- <mat-checkbox >Check me!
-                            <mat-icon>favorite_border</mat-icon>
-                        </mat-checkbox>
-                        <a href="https://www.jdoodle.com/embed/v0/3tAO">R</a> -->
-                    </div>
-             </div>        
-            <span class="example-spacer"></span>
-
-            <!-- <div id="myNav" class="overlay" > 
-            onclick="closeNav()" class="closebtn"    
-            -->
-             
-                <div fxLayout="column" fxLayoutAlign="start stretch" class="workspace-card" *ngIf="fullscreen"  >
-                    <div >
-                        <mat-button-toggle-group appearance="legacy" fxLayout="row" fxLayoutAlign="start start"
-                         #group="matButtonToggleGroup" [value]="selectedVal2" (change)="onVal2Change(group.value)">
-                            <mat-button-toggle  value="Your Solutions">Your Solutions</mat-button-toggle>
-                            <span class="example-spacer"> </span>
-                            <button mat-button style="border-radius: 0pt 0pt;"
-                             (click)="fullscreenFunction()" *ngIf="fullscreen" >
-                                <mat-icon>fullscreen</mat-icon> </button>
-
-                                <button mat-button style="border-radius: 0pt 0pt;" 
-                                *ngIf="fullscreen_exit" (click)="fullscreen_exitFunction()" >
-                                 <mat-icon>fullscreen_exit</mat-icon> 
-                                </button>
-
-                            <button mat-button style="border-radius: 0pt 0pt;"  > <mat-icon>replay</mat-icon> </button>
-                            <button mat-button style="border-radius: 0pt 0pt; background-color: #0e639c;"  >Run Code</button>
-                        </mat-button-toggle-group>
-                    </div>
-                    <div style="background-color: #030e1a; color: #f8f8f8;" class="answer-card"   >
-                            <p > Content content content</p>
-                    </div>
-                </div>
-            <!-- </div> -->
-
-        </div>
-
-<script>
-
-// function openNav() {
-//   document.getElementById("myNav").style.width = "100%";
-// }
-
-// function closeNav() {
-//   document.getElementById("myNav").style.width = "0%";
-// }
-
-// $(document).ready(function(){
-// //   $("#toggle").click(function(){
-// //     $("#fullscreen").toggle();
-// //   });
-  
-//     $("#full").click(function(){
-//     $("#content").show();
-//   });
-  
-//     $("#hide").click(function(){
-//     $("#fullscreen").hide();
-//   });
-// });
-
-        //     $('#myDiv').click(function(e){
-        //     $('#myDiv1').toggleClass(fullscreen); 
-        // });
-</script>
-
-
-
-
-        <br/>
-
-        <div  fxLayout="row" fxLayoutAlign="start center">
-            <div fxLayout="column" fxLayoutAlign="start stretch" class="workspace-card1" >
-                <mat-button-toggle-group appearance="legacy" fxLayout="row" fxLayoutAlign="start start" 
-                #group="matButtonToggleGroup" [value]="selectedVal3" (change)="onVal3Change(group.value)" >
-                    <mat-button-toggle  value="Tests" (click)="testFunction()" >Tests</mat-button-toggle>
-                    <mat-button-toggle  value="Quick Test" (click)="quicktestFunction()" >Quick Test</mat-button-toggle>
-                    <mat-button-toggle  value="Sandbox" (click)="infoFunction()" >Sandbox</mat-button-toggle>
-                    <span class="example-spacer"> </span>
-                    <button mat-button style="border-radius: 0pt 0pt;" *ngIf="test" > <mat-icon>remove_red_eye</mat-icon> </button>
-                    <button mat-button style="border-radius: 0pt 0pt;" *ngIf="quicktest"  > <mat-icon>replay</mat-icon> </button>
-                    <button mat-button style="border-radius: 0pt 0pt;" *ngIf="info" > <mat-icon>info</mat-icon> </button>
-                </mat-button-toggle-group>
-                <div style="background-color: #030e1a; color: #f8f8f8;" class="answer-card1" >
-
-                    <!-- <div *ngIf="div1">
-                        ABC
-                    </div>
-                    <div *ngIf="div2" >
-                        DEF
-                    </div>
-                    <div *ngIf="div3">
-                        GHI
-                    </div>
-                    <button (click)="div1Function()"></button>
-                    <button (click)="div2Function()"></button>
-                    <button (click)="div3Function()"></button> -->
-
-
-                    <p> Content content content</p>
-                </div>
-            </div>
-            <span class="example-spacer"></span>
-            <div fxLayout="column" fxLayoutAlign="start stretch" class="workspace-card1" >
-                <mat-button-toggle-group appearance="legacy" fxLayout="row" fxLayoutAlign="start start" #group="matButtonToggleGroup" [value]="selectedVal4" (change)="onVal4Change(group.value)" >
-                    <mat-button-toggle  value="Custom Output">Custom Output</mat-button-toggle>
-                    <mat-button-toggle value="Raw Output">Raw Output</mat-button-toggle>
+                            </button>
+                            
+                            <button mat-raised-button class="example-icon " matTooltip="Questions List" 
+                            routerLink="/questions-page-component" routerLinkActive="active" >
+                                <mat-icon>list</mat-icon>
+                            </button>
+            
+                            <!-- <a href="http://google.com/" class="tip">Link!<span>Hi its me!</span></a> -->
+            
+                            <!-- <a mat-raised-button href="#"  class="tip">Hover over me </a> matTooltip="WorkSpace Layout"  -->
+            
+                            <!-- <a mat-raised-button href="#" data-toggle="tooltip" data-placement="bottom" title="Hooray!">Hover over me</a> -->
+            
+            <!--(click)="button_headerFunction()"-->
+                            <button mat-raised-button fxShow="true" fxHide.gt-sm="true"  #small style="margin-right: 20px;" (click)="button_headerFunction()">
+                                <mat-icon>more_horiz</mat-icon>
+                            </button>
+            
+                            <div fxShow="true" fxHide.lt-md="true"   ><!-- fxShow="true" fxHide.lt-md="true"  -->
+            
+                                                <button mat-raised-button class="example-icon" matTooltip="Next Question" > 
+                                                    <!--[matTooltipClass]="'tooltip-pd'" -->
+                                                    <mat-icon>arrow_forward</mat-icon> <!--trending_flat  style="margin-top: 30px !important; " class="mat-toolpit-panel-above"-->
+                                                </button>
+            
+                                                <button mat-raised-button  matTooltip="Workspace" style="min-width: 130px;" > 
+                                                    <!--style="width: 130px;"-->
+                                                    <mat-select [(value)]="selectedWLayout" disableOptionCentering  panelClass="myPanelClass" > 
+                                                        
+                                                    <mat-option [value]="wlayout.value" *ngFor="let wlayout of wlayouts" >
+                                                        {{wlayout.viewValue}}
+                                                    </mat-option>
+                                                    </mat-select> 
+                                                </button>
+                                            
+                                                <button mat-raised-button matTooltip="Programming Languages" style="min-width: 130px;" > 
+                                                    <!--style="width: 130px;"-->
+                                                    <mat-select name="Programming Languages" disableOptionCentering  panelClass="myPanelClass" 
+                                                    [(value)]="selectedLanguage" > 
+                                                        
+                                                    <mat-option [value]="language.value" 
+                                                    *ngFor="let language of languages" >
+                                                        {{language.viewValue}}
+                                                    </mat-option>
+                                                    </mat-select>
+                                                </button>
+                                        
+                                                <button mat-raised-button matTooltip="Editor Font Size" style="min-width: 90px;" >  
+            
+                                                    <mat-select #fontSize [(value)]="selectedFont" disableOptionCentering  
+                                                    panelClass="myPanelClass" (selectionChange)="triggerResize()"> 
+                                                        
+                                                    <mat-option [value]="font.value"
+                                                    *ngFor="let font of fonts"  >
+                                                        {{font.viewValue}}
+                                                    </mat-option>
+                                                    </mat-select>
+                                                </button>
+                                        
+                                                <button mat-raised-button matTooltip="Editor Key Maps" style="min-width: 110px;" >
+                                                
+                                                    <mat-select [(value)]="selectedEditor" disableOptionCentering  panelClass="myPanelClass" > 
+                                                        
+                                                    <mat-option [value]="editor.value"
+                                                    *ngFor="let editor of editors" >
+                                                        {{editor.viewValue}}
+                                                    </mat-option>
+                                                    </mat-select>
+                                                </button>
+                                            
+                                                <button mat-raised-button matTooltip="light theme"  >
+                                                    <mat-icon>sunny</mat-icon> 
+                                                </button>
+                                            
+                                                <button mat-raised-button matTooltip="Syntax Highlighting Theme" style="min-width: 110px;"  >  
+                                            
+                                                    <mat-select  [(value)]="selectedSyntaxTheme" disableOptionCentering  panelClass="myPanelClass" > 
+                                                        
+                                                    <mat-option [value]="syntaxtheme.value"
+                                                    *ngFor="let syntaxtheme of syntaxthemes">
+                                                        {{syntaxtheme.viewValue}}
+                                                    </mat-option>
+                                                    </mat-select>
+                                                </button>
+                                            
+                                                <button mat-raised-button matTooltip="Whiteboard Mode"  >
+                                                    <mat-icon>tv</mat-icon> 
+                                                </button>
+                                            
+                                                <button mat-raised-button matTooltip="Data Structure Visualizer"  >
+                                                    <mat-icon>share</mat-icon> 
+                                                </button>
+            
+            
+                                </div>  
+            
+                            <span class="example-spacer"></span>
+            
+                            <button fxShow="true" fxHide.lt-md="true"  mat-raised-button matTooltip="Timer | Stopwatch" >
+                                <mat-icon>alarm</mat-icon> 00:00:00 | 00:00:00   
+                            </button>
+            
+                            <button mat-raised-button matTooltip="Timer | Stopwatch" fxShow="true" fxHide.gt-sm="true">
+                                <mat-icon>alarm</mat-icon>
+                            </button>
+            
+                            <button mat-raised-button matTooltip="Bug Report"  >
+                                <mat-icon>bug_report</mat-icon> 
+                            </button>
                     
-                    <span class="example-spacer"> </span>
-                    <button mat-button style="background-color: #18ad38; color: white; border-radius: 0pt 0pt;" >Submit Code</button>
-                </mat-button-toggle-group>
-                <div style="background-color: #030e1a" class="answer-card1">
-                    <p> Content content content</p>
+                    
+                    
+                            
+                    </div>
+            
+                    <!--on smaller screens-->
+                    <div *ngIf="button_header"  class="button-header" fxShow="true" fxHide.gt-sm="true" #button_header>
+                        
+                        <button mat-raised-button class="example-icon" matTooltip="Next Question" > 
+            
+                            <mat-icon>arrow_forward</mat-icon> 
+            
+                        </button>
+                        
+                        <button mat-raised-button  matTooltip="Workspace" style="min-width: 130px;" > 
+                            <!--style="width: 130px;"-->
+                            <mat-select [(value)]="selectedWLayout" disableOptionCentering  panelClass="myPanelClass" > 
+                                
+                            <mat-option [value]="wlayout.value" *ngFor="let wlayout of wlayouts" >
+                                {{wlayout.viewValue}}
+                            </mat-option>
+                            </mat-select> 
+                        </button>
+                    
+                        <button mat-raised-button matTooltip="Programming Languages" style="min-width: 130px;" > 
+                            <!--style="width: 130px;"-->
+                            <mat-select name="Programming Languages" disableOptionCentering  panelClass="myPanelClass" 
+                            [(value)]="selectedLanguage" > 
+                                
+                            <mat-option [value]="language.value" 
+                            *ngFor="let language of languages" >
+                                {{language.viewValue}}
+                            </mat-option>
+                            </mat-select>
+                        </button>
+                    
+                        <button mat-raised-button matTooltip="Editor Font Size" style="min-width: 90px;" >  
+            
+                            <mat-select [(value)]="selectedFont" disableOptionCentering  panelClass="myPanelClass"> 
+                                
+                            <mat-option [value]="font.value"
+                            *ngFor="let font of fonts"  >
+                                {{font.viewValue}}
+                            </mat-option>
+                            </mat-select>
+                        </button>
+                    
+                        <button mat-raised-button matTooltip="Editor Key Maps" style="min-width: 110px;" >
+                        
+                            <mat-select [(value)]="selectedEditor" disableOptionCentering  panelClass="myPanelClass" > 
+                                
+                            <mat-option [value]="editor.value"
+                            *ngFor="let editor of editors" >
+                                {{editor.viewValue}}
+                            </mat-option>
+                            </mat-select>
+                        </button>
+                        
+                        <button mat-raised-button matTooltip="light theme"  >
+                            <mat-icon>sunny</mat-icon> 
+                        </button>
+                        
+                        <button mat-raised-button matTooltip="Syntax Highlighting Theme" style="min-width: 110px;"  >  
+                    
+                            <mat-select  [(value)]="selectedSyntaxTheme" disableOptionCentering  panelClass="myPanelClass" > 
+                                
+                            <mat-option [value]="syntaxtheme.value"
+                            *ngFor="let syntaxtheme of syntaxthemes">
+                                {{syntaxtheme.viewValue}}
+                            </mat-option>
+                            </mat-select>
+                        </button>
+                        
+                        <button mat-raised-button matTooltip="Whiteboard Mode"  >
+                            <mat-icon>tv</mat-icon> 
+                        </button>
+                        
+                        <button mat-raised-button matTooltip="Data Structure Visualizer"  >
+                            <mat-icon>share</mat-icon> 
+                        </button>
+                    </div> 
+        </div>
+    
+        <br/>
+        
+
+
+        <!--Cards-->
+        <div fxLayoutGap style=" margin-left: 10px; margin-right: 10px; ">
+
+            <!-- <mat-grid-list cols="2" rowHeight="1.9:1">
+                <mat-grid-tile>
+                    <app-prompt ></app-prompt>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <app-your-solutions ></app-your-solutions>
+                </mat-grid-tile>
+            
+            </mat-grid-list>
+    <br/>
+            <mat-grid-list cols="2" rowHeight="3.5:1">
+                <mat-grid-tile>
+                    <app-tests-samples ></app-tests-samples>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <app-code-outputs ></app-code-outputs>
+    
+            </mat-grid-list> -->
+
+            <div fxLayoutGap *ngIf="fullscreen" [style.fontSize]="fontSize.value"> 
+                <div fxShow="true" fxHide.lt-md="true"   >
+                        <!--Top row-->
+                        <div fxLayout="row" fxLayoutAlign="start center" >
+                            <!-- Prompt Space -->
+
+                            <div  class="example-full-width">
+                                <app-prompt style="width: 50%;" cdkTextareaAutosize
+                                #autosize
+                                cdkAutosizeMinRows="1"
+                                cdkAutosizeMaxRows="5" ></app-prompt>
+                            </div> 
+
+                            <span class="example-spacer"></span>
+
+                            <!-- Your Solutions Space -->
+                            <div style="min-width: 50%;" class="example-full-width">
+                
+        
+                                  <app-your-solutions ></app-your-solutions>
+        
+                             
+                            </div>
+
+                        </div>
+
+                            <br/> 
+                            <!--Bottom row-->
+                        <div  fxLayout="row" fxLayoutAlign="start center" > 
+                
+                            <!-- Tests Space -->
+                             <div style="min-width: 50%;" class="example-full-width" >
+                                <app-tests-samples ></app-tests-samples>
+                            </div> 
+
+                            <span class="example-spacer"></span> 
+                
+                            <!-- Output Space -->
+                            <div style="min-width: 50%;" class="example-full-width" >
+                                <app-code-outputs ></app-code-outputs>
+                                
+                            </div> 
+                        </div>
                 </div>
-            </div> 
+                <div fxShow="true" fxHide.gt-sm="true"   >
+                                        <!--Top row-->
+                        <div fxLayout="column" fxLayoutAlign="start center" >
+                            <!-- Prompt Space-->
+                            <div class="example-full-width">
+                                <app-prompt ></app-prompt>
+                            </div> 
+
+                            <br/>
+                            <!-- Your Solutions Space -->
+                            <div class="example-full-width">
+                                <app-your-solutions ></app-your-solutions>
+                            </div>
+
+                        </div>
+
+                            <br/> 
+                            <!--Bottom row-->
+                        <div  fxLayout="column" fxLayoutAlign="start center"> 
+                            <!-- Tests Space -->
+                           
+                            <div class="example-full-width">
+                                <app-tests-samples ></app-tests-samples>
+                            </div>
+
+                           
+                            <br/>
+                
+                             <!-- Output Space -->
+                            <div class="example-full-width" >
+                                <app-code-outputs ></app-code-outputs>
+                                
+                            </div> 
+                        </div>
+                </div>
+    
+
+            
+
+                <br/>
+            </div>
+
+
+
+
+
+
+        
+        </div>
+    
+         <!--on fullscreens appear your solutions card-->
+
+          <!-- <div fxLayout="row" fxLayoutAlign="start stretch"  *ngIf="fullscreen_exit">
+        <div fxLayout="column" fxLayoutAlign="start stretch" class="workspace-card3">
+            <mat-button-toggle-group appearance="legacy" fxLayout="row" fxLayoutAlign="start start"
+            #group="matButtonToggleGroup" [value]="selectedVal2" (change)="onVal2Change(group.value)">
+                <mat-button-toggle  value="Your Solutions">Your Solutions</mat-button-toggle>
+                <span class="example-spacer"> </span>
+                <button mat-button style="border-radius: 0pt 0pt;" 
+                (click)="fullscreenFunction()" *ngIf="fullscreen" >
+                    <mat-icon>fullscreen</mat-icon> </button>
+
+                    <button mat-button style="border-radius: 0pt 0pt;" 
+                    *ngIf="fullscreen_exit" (click)="fullscreen_exitFunction()" >
+                    <mat-icon>fullscreen_exit</mat-icon> 
+                    </button>
+
+                <button mat-button style="border-radius: 0pt 0pt;"  > <mat-icon>replay</mat-icon> </button>
+                <button mat-button style="border-radius: 0pt 0pt; background-color: #0e639c;"  >Run Code</button>
+            </mat-button-toggle-group>
+            <div style="background-color: #030e1a; color: #f8f8f8;" class="answer-card3" >
+            
+                <p> Content content content</p> 
+        </div>
         </div>
 
-    </div>
-    <br/>
-</div>
+    </div> -->
 
+    </div> 
+    <script>
+    $(document).ready(function(){
+      $("small").click(function(){
+        $("button_header").toggle();
+      });
+    });
 
-
-<div fxLayout="row" fxLayoutAlign="start stretch"  *ngIf="fullscreen_exit">
-    <div fxLayout="column" fxLayoutAlign="start stretch" class="workspace-card3">
-        <mat-button-toggle-group appearance="legacy" fxLayout="row" fxLayoutAlign="start start"
-         #group="matButtonToggleGroup" [value]="selectedVal2" (change)="onVal2Change(group.value)">
-            <mat-button-toggle  value="Your Solutions">Your Solutions</mat-button-toggle>
-            <span class="example-spacer"> </span>
-            <button mat-button style="border-radius: 0pt 0pt;" 
-             (click)="fullscreenFunction()" *ngIf="fullscreen" >
-                <mat-icon>fullscreen</mat-icon> </button>
-
-                <button mat-button style="border-radius: 0pt 0pt;" 
-                *ngIf="fullscreen_exit" (click)="fullscreen_exitFunction()" >
-                 <mat-icon>fullscreen_exit</mat-icon> 
-                </button>
-
-            <button mat-button style="border-radius: 0pt 0pt;"  > <mat-icon>replay</mat-icon> </button>
-            <button mat-button style="border-radius: 0pt 0pt; background-color: #0e639c;"  >Run Code</button>
-        </mat-button-toggle-group>
-        <div style="background-color: #030e1a; color: #f8f8f8;" class="answer-card3" >
-            <!-- <div id="content" *ngIf="fullscreen_data">
-
-            </div> -->
-            <p> Content content content</p> 
-    </div>
-    </div>
+    $('#theButton').click(function() {
+    $('#theDiv').css({
+        position: 'fixed',
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: 0,
+        zIndex: 999
+    });
+});
+    </script>
 
 </div>
-
-
-
-
-</div> 
-
-
+<!-- resizable-draggable
+[width]="300" 
+[height]="150" 
+[left]="100" 
+[top]="100" -->
 
 
           <!-- <div fxFill fxLayout="column" fxLayoutAlign="space-around stretch" style="width: 50%;" >

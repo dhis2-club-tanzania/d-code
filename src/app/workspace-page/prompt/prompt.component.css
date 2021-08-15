@@ -1,0 +1,101 @@
+ 
+.example-spacer {
+    flex: 1 1 auto;
+  }
+  
+  .example-icon{
+      margin-left: 10px;
+  }
+  
+  
+  
+    /* mat-button-toggle(-group) css*/
+  
+  
+    mat-button-toggle-group {
+      /* margin-left: 12px; */
+      width: 100%;
+      border-radius: 0pt 0pt;
+      color:white;
+      background-color: #1c3653;
+      /* margin: 0px 10px 10px 12px; width: inherit; */
+    }
+  
+    mat-button-toggle {
+      margin: 0px;
+      border: 0px;
+      color:white;
+  
+    }
+  
+    mat-button-toggle:hover {
+      /* border: 1px #00000000 solid !important; */
+      background-color: #b884da !important;
+      /* border-radius: 5px !important; */
+  }
+  
+  .mat-button-toggle-checked {
+        /* box-shadow: 0 0 30px #000 !important;
+      border: 1px #000 solid !important;
+      border-radius: 5px !important;
+      background-color: rgb(128, 22, 22) !important; */
+      background-color: #030e1a ; /* #061d33;*/
+      color: white;
+  }
+  
+  .mat-button-toggle-input {
+      background-color: none !important;
+      padding-left: 32px !important;
+  }
+  
+
+  /* workspace-card top row */
+  .workspace-card{
+    
+    /* width: 45%; */
+    /* max-width: 700px; */
+     min-height: 405px;
+     background-color: #030e1a;
+     margin-right: 8px;
+ }
+
+ .answer-card{
+  margin-left: 10px;
+  margin-right: 10px;
+  /* width: 700px;
+  height: 369px; */
+  color: white;
+  background-color: #00000000;
+}
+
+.wcard{
+    min-width: 460px;
+     min-height: 405px;
+     background-color: #030e1a;
+     margin-right: 8px;
+ }
+
+ .acard{
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 440px;
+  height: 369px;
+  color: white;
+  background-color: #00000000;
+}
+
+mat-form-field {
+  margin-right: 12px;
+}
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+   
+}
+
+.example-full-width {
+  width: 100%;
+  min-height: 369px;
+}
