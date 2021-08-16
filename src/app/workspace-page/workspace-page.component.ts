@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {CdkTextareaAutosize} from '@angular/cdk/text-field';
 import { NgZone, ViewChild} from '@angular/core';
 import {take} from 'rxjs/operators';
+import { AngularFirestore } from '@angular/fire/firestore';
+
+import { Observable } from 'rxjs';
 // import {MatDialog} from '@angular/material/dialog';
 // import { LoginComponent } from '../login/login.component';
 
@@ -93,34 +96,10 @@ export class WorkspacePageComponent implements OnInit {
 
   selectedSyntaxTheme = this.syntaxthemes[0].value;
 
-//toggle-active
-  // public selectedVal1: string | undefined;
-  // public selectedVal2: string | undefined;
-  // public selectedVal3: string | undefined;
-  // public selectedVal4: string | undefined;
 
 
   home:boolean=false;
 
-//div-mat-card-buttons1
-    //   solution:boolean=false;
-
-
-    //   promptFunction(){
-    //     this.solution=false
-    // }
-
-    // scratchpadFunction(){
-    //   this.solution=false
-    // }
-
-    // solutionFunction(){
-    //   this.solution=true
-    // }
-
-    // videoFunction(){
-    //   this.solution=false
-    // }
 
 
 
@@ -144,48 +123,26 @@ export class WorkspacePageComponent implements OnInit {
   
 
 
-  //   //div-mat-card-buttons3
-  //   test:boolean=true;
-  //   quicktest:boolean=false;
-  //   info:boolean=true;
+ 
 
-  //   testFunction(){
-  //     this.test=true;
-  //     this.quicktest=false;
-  //     this.info=true
-  // }
-
-  // quicktestFunction(){
-  //     this.test=false;
-  //     this.quicktest=false;
-  //     this.info=true
-  // }
-
-  // infoFunction(){
-  //     this.test=false;
-  //     this.quicktest=true;
-  //     this.info=true
-  // }
-
-
+  questions: Observable<any[]>;
 
   constructor(
     // public dialog: MatDialog
-    private _ngZone: NgZone
-    ) { }
+    private _ngZone: NgZone,
+    firestore: AngularFirestore
+    ) {
+      this.questions = firestore.collection('questions').valueChanges();
+     }
+
+   
+
+  
   // openDialog() {
   //   this.dialog.open(LoginComponent);
   // }
 
-  // openDialog() {
-  //   this.dialog.open(LoginComponent);
-  // }
-  // openDialog() {
-  //   this.dialog.open(LoginComponent);
-  // }
-  // openDialog() {
-  //   this.dialog.open(LoginComponent);
-  // }
+
   @ViewChild('autosize')
   autosize!: CdkTextareaAutosize;
 
@@ -202,25 +159,7 @@ export class WorkspacePageComponent implements OnInit {
     // this.selectedVal4 ='Custom Output';
   } 
   
-  // public onVal1Change(val1: string) {
-  //   this.selectedVal1 = val1
 
-  // }
-
-  // public onVal2Change(val2: string) {
-  //   this.selectedVal2 = val2
-  
-  // }
-
-  // public onVal3Change(val3: string) {
-  //   this.selectedVal3 = val3
-
-  // }
-
-  // public onVal4Change(val4: string) {
-  //   this.selectedVal4 = val4
-  
-  // }
 
 
   button_header:boolean=false;
@@ -240,25 +179,4 @@ export class WorkspacePageComponent implements OnInit {
 
 
 
-  // div1:boolean=true;
-  // div2:boolean=false;
-  // div3:boolean=true;
-
-  // div1Function(){
-  //     this.div1=true;
-  //     this.div2=false;
-  //     this.div3=true
-  // }
-
-  // div2Function(){
-  //     this.div2=false;
-  //     this.div1=false;
-  //     this.div3=true
-  // }
-
-  // div3Function(){
-  //     this.div3=true;
-  //     this.div2=true;
-  //     this.div1=false
-  // }
 

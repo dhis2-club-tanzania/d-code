@@ -3,6 +3,7 @@
 
 
 export interface Question{
+  [x: string]: any;
   id?:string;
   Difficulty:string;
   Category?:string;

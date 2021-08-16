@@ -1,5 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 
+import { Question } from 'src/app/models/Question';
+import { QuestionsService } from 'src/app/services/questions.service';
+
+
 @Component({
   selector: 'app-tests-samples',
   templateUrl: './tests-samples.component.html',
@@ -42,12 +46,23 @@ infoFunction(){
     this.info=true
 }
 
-
-  constructor() { }
+questions: Question[] = [];
+  constructor(
+    private qs: QuestionsService
+      // , firestore: AngularFirestore
+      ) { 
+         // this.questions = firestore.collection<Question>('questions').valueChanges();
+      }
 
   // : void 
   ngOnInit() {
     this.selectedVal3 ='Tests';
+    
+    this.qs.getQuestions().subscribe((questions: any)  => {
+      console.log(questions); 
+      this.questions = questions;
+      
+    }) ;
   } 
   
 

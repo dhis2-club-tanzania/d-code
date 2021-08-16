@@ -14,15 +14,61 @@
         </mat-button-toggle-group>
         </div>
         <div style="background-color: #030e1a;" class="answer-card"> 
-            <mat-form-field  appearance="fill" class="example-full-width"> 
+            <!-- <mat-form-field  appearance="fill" class="example-full-width">  -->
             
                 <!-- <mat-label>Autosize textarea</mat-label>  style="height: 340px;"-->
-                <textarea matInput >
-                           
-                                // Display Question Here.
-                           
-                         
-                    </textarea>
-              </mat-form-field>
+                <!-- <textarea matInput >                 
+                                // Display Question Here.  
+                    </textarea> -->
+
+                    <div *ngIf="$any(questions)?.length > 0;else noQuestions" > 
+                        <div *ngFor = "let question of questions "  class="collection">
+                                <div   class="collection-question">
+                                    <div fxLayout="row" fxLayoutAlign="space-evenly" style="color: bisque;" >
+                                        <p >
+                                            Difficulty: {{ question.Difficulty}}
+                                          </p>   
+                                          <span class="example-spacer"> </span>
+                                          <p >
+                                            Category: {{ question.Category}} 
+                                          </p>
+                                    </div>
+                                  
+                                    
+                                    <br/>
+                                    <h2>
+                                     <strong>{{question.Name}}</strong>
+                                    </h2>
+                                    
+                                    <br/>
+                                    <p style="color: #e4ded6;">
+                                        {{question.Description}}
+                                    </p>
+                                    
+                                    <br/>
+                                    <p style="color: #854e0b;">
+                                      Using the function: {{question.functionName}}
+                                    </p>
+                                    <br/>
+                                     
+                                </div>
+                            </div>
+                        </div>
+              <!-- </mat-form-field> -->
+
+            
+            
+              <ng-template #noQuestions>
+                <hr>
+                <h5>There are no questions to list</h5>
+            </ng-template> 
+            
+              <!-- {{question.Description}} -->
+                        <!-- {{question.functionName}} -->
+                        <!-- {{question.Tests?.Inputs}} -->
+
+                        <!-- *ngIf="$any(questions)?.length > 0;else noQuestions" > 
+                             <div *ngFor = "let question of questions "  -->
+
         </div>
  </div>        

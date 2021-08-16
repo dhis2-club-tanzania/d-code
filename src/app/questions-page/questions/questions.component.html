@@ -16,7 +16,17 @@
     <div fxLayout="row" fxLayoutAlign="space-around center" *ngIf="$any(questions)?.length > 0;else noQuestions" >
         <!-- <h2 style=" text-align: center; ">Name</h2> -->
         <div class="collection-question" *ngFor = "let question of questions " class="collection">
-            <mat-card style="margin: 10px;"> <strong><a routerLink="/workspace-page-component" routerLinkActive="active">{{question.Name}}<br/></a></strong> </mat-card>
+            <mat-card style="margin: 10px;">
+                <strong>
+                    <!-- routerLink="/workspace-page-component"  -->
+                    <a [routerLink]="['/questions', question.id]"
+                    routerLinkActive="active"
+                    [title]="question.Name">
+                    {{question.Name}}
+                    <br/>
+                    </a>
+                </strong> 
+            </mat-card>
              
         </div>
     </div>

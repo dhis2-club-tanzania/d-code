@@ -86,6 +86,8 @@ import { TextareaAutosizeModule } from 'ngx-textarea-autosize';
        { path: 'workspace-page-component',
          component: WorkspacePageComponent
          },
+         { path: '', component: QuestionsComponent },
+         { path: 'questions/:qId', component: WorkspacePageComponent }
         //  { path: 'login-component',
         //    component:  LoginComponent
         // }

@@ -10,9 +10,7 @@ import { QuestionsService } from 'src/app/services/questions.service';
 })
 export class QuestionsComponent implements OnInit {
   questions: Question[] = [];
-    // questions: Observable<any[]>;
-  // questions: Observable<Question[] >;
-  // , firestore: AngularFirestore
+  
 
   constructor(private qs: QuestionsService
     // , firestore: AngularFirestore
@@ -26,11 +24,17 @@ export class QuestionsComponent implements OnInit {
 
   ngOnInit() {
     this.qs.getQuestions().subscribe((questions: any)  => {
-      console.log(questions); 
+      // console.log(questions); 
       this.questions = questions;
       
     }) ;
-    // console.log('ngOninit ran') <Question[]>
+
+  //   this.qs.find((questions: { id: string; }) => question.id === qIdFromRoute).subscribe((questions: any)  => {
+  //     // console.log(questions); 
+  //     this.questions = questions;
+      
+  //   }) ;
+
   }
 
   

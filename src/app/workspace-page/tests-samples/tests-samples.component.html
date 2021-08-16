@@ -15,11 +15,36 @@
         <mat-form-field  appearance="fill" class="example-full-width"> 
             
             <!-- <mat-label>Autosize textarea</mat-label>  style="height: 340px;"-->
-            <textarea matInput >
-           //tests here 
-                     
-                </textarea>
+            <!-- <textarea matInput >
+           //tests here    
+                </textarea> -->
+
+                <div *ngIf="$any(questions)?.length > 0;else noQuestions" >
+                    <ul *ngFor = "let question of questions " class="collection">
+                        <li   class="collection-question">
+                            <!-- <strong>{{question.Difficulty}}</strong>
+                            {{question.Category}} 
+                            <strong>{{question.Name}}</strong>
+                                {{question.Description}}  -->
+                                {{question.functionName}} 
+                                <!-- {{question.Tests?.Inputs}} -->
+                        
+                        </li>
+                    </ul>
+                </div>
+
           </mat-form-field>
+
+          <ng-template #noQuestions>
+            <hr>
+            <h5>There are no questions to list</h5>
+        </ng-template> 
+        
+        
+        
+          <!-- {{question.Description}} -->
+                    <!-- {{question.functionName}} -->
+                    <!-- {{question.Tests?.Inputs}} -->
 
     </div>
 </div>
