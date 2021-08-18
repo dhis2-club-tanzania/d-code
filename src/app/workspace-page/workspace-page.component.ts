@@ -5,6 +5,7 @@ import {take} from 'rxjs/operators';
 import { AngularFirestore } from '@angular/fire/firestore';
 
 import { Observable } from 'rxjs';
+import { AuthServiceService } from '../services/auth-service.service';
 // import {MatDialog} from '@angular/material/dialog';
 // import { LoginComponent } from '../login/login.component';
 
@@ -130,7 +131,8 @@ export class WorkspacePageComponent implements OnInit {
   constructor(
     // public dialog: MatDialog
     private _ngZone: NgZone,
-    private firestore: AngularFirestore
+    private firestore: AngularFirestore,
+    public authservice: AuthServiceService
     ) {
       this.questions = firestore.collection('questions').valueChanges();
      }

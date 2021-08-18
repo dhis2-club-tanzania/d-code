@@ -38,33 +38,16 @@ export class ToolbarComponent implements OnInit {
 
   openDialog() {
     this.dialog.open(LoginComponent);
-    // this.blogout=true;
-    // this.login= false;
-    // this.isSignedIn = false;
-    // this.isLoggedIn = false;
+
   }
 
-  // handleLogout(){
-  //   this.isSignedIn = false;
-  //   this.blogout=false;
-  //   this.login=true;
-  // }
+
 
     ngOnInit() {
-    // if(localStorage.getItem('user') != null)
-    // this.isSignedIn = true
-    // else
-    // this.isSignedIn = false
+
    }
 
-  
-  // logout(){
-  //   this.authservice.logout()
-  //   this.isLogout.emit()
-  //   // this.blogout=false;
-  //   // this.login=true;
-  //   // this.isSignedIn = false
-  // }
+
 
 
 

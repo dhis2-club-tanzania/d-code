@@ -29,12 +29,30 @@
 
                   <!--Getting started-->
                   <div  fxLayout="column" fxLayoutAlign="space-evenly center" class="wrapper" style="padding: 50px; padding-inline: 20px; font-size: 12pt; background-color: #001f3f; padding: 50px; color: whitesmoke; ">
-                  <h2 style="font-size: 20pt; font-weight: bold;" >Getting started at d-code?</h2>
+                  <!-- <h2 style="font-size: 20pt; font-weight: bold;" >Getting started at d-code?</h2> -->
                   <br/>
-                  <p>First start by loging into your account to save your progress.
-                  </p>
+                  <ng-template #showLogin>
+                    <h2 style="font-size: 20pt; font-weight: bold;" >Getting started at d-code?</h2>
+                     <br/>
+                    <p>First start by loging into your account to save your progress.
+                    </p>
+                    <button mat-raised-button (click)="openDialog()" style="color: #001f3f; font-weight: bold;">LOGIN</button>
+                   </ng-template>
+                   <div style="text-align: center;" *ngIf="authservice.userData as user; else showLogin">
+                      <P style="color: #f04f04; font-weight: bold; font-size: 20pt;">{{ user.displayName }} !</P>  
+                      <p> You are officially a D-CODER. 
+                      <br/> Continue with D-CODE by choosing the question of your choice.
+                       <br/> Enjoy!! 
+                      </p>
+                       <br/>
+                       <button mat-raised-button  class="nav-link"   (click)="authservice.SignOut()" 
+                       style="color: #001f3f; font-weight: bold;" >
+                       <mat-icon>logout</mat-icon>LOG OUT
+                     </button>
+                   </div>
                   <br/>
-                  <button mat-raised-button (click)="openDialog()" style="color: #001f3f; font-weight: bold;">LOGIN</button>
+                 
+                  
                   <br/>
                   </div>
 
@@ -50,7 +68,11 @@
 
                     <br/>
                     <button mat-raised-button color ="accent" style="background-color: #001f3f; font-weight: bold;" 
-                    routerLink="/questions-page-component" routerLinkActive="active" (click)="pageFunction()">View D-CODE Questions</button>
+                    routerLink="/questions-page-component" routerLinkActive="active" (click)="pageFunction()"
+                    *ngIf="authservice.userData as user">View D-CODE Questions</button>
+                    <ng-template #showLogin>
+                      <button mat-raised-button (click)="openDialog()" style="background-color: #001f3f; font-weight: bold;">View D-CODE Questions</button>
+                    </ng-template>
                     <br/>
                   </div >
 
@@ -66,7 +88,11 @@
 
                       <br/>
                       <button mat-raised-button style="color: #001f3f; font-weight: bold;"
-                      routerLink="/workspace-page-component" routerLinkActive="active" (click)="pageFunction()">View D-CODE Workspace</button>
+                      routerLink="/workspace-page-component" routerLinkActive="active" (click)="pageFunction()"
+                      *ngIf="authservice.userData as user">View D-CODE Workspace</button>
+                      <ng-template #showLogin>
+                        <button mat-raised-button (click)="openDialog()" style="color: #001f3f; font-weight: bold;">View D-CODE Workspace</button>
+                        </ng-template>
                       <br/>
                   </div>
  

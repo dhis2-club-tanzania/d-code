@@ -49,8 +49,6 @@
                   (click)="pageFunction()">WorkSpace</button> 
                   <span class="example-spacer"></span>
     
-                  <!-- <div mat-button fxLayout="row" fxLayoutAlign="space-between stretch" style="background-color: #001f3f; color: white; margin-left: 4px;"> -->
-                    <!-- <p style="text-align: left; background-color: #001f3f; color: white; ">Hi, {{ user.displayName }}!  |  </p> -->
                     <button mat-button  class="nav-link"   (click)="authservice.SignOut()" 
                     style="background-color: #001f3f; color: white; margin-left: 4px;">
                     
@@ -58,7 +56,7 @@
                      Hi, {{ user.displayName }}  |   Log out
                      
                   </button>
-                  <!-- </div> -->
+                
 
                  
                 </div>
@@ -86,8 +84,8 @@
            
                 <div fxLayout="column" fxLayoutAlign="space-around none" *ngIf="authservice.userData as user; else showLogin">
                   <span class="example-spacer"></span>
-                  <p style="text-align: center; background-color: #cfd8e2; ">Hi, {{ user.displayName }}!</p>
-                  <span class="example-spacer"></span>
+                  <p style="text-align: center; background-color: #cfd8e2; ">Hi, {{ user.displayName }}</p>
+                  <!-- <span class="example-spacer"></span> -->
                   <button mat-raised-button style="background-color: #cfd8e2;"  
                   routerLink="/homepage-component" routerLinkActive="active" 
                   (click)="pageFunction()">Home</button>

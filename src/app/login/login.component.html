@@ -49,12 +49,13 @@
                  
                   >REGISTER</mat-button-toggle>
               </mat-button-toggle-group>
-            </div>   <colour background-color: #021936;> -->
+            </div>   <colour background-color: #021936;> 
+            type="button" class="btn googleBtn"-->
   
             <div  fxLayout="column" fxLayoutAlign="space-around center"  >
   
                 <button mat-raised-button style="background-color: teal; color: whitesmoke;"
-                type="button" class="btn googleBtn" (click)="authservice.GoogleAuth()" 
+                 (click)="authservice.GoogleAuth()" 
                 routerLink="/user-component" routerLinkActive="active">
                   <mat-icon class="fab fa-google-plus-g">Google_plus</mat-icon>
                   Connect with Google

@@ -81,10 +81,10 @@ import { TextareaAutosizeModule } from 'ngx-textarea-autosize';
       component: HomepageComponent
       },
       { path: 'questions-page-component',
-       component: QuestionsPageComponent
+       component: QuestionsPageComponent, canActivate: [AuthGuardService]
        },
        { path: 'workspace-page-component',
-         component: WorkspacePageComponent
+         component: WorkspacePageComponent, canActivate: [AuthGuardService]
          },
          { path: '', component: QuestionsComponent },
          { path: 'questions/:id', component: WorkspacePageComponent }

@@ -3,6 +3,9 @@ import {MatDialog} from '@angular/material/dialog';
 import { LoginComponent } from '../login/login.component';
 import { AuthServiceService } from '../services/auth-service.service';
 import { EventEmitter } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { Router } from '@angular/router';
 //email validator
 // import {FormControl, FormGroup  } from '@angular/forms';
 
@@ -25,43 +28,12 @@ export class HomepageComponent implements OnInit {
 }
 
 @Output() isLogout = new EventEmitter
-  constructor(public dialog: MatDialog,  public authservice: AuthServiceService) { }
+  constructor(public dialog: MatDialog, 
+     public authservice: AuthServiceService,
+     public afs: AngularFirestore,   // Inject Firestore service
+     public afAuth: AngularFireAuth, // Inject Firebase auth service
+     public router: Router) { }
  
-
-  // email: string; password: string;
-  
-  // signUp( email: string, password: string) {
-  // this.authServiceService.SignUp(this.email, this.password);
-  // this.email = '';
-  // this.password = '';
-  // }
-  
-  // signIn( email: string, password: string) {
-  // this.authServiceService.SignIn(this.email, this.password);
-  // this.email = '';
-  // this.password = '';
-  // }
-  
-  // signOut() {
-  // this.authServiceService.SignOut();
-  // }
- 
-  // tryRegister(value: { email: string; password: string; }){
-  //   this.authServiceService.doRegister(value)
-  //   .then(res => {
-  //     console.log(res);
-  //     this.errorMessage = "";
-  //     this.successMessage = "Your account has been created";
-  //   }, err => {
-  //     console.log(err);
-  //     this.errorMessage = err.message;
-  //     this.successMessage = "";
-  //   })
-  // }
- 
-
-  
-
  
  
   openDialog() {
@@ -73,9 +45,13 @@ export class HomepageComponent implements OnInit {
   ngOnInit(): void {
   }
 
+      //   Sign out 
+      async SignOut() {
+        await this.afAuth.signOut();
+        localStorage.removeItem('user');
+        this.router.navigate(['login']);
+      }
+      
 
-  logout(){
-    // this.authservice.logout()
-    this.isLogout.emit()
-  }
+
 }

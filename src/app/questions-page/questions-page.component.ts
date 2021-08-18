@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 
 import { Observable } from 'rxjs';
+import { AuthServiceService } from '../services/auth-service.service';
 
 
  
@@ -19,9 +20,10 @@ export class QuestionsPageComponent implements OnInit {
 
  questions: Observable<any[]>;
 
-  constructor(firestore: AngularFirestore) {
-    this.questions = firestore.collection('questions').valueChanges();
-  }
+  constructor(firestore: AngularFirestore,
+               public authservice: AuthServiceService) {
+               this.questions = firestore.collection('questions').valueChanges();
+            }
 
 
 

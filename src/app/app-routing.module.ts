@@ -20,10 +20,10 @@ import { QuestionsComponent } from './questions-page/questions/questions.compone
    component: HomepageComponent
    },
    { path: 'questions-page-component',
-    component: QuestionsPageComponent
+    component: QuestionsPageComponent, canActivate: [AuthGuardService]
     },
     { path: 'workspace-page-component',
-      component: WorkspacePageComponent
+      component: WorkspacePageComponent, canActivate: [AuthGuardService]
       },
      { path: 'register-component',
      component:  RegisterComponent
