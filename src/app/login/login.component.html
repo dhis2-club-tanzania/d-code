@@ -12,30 +12,30 @@
     </div>
     
     
-          <!--LOG IN-->
+          <!--LOG IN *ngIf="isSignedIn"-->
     
-          <div *ngIf="isSignedIn" fxLayout="column" fxLayoutAlign="start center" style="align-items: center; padding: 5px 5px 5px 5px; width: auto; height: auto;">
+          <div   fxLayout="column" fxLayoutAlign="start center" style="align-items: center; padding: 5px 5px 5px 5px; width: auto; height: auto;">
     
             <!-- <p mat-dialog-title>D-CODE</p> -->
 
             <button mat-button  routerLink="/homepage-component"
 
-            routerLinkActive="active" >
-     
-             <div  
-             style="background-image: url('/assets/images/logo.png') !important;
-              /* background-color: #808c99e8;  */
-            min-width: 155px;
-            background-size: 40px;
-            background-position: left;
-            background-repeat: no-repeat;
-            "  >
-          <div style="font-size: 20px; font-weight: bold; color: #2381fc;"> D-CODE</div>
-       
-             
-            </div>
+                  routerLinkActive="active" >
+          
+                  <div  
+                  style="background-image: url('/assets/images/logo.png') !important;
+                    /* background-color: #808c99e8;  */
+                  min-width: 155px;
+                  background-size: 40px;
+                  background-position: left;
+                  background-repeat: no-repeat;
+                  "  >
+                <div style="font-size: 20px; font-weight: bold; color: #2381fc;"> D-CODE</div>
+            
+                  
+                  </div>
       
-         </button>
+           </button>
               
             <div mat-dialog-content>Connect to save your progress</div>
             <br/>
@@ -51,7 +51,7 @@
               </mat-button-toggle-group>
             </div>   <colour background-color: #021936;> -->
   
-            <div fxLayout="column" fxLayoutAlign="space-around center"  >
+            <div  fxLayout="column" fxLayoutAlign="space-around center"  >
   
                 <button mat-raised-button style="background-color: teal; color: whitesmoke;"
                 type="button" class="btn googleBtn" (click)="authservice.GoogleAuth()" 
@@ -61,12 +61,12 @@
                 </button> 
       
                   <br/>
-                  <button  mat-raised-button style=" background-color: teal; color: whitesmoke;"
-                  routerLink="/user-component" routerLinkActive="active"
-                  (click)="loginWithFacebook()" > 
-                    <mat-icon>facebook</mat-icon>
-                    Connect with Facebook
-                  </button>
+                  <!-- <button mat-raised-button style="background-color: teal; color: whitesmoke;"
+                type="button" class="btn facebookBtn" (click)="authservice.FacebookAuth()" 
+                routerLink="/user-component" routerLinkActive="active">
+                  <mat-icon >facebook</mat-icon>
+                  Connect with Facebook
+                </button> -->
       
   
               <!-- <div>
@@ -119,43 +119,18 @@
               
     
           </div>
-          <div *ngIf="!isSignedIn">
-            <p  (isLogout) = "handleLogout()" > You are Logged In!</p>
+         
+            <p *ngIf="isSignedIn" style="align-items: center; " > You are Logged In!</p>
             <br/>
-            <img src="{{ socialUser.photoUrl }}">
-            <div>
-              <h4>{{ socialUser.name }}</h4>
-              <p>{{ socialUser.email }}</p>
-            </div>
-          </div>
+          <!-- <div  (isLogout) = "handleLogout()">
+          </div> -->
          
   
-          <!-- <div *ngIf="isSignedIn">
-            <div class="form-group">
-              <label>First Name</label>
-              <input type="text" class="form-control" [value]="socialUser.firstName" id="firstname" readonly>
-            </div>
-            <div class="form-group">
-              <label>Last Name</label>
-              <input type="text" class="form-control" [value]="socialUser.lastName" id="lastname" readonly>
-            </div>
-            <div class="form-group">
-              <label>Email</label>
-              <input type="text" class="form-control" [value]="socialUser.email" id="email" readonly>
-            </div>
-        
-            <button type="button" (click)="logOut()" class="btn btn-primary">Log Out</button>
-          </div> -->
   
-  </div>
+</div>
   
-  <app-user *ngIf="!isSignedIn" ></app-user> 
+  <!-- <app-user *ngIf="!isSignedIn" ></app-user>  -->
   
-  <div fxLayoutGap *ngIf="register" fxLayout="column" fxLayoutAlign="space-evenly center" style="background-color: #356db38a;">
+  <!-- <div fxLayoutGap *ngIf="register" fxLayout="column" fxLayoutAlign="space-evenly center" style="background-color: #356db38a;">
     <app-register ></app-register>
-    </div>
-        <!-- <div mat-dialog-actions>
-        routerLink="/login-component" routerLinkActive="active"
-           routerLink="/register-component" routerLinkActive="active"
-          <button mat-button mat-dialog-close>Close</button>
-        </div> -->
+  </div> -->

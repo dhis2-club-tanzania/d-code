@@ -14,20 +14,20 @@
                 
                             <button  mat-raised-button routerLink="/homepage-component" routerLinkActive="active" style="background-color:#37045a; min-width: 115px;"  >
                         
-                            <div  style="background-image: url('/assets/images/logo.png') !important;
-                                /* background-color: #808c99e8;  */
-                                min-width: 115px;
-                                background-size: 30px;
-                                background-position: left;
-                                background-repeat: no-repeat;
-                                /* flex: 1 1 auto;
-                                border: 0px; */
-                                /* margin-right: 10px; */
-                                "  >
-                                <!-- <div class="btn-image"> </div> -->
-                            <div style="font-size: 14px; font-weight: bold; color: #2381fc;"> D-CODE</div>          
-                                
-                            </div>
+                                <div  style="background-image: url('/assets/images/logo.png') !important;
+                                    /* background-color: #808c99e8;  */
+                                    min-width: 115px;
+                                    background-size: 30px;
+                                    background-position: left;
+                                    background-repeat: no-repeat;
+                                    /* flex: 1 1 auto;
+                                    border: 0px; */
+                                    /* margin-right: 10px; */
+                                    "  >
+                                    <!-- <div class="btn-image"> </div> -->
+                                    <div style="font-size: 14px; font-weight: bold; color: #2381fc;"> D-CODE</div>          
+                                    
+                                </div>
                         
                             </button>
                             
@@ -42,7 +42,6 @@
                             </button>
             
                             <div fxShow="true" fxHide.lt-md="true"   ><!-- fxShow="true" fxHide.lt-md="true"  -->
-            
                                 <button mat-raised-button class="example-icon" matTooltip="Next Question" > 
             
                                     <mat-icon>arrow_forward</mat-icon> 
@@ -115,15 +114,16 @@
                                 <button mat-raised-button matTooltip="Data Structure Visualizer"  >
                                     <mat-icon>share</mat-icon> 
                                 </button>
+                                
             
             
-                                </div>  
+                            </div>  
             
                             <span class="example-spacer"></span>
             
-                            <!-- <button fxShow="true" fxHide.lt-md="true"  mat-raised-button matTooltip="Timer | Stopwatch" >
-                                <mat-icon>alarm</mat-icon> 00:00:00 | 00:00:00   
-                            </button> -->
+                            <button fxShow="true" fxHide.lt-md="true"  mat-raised-button matTooltip="Timer | Stopwatch" >
+                                <mat-icon>alarm</mat-icon> 00:00:00|00:00:00   
+                            </button>
             
                             <button mat-raised-button matTooltip="Timer | Stopwatch" fxShow="true" fxHide.gt-sm="true">
                                 <mat-icon>alarm</mat-icon>
@@ -137,8 +137,85 @@
                     
                             
                     </div>
-            
-                
+                    
+                    
+                        <!--on smaller screens-->
+                    <div *ngIf="button_header"  class="button-header" fxShow="true" fxHide.gt-sm="true" #button_header>
+                                        
+                        <button mat-raised-button class="example-icon" matTooltip="Next Question" > 
+
+                            <mat-icon>arrow_forward</mat-icon> 
+
+                        </button>
+                        
+                        <button mat-raised-button  matTooltip="Workspace" style="min-width: 130px;" > 
+                            
+                            <mat-select [(value)]="selectedWLayout" disableOptionCentering  panelClass="myPanelClass" > 
+                                
+                            <mat-option [value]="wlayout.value" *ngFor="let wlayout of wlayouts" >
+                                {{wlayout.viewValue}}
+                            </mat-option>
+                            </mat-select> 
+                        </button>
+                    
+                        <button mat-raised-button matTooltip="Programming Languages" style="min-width: 130px;" > 
+                        
+                            <mat-select name="Programming Languages" disableOptionCentering  panelClass="myPanelClass" 
+                            [(value)]="selectedLanguage" > 
+                                
+                            <mat-option [value]="language.value" 
+                            *ngFor="let language of languages" >
+                                {{language.viewValue}}
+                            </mat-option>
+                            </mat-select>
+                        </button>
+                    
+                        <button mat-raised-button matTooltip="Editor Font Size" style="min-width: 90px;" >  
+
+                            <mat-select [(value)]="selectedFont" disableOptionCentering  panelClass="myPanelClass"> 
+                                
+                            <mat-option [value]="font.value"
+                            *ngFor="let font of fonts"  >
+                                {{font.viewValue}}
+                            </mat-option>
+                            </mat-select>
+                        </button>
+                    
+                        <button mat-raised-button matTooltip="Editor Key Maps" style="min-width: 110px;" >
+                        
+                            <mat-select [(value)]="selectedEditor" disableOptionCentering  panelClass="myPanelClass" > 
+                                
+                            <mat-option [value]="editor.value"
+                            *ngFor="let editor of editors" >
+                                {{editor.viewValue}}
+                            </mat-option>
+                            </mat-select>
+                        </button>
+                        
+                        <button mat-raised-button matTooltip="light theme"  >
+                            <mat-icon>sunny</mat-icon> 
+                        </button>
+                        
+                        <button mat-raised-button matTooltip="Syntax Highlighting Theme" style="min-width: 110px;"  >  
+                    
+                            <mat-select  [(value)]="selectedSyntaxTheme" disableOptionCentering  panelClass="myPanelClass" > 
+                                
+                            <mat-option [value]="syntaxtheme.value"
+                            *ngFor="let syntaxtheme of syntaxthemes">
+                                {{syntaxtheme.viewValue}}
+                            </mat-option>
+                            </mat-select>
+                        </button>
+                        
+                        <button mat-raised-button matTooltip="Whiteboard Mode"  >
+                            <mat-icon>tv</mat-icon> 
+                        </button>
+                        
+                        <button mat-raised-button matTooltip="Data Structure Visualizer"  >
+                            <mat-icon>share</mat-icon> 
+                        </button>
+                    </div> 
+                                
         </div>
     
         <br/>
@@ -209,6 +286,42 @@
                         </div>
                 </div>
 
+                
+                <div fxShow="true" fxHide.gt-sm="true"   >
+                    <!--Top row-->
+                    <div fxLayout="column" fxLayoutAlign="start center" >
+                        <!-- Prompt Space-->
+                        <div class="example-full-width">
+                            <app-prompt ></app-prompt>
+                        </div> 
+
+                        <br/>
+                        <!-- Your Solutions Space -->
+                        <div class="example-full-width">
+                            <app-your-solutions ></app-your-solutions>
+                        </div>
+
+                    </div>
+
+                        <br/> 
+                        <!--Bottom row-->
+                    <div  fxLayout="column" fxLayoutAlign="start center"> 
+                        <!-- Tests Space -->
+                    
+                        <div class="example-full-width">
+                            <app-tests-samples ></app-tests-samples>
+                        </div>
+
+                    
+                        <br/>
+
+                        <!-- Output Space -->
+                        <div class="example-full-width" >
+                            <app-code-outputs ></app-code-outputs>
+                            
+                        </div> 
+                    </div>
+                </div>
     
 
             

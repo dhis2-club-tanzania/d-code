@@ -130,7 +130,7 @@ export class WorkspacePageComponent implements OnInit {
   constructor(
     // public dialog: MatDialog
     private _ngZone: NgZone,
-    firestore: AngularFirestore
+    private firestore: AngularFirestore
     ) {
       this.questions = firestore.collection('questions').valueChanges();
      }

@@ -87,10 +87,8 @@ import { TextareaAutosizeModule } from 'ngx-textarea-autosize';
          component: WorkspacePageComponent
          },
          { path: '', component: QuestionsComponent },
-         { path: 'questions/:qId', component: WorkspacePageComponent }
-        //  { path: 'login-component',
-        //    component:  LoginComponent
-        // }
+         { path: 'questions/:id', component: WorkspacePageComponent }
+        
      ]),
    AngularFireModule.initializeApp(environment.firebaseConfig, 'yesplease'),
    AngularFirestoreModule, // imports firebase/firestore, only needed for database features  , 'yesplease'

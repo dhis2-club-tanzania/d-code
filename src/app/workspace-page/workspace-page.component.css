@@ -136,38 +136,7 @@ mat-option:hover{
 
 
 
- /* workspace-card top row */
-   /* .workspace-card{
-      min-width: 740px;
-       min-height: 405px;
-       background-color: #030e1a;
-   }
-
-   .answer-card{
-    margin-left: 10px;
-    margin-right: 10px;
-    width: 720px;
-    height: 369px;
-    color: white;
-    background-color: #00000000;
-} */
-
- /* workspace-card bottom row */
-/* .workspace-card1{
-    min-width: 740px;
-    min-height: 215px;
-    background-color: #030e1a;
-}
-
-.answer-card1{
- margin-left: 10px;
- margin-right: 10px;
- min-width: 720px;
- min-height: 179px;
- color: white;
- background-color: #00000000;
-} */
-
+ 
 
 /* grids */
 mat-grid-tile {
@@ -195,19 +164,9 @@ mat-form-field {
 }
 
 
-
-
-
-
-
-
-
-
-
-
 /* tooltip-pd */
 
-
+/* 
   a.tip {
     position: relative;
   }
@@ -240,18 +199,18 @@ mat-form-field {
   
   a:hover.tip {
     font-size: 99%;
-      /* this is just for IE */
+    
 }
 
 a:hover.tip span {
   display: block;
-}
+} */
 
 
 
   /* fullscreen-card css */
 
-#myDiv1.fullscreen{
+/* #myDiv1.fullscreen{
   z-index: 9999; 
   width: 90%; 
   height: 100%; 
@@ -259,9 +218,14 @@ a:hover.tip span {
   top: 0; 
   left: 0; 
 }
-#myDiv1{background:transparent; width:500px; height:200px;}
+#myDiv1{background:transparent; width:500px; height:200px;} */
 
-.workspace-card.fullscreen{
+
+
+
+
+
+/* .workspace-card.fullscreen{
   
   background-color: #030e1a;
 }
@@ -328,4 +292,4 @@ background-color: #00000000;
  min-height: 609px;
  color: white;
  background-color: #00000000;
-}
+} */

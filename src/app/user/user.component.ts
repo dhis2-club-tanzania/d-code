@@ -21,11 +21,11 @@ export class UserComponent implements OnInit {
 
 
 //   Sign out 
-async SignOut() {
-  await this.afAuth.signOut();
-  localStorage.removeItem('user');
-  this.router.navigate(['homepage-component']);
-}
+// async SignOut() {
+//   await this.afAuth.signOut();
+//   localStorage.removeItem('user');
+//   this.router.navigate(['login']);
+// }
 
 
   ngOnInit(): void {

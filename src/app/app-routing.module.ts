@@ -25,9 +25,6 @@ import { QuestionsComponent } from './questions-page/questions/questions.compone
     { path: 'workspace-page-component',
       component: WorkspacePageComponent
       },
-    //   { path: 'login-component',
-    //     component:  LoginComponent
-    //  },
      { path: 'register-component',
      component:  RegisterComponent
     },
@@ -37,12 +34,10 @@ import { QuestionsComponent } from './questions-page/questions/questions.compone
       }
    ];
 
-  //  export const rootRouterConfig: Routes = [
-  
-  // ];
+
 
 @NgModule({
-  // declarations: [],
+
   imports: [
     CommonModule,
     RouterModule.forRoot(routes), 

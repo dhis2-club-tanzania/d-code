@@ -18,11 +18,14 @@
         <div class="collection-question" *ngFor = "let question of questions " class="collection">
             <mat-card style="margin: 10px;">
                 <strong>
-                    <!-- routerLink="/workspace-page-component"  -->
-                    <a [routerLink]="['/questions', question.id]"
+                    <!-- routerLink="/workspace-page-component" 
+                        [routerLink]="['/questions', question?.id]" routerLink="/questions/{{question.id}}-->
+                    <a routerLink="/questions/{{question.id}} "
                     routerLinkActive="active"
                     [title]="question.Name">
                     {{question.Name}}
+                    <!-- {{question.Description}} -.data -->
+                    <!-- {{question.id}} -->
                     <br/>
                     </a>
                 </strong> 

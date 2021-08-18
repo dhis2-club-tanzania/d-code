@@ -6,7 +6,7 @@ import { EventEmitter } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from "@angular/router";
-
+import firebase from 'firebase/app';
 
 @Component({
   selector: 'toolbar',
@@ -14,13 +14,13 @@ import { Router } from "@angular/router";
   styleUrls: ['./toolbar.component.css']
 })
 export class ToolbarComponent implements OnInit {
-  isSignedIn= false;
+  // isSignedIn= false;
   // isLoggedIn= false;
   showFiller = false;
 
   home:boolean=true;
-  login:boolean=true;
-  blogout:boolean=false;
+  // login:boolean=true;
+  // blogout:boolean=false;
 
 
   pageFunction(){
@@ -29,7 +29,8 @@ export class ToolbarComponent implements OnInit {
 }
 
 @Output() isLogout = new EventEmitter
-  constructor(public dialog: MatDialog,  public authservice: AuthServiceService,
+  constructor(public dialog: MatDialog,
+    public authservice: AuthServiceService,
     public afs: AngularFirestore,   // Inject Firestore service
     public afAuth: AngularFireAuth, // Inject Firebase auth service
     public router: Router
@@ -37,42 +38,42 @@ export class ToolbarComponent implements OnInit {
 
   openDialog() {
     this.dialog.open(LoginComponent);
-    this.blogout=true;
-    this.login= false;
-    this.isSignedIn = false;
+    // this.blogout=true;
+    // this.login= false;
+    // this.isSignedIn = false;
     // this.isLoggedIn = false;
   }
 
-  handleLogout(){
-    this.isSignedIn = false;
-    this.blogout=false;
-    this.login=true;
-  }
+  // handleLogout(){
+  //   this.isSignedIn = false;
+  //   this.blogout=false;
+  //   this.login=true;
+  // }
 
     ngOnInit() {
-    if(localStorage.getItem('user') != null)
-    this.isSignedIn = true
-    else
-    this.isSignedIn = false
+    // if(localStorage.getItem('user') != null)
+    // this.isSignedIn = true
+    // else
+    // this.isSignedIn = false
    }
 
   
-  logout(){
-    this.authservice.logout()
-    this.isLogout.emit()
-    // this.blogout=false;
-    // this.login=true;
-    // this.isSignedIn = false
-  }
+  // logout(){
+  //   this.authservice.logout()
+  //   this.isLogout.emit()
+  //   // this.blogout=false;
+  //   // this.login=true;
+  //   // this.isSignedIn = false
+  // }
 
 
 
-// Sign out 
-async SignOut() {
-  await this.afAuth.signOut();
-  localStorage.removeItem('user');
-  this.router.navigate(['login']);
-}
+  //   Sign out 
+    async SignOut() {
+      await this.afAuth.signOut();
+      localStorage.removeItem('user');
+      this.router.navigate(['login']);
+    }
 
 
 }

@@ -14,5 +14,8 @@
         ]
       }
     }
+  },
+  "projects": {
+    "default": "d-code-d9b92"
   }
 }

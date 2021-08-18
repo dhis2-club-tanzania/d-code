@@ -5,9 +5,11 @@ import {MatDialog} from '@angular/material/dialog';
 import { LoginComponent } from 'src/app/login/login.component';
 
 
-import { Question } from 'src/app/models/Question';
+import { Question, questions } from 'src/app/models/Question';
 import { QuestionsService } from 'src/app/services/questions.service';
 import { ActivatedRoute } from '@angular/router';
+import { AngularFirestore } from '@angular/fire/firestore/firestore';
+import { Observable } from 'rxjs';
 
 // import {  question } from 'src/app/models/Question.component';
 
@@ -34,6 +36,7 @@ export class PromptComponent implements OnInit {
 
   //div-mat-card-buttons1
   solution:boolean=false;
+  dataRef: any;
 
 
   promptFunction(){
@@ -53,13 +56,17 @@ videoFunction(){
 }
 
 questions: Question[] = [];
-question!: Question ;
+  question: Question | undefined;
+  id!: Observable<Question>;
+// private  firestore: AngularFirestore
 constructor(public dialog: MatDialog,
   private qs: QuestionsService,
   private route: ActivatedRoute,
-    // , firestore: AngularFirestore
+
   ) {
-     // this.questions = firestore.collection<Question>('questions').valueChanges();
+
+    // const id: string = route.snapshot.paramMap.get('id');
+    // console.log('Animal ID form URL: ', id)
    }
 openDialog() {
   this.dialog.open(LoginComponent);
@@ -69,30 +76,54 @@ openDialog() {
    ngOnInit() {
     this.selectedVal1 ='Prompt';
 
-    this.qs.getQuestions().subscribe((questions: any)  => {
+
+    // const routeParams = this.route.snapshot.paramMap;
+    // const qIdFromRoute = String(routeParams.get('qId'));
+
+    this.qs.getQuestions()
+    .subscribe((questions: any)  => {
       console.log(questions); 
       this.questions = questions;
+      // if (questions.id){
+      //     // // // Find the product that correspond with the id provided in route.
+      //   this.questions = questions.find((question: { id: string; }) => question.id === this.questions.id);
+      // }
       
     }) ;
+
   
   // //         // First get the product id from the current route.
-  const routeParams = this.route.snapshot.paramMap;
-  const qIdFromRoute = String(routeParams.get('qId'));
+  //   const routeParams = this.route.snapshot.paramMap;
+  //   const idFromRoute = String(routeParams.get('id'));
 
-  // // // Find the product that correspond with the id provided in route.
-  this.question = this.question.find((question: { id: string; }) => question.id === qIdFromRoute);
+  // this.qs.getQuestions()
+  // .subscribe((question: any)  => {
+  //   console.log(question); 
+  //   this.question = question;
+  //   if (question.id){
+  //        // Find the product that correspond with the id provided in route.
+  //    this.question = questions.find((question: { id: string; }) => question.id === idFromRoute);
+  //   }
+  //   }) ;
+
   
-  // this.questionDetail();
+  this.questionDetail();
 
   }
 
-  // questionDetail() {
-  //   const id = this.route.snapshot.paramMap.get("id");
-  //   console.log(id); //I see the doc id correctly
+  questionDetail()  {
+    const id = this.route.snapshot.paramMap.get("id");
+    console.log(id); //I see the doc id correctly
   
-  //   //  this.qs.getQuestionsD({id : string; }).then(data => {
-  //   //   console.log(data);  // ... and here});
-  // }
+    this.question = this.qs.getQDetails(id!) ;
+    console.log(this.question);//I can't see the correct doc data
+
+
+    // return this.qs.getQDetails(id!).then(question => {
+    //   console.log(this.question);
+    //   return this.question;  // ... and here
+    //     });
+  }
 
 
   public onVal1Change(val1: string) {

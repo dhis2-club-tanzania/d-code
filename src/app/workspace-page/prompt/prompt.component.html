@@ -21,8 +21,8 @@
                                 // Display Question Here.  
                     </textarea> -->
 
-                    <div *ngIf="$any(questions)?.length > 0;else noQuestions" > 
-                        <div *ngFor = "let question of questions "  class="collection">
+                    <div *ngIf="question noQuestions" > 
+                        <div  class="collection">
                                 <div   class="collection-question">
                                     <div fxLayout="row" fxLayoutAlign="space-evenly" style="color: bisque;" >
                                         <p >
