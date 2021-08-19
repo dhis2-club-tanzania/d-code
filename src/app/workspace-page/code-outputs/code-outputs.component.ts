@@ -2,6 +2,11 @@
 // import { ElementRef } from '@angular/core';
 // import { Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+
+import { Question } from 'src/app/models/Question';
+import { QuestionsService } from 'src/app/services/questions.service';
 
 // const enum Status {
 //   OFF = 0,
@@ -79,13 +84,49 @@ export class CodeOutputsComponent implements OnInit {
 
   //toggle-active
   public selectedVal4: string | undefined;
-
-  constructor() { }
+  questions: Question[] = [];
+  question: Question | undefined;
+  id!: Observable<Question>;
+  constructor( private qs: QuestionsService,
+    private route: ActivatedRoute) { }
 
   // : void 
   ngOnInit() {
     this.selectedVal4 ='Custom Output';
+    this.qs.getQuestions()
+    .subscribe((questions: any[])  => {
+      console.log("Questions:",questions); 
+      questions.forEach((question)=>{
+        console.log(question.id.trim(),this.route.snapshot.paramMap.get("id")?.trim(),question.id.trim() === this.route.snapshot.paramMap.get("id")?.trim())
+          if (question.id.trim() === this.route.snapshot.paramMap.get("id")?.trim()){
+            // // // Find the product that correspond with the id provided in route.
+            this.question = question;
+        }
+      })
+      
+    }) ;
+
+  
+ 
+
+  
+  this.questionDetail();
+
   } 
+  
+
+  async questionDetail()  {
+    const id = this.route.snapshot.paramMap.get("id");
+    console.log(id); 
+  
+    if(id){
+      //this.question = await this.qs.getQDetails(id);
+    }
+    //this.question = id? await this.qs.getQDetails(id): '' ;
+    console.log("This.Question:", this.question);
+
+
+  }
   
   public onVal4Change(val4: string) {
     this.selectedVal4 = val4

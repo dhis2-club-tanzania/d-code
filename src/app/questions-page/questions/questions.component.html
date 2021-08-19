@@ -1,29 +1,39 @@
 <!-- <p>questions works!</p> --> 
 
-<!-- <div *ngIf="$any(questions)?.length > 0;else noQuestions" >
-    <ul *ngFor = "let question of questions " class="collection">
-        <li   class="collection-question">
-            <strong>{{question.Difficulty}}</strong>
-            {{question.Category}} 
-            <strong>{{question.Name}}</strong>
-          
-        </li>
-    </ul>
-</div> -->
 <br/>
 
 <div fxLayout="column" fxLayoutAlign="space-around center" >
-    <div fxLayout="row" fxLayoutAlign="space-around center" *ngIf="$any(questions)?.length > 0;else noQuestions" >
+    <div fxLayout="row" fxLayoutAlign="space-around center" fxShow="true" fxHide.lt-md="true" 
+     *ngIf="$any(questions)?.length > 0;else noQuestions" >
         <!-- <h2 style=" text-align: center; ">Name</h2> -->
         <div class="collection-question" *ngFor = "let question of questions " class="collection">
             <mat-card style="margin: 10px;">
                 <strong>
-                    <!-- routerLink="/workspace-page-component" 
-                        [routerLink]="['/questions', question?.id]" routerLink="/questions/{{question.id}}-->
                     <a routerLink="/questions/{{question.id}} "
                     routerLinkActive="active"
-                    [title]="question.Name">
-                    {{question.Name}}
+                    [title]="question.name">
+                    {{question.name}}
+                    <!-- {{question.Description}} -.data -->
+                    <!-- {{question.id}} -->
+                    <br/>
+                    </a>
+                </strong> 
+            </mat-card>
+             
+        </div>
+    </div>
+
+
+    <div fxLayout="column" fxLayoutAlign="space-around center" fxShow="true" fxHide.gt-sm="true"
+     *ngIf="$any(questions)?.length > 0;else noQuestions" >
+        <!-- <h2 style=" text-align: center; ">Name</h2> -->
+        <div class="collection-question" *ngFor = "let question of questions " class="collection">
+            <mat-card style="margin: 10px;">
+                <strong>
+                    <a routerLink="/questions/{{question.id}} "
+                    routerLinkActive="active"
+                    [title]="question.name">
+                    {{question.name}}
                     <!-- {{question.Description}} -.data -->
                     <!-- {{question.id}} -->
                     <br/>
@@ -61,7 +71,3 @@
 </ng-template> 
 
 
-
-  <!-- {{question.Description}} -->
-            <!-- {{question.functionName}} -->
-            <!-- {{question.Tests?.Inputs}} -->

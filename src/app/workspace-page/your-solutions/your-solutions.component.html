@@ -20,22 +20,84 @@
     </div>
     <div style="background-color: #030e1a; color: #f8f8f8;" class="answer-card"   >
             
-            <mat-form-field  appearance="fill" class="example-full-width"> 
+            <!-- <mat-form-field  appearance="fill" class="example-full-width">  -->
             
-                <!-- <mat-label>Autosize textarea</mat-label>  style="height: 340px;"-->
-                <textarea matInput >
+                <!-- <mat-label>Autosize textarea</mat-label>  style="height: 340px;"   *ngIf=" question noQuestions"--> 
+                <!-- <textarea matInput>
                          
-                           function functionName(Inputs1, Inputs2) {
-                           
-                                // Write your code here.
-                             
-                              
-                              // Do not edit the line below.
-                           
-                              exports.functionName = functionName; 
+                    function  {{  question.functionName}}(inputs: {{question.tests}}) {
+
+
+                                // Write your code here
+
+
+                    }
+
+                    
+
+
+                        //Do not edit the line below
+
+                        exports.{{question.functionName}} = {{question.functionName}};
                          
                     </textarea>
-              </mat-form-field>
+              </mat-form-field> -->
+
+        <div *ngIf=" question noQuestions" >
+                <div  class="collection">
+                    <div  class="collection-question">
+                        
+                         <br/>
+                         <!-- <div fxLayout="row" fxLayoutAlign="start start">
+                             <p style = "margin-right: 4pt;">function </p>
+                            
+                             <p style = "color: brown; margin-right: 4pt;">{{  question.functionName}} </p>
+                             <p style = "color: #ffa1a1;">  ( {{question.tests}} )  </p>
+                            
+                         </div> -->
+                         
+                        <mat-form-field  appearance="fill" class="example-full-width"> 
+                            <mat-label style="color: wheat; font-size: 15pt;">
+                                <div fxLayout="row" fxLayoutAlign="start start">
+                                    <p style = "margin-right: 4pt;">function </p>
+                                    <!-- <span class = "example-spacer"></span> -->
+                                    <p style = "color: brown; margin-right: 4pt;">{{  question.functionName}} </p>
+                                    <p style = "color: #ffa1a1;">  ( {{question.tests}} )  </p>
+                                    <!-- <div>{</div> -->
+                                </div>
+                            </mat-label>  
+                            <br/>
+                            <textarea matInput style="min-height: 210px; color: wheat;">
+                                {
+
+                                     // Write your code here
+
+                                }
+                            </textarea>
+                         
+                        </mat-form-field>
+                        <br/>
+                        <!-- <p>}</p> -->
+                        //You can not edit the line below 
+                        <div fxLayout="row" fxLayoutAlign="start start">
+                             <p >exports.</p>
+                             <!-- <span class = "example-spacer"></span> -->
+                             <p style = "color: brown; margin-right: 4pt;">{{  question.functionName}} </p>
+                             <p > = </p>
+                             <p style = "color:  brown; margin-left: 4pt; margin-right: 4pt;">  {{question.functionName}}  </p>
+                             <p > ;  </p>
+                         </div>
+                        
+                        <br/>
+                    </div>
+                </div>
+        </div> 
+
+        <ng-template #noQuestions>
+            <hr>
+            <h5>There are no questions to list</h5>
+        </ng-template> 
+
     </div>
 </div>
 

@@ -24,25 +24,26 @@
                     <div *ngIf="question noQuestions" > 
                         <div  class="collection">
                                 <div   class="collection-question">
+                                    <br/>
                                     <div fxLayout="row" fxLayoutAlign="space-evenly" style="color: bisque;" >
                                         <p >
-                                            Difficulty: {{ question.Difficulty}}
+                                            Difficulty:  {{  question.difficulty}}
                                           </p>   
                                           <span class="example-spacer"> </span>
                                           <p >
-                                            Category: {{ question.Category}} 
+                                            Category:  {{  question.category}} 
                                           </p>
                                     </div>
                                   
                                     
                                     <br/>
                                     <h2>
-                                     <strong>{{question.Name}}</strong>
+                                     <strong>{{question.name}}</strong>
                                     </h2>
                                     
                                     <br/>
                                     <p style="color: #e4ded6;">
-                                        {{question.Description}}
+                                        {{question.description}}
                                     </p>
                                     
                                     <br/>

@@ -58,7 +58,7 @@
  }
 
  mat-form-field {
-    margin-right: 12px;
+    margin-right: 6px;
   }
 
   .example-form {
@@ -70,7 +70,7 @@
   
   .example-full-width {
     width: 100%;
-    min-height: 369px;
+    /* min-height: 369px; */
   }
 
  .answer-card{

@@ -1,15 +1,14 @@
 import { Injectable } from '@angular/core';
-import {  AngularFirestoreDocument } from '@angular/fire/firestore';
+// import {  AngularFirestoreDocument } from '@angular/fire/firestore';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Question } from '../models/Question';
-import { map } from 'rxjs/operators';
-import { switchMap } from 'rxjs/operators';
-// import 'rxjs/add/operator/publishReplay';
-// export interface Question { Name: string }
+// import { map } from 'rxjs/operators';
+// import { switchMap } from 'rxjs/operators';
+
 
 import { DocumentChangeType, DocumentReference, DocumentData } from '@angular/fire/firestore';
-import { ReplaySubject } from 'rxjs';
+// import { ReplaySubject } from 'rxjs';
 
 
 
@@ -48,38 +47,32 @@ export class QuestionsService {
 
         questionsCollection!: AngularFirestoreCollection<Question>;
         questions:  Observable<Question[]> | any;
-        question!: Observable<Question>;
-        // question = new ReplaySubject<any>(1);
+       
 
         // private questionsDoc: AngularFirestoreDocument<Question>;
 
 
   constructor(public afs:  AngularFirestore) { 
           this.questions = this.afs.collection<Question>('Questions').valueChanges();
-          this.questionsCollection = afs.collection<Question>('Questions');
-    // this.question = this.questionsCollection.snapshotChanges();
+      //     this.questionsCollection = afs.collection<Question>('Questions');
+   
 
-      this.question = this.questionsCollection.snapshotChanges().pipe(switchMap(actions => {
-          return actions.map(a => {
-              const data = a.payload.doc.data() as Question;
-              const id = a.payload.doc.id;
-              console.log('id', id, 'data', data);
-              return {id, data};
-            }
-          );
-      }))
-      // .subscribe(data => {
-      //     this.question.next(data);
-      //   })
-
-      // .publishReplay(1)
-      // .refCount();// This will cache the last value and reemit it to new subscribers
+      // this.question = this.questionsCollection.snapshotChanges().pipe(switchMap(actions => {
+      //     return actions.map(a => {
+      //         const data = a.payload.doc.data() as Question;
+      //         const id = a.payload.doc.id;
+      //         console.log('id', id, 'data', data);
+      //         return {id, data};
+      //       }
+      //     );
+      // }))
+   
       
       
 
-      this.questions.forEach((question: any) =>{
-        console.log(question) 
-      })
+      // this.questions.forEach((question: any) =>{
+      //   console.log(question) 
+      // })
 
             // this.questionsDoc = afs.doc<Question>('Questions');
             // this.questions = this.questionsDoc.valueChanges();
@@ -93,18 +86,16 @@ export class QuestionsService {
  
   }
 
-  async getQDetails(id: string){
+  async getQDetails(id: string):Promise<any>{
     const doc = await this.afs
       // .doc('collectionName/docID'); 
       .collection("Questions")
       .doc(id)
       .ref.get();
+      console.log("Doc:",doc);
     return doc.data();
   }
  
-
-
-
 }
 
 

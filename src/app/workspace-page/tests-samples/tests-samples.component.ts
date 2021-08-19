@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 
 import { Question } from 'src/app/models/Question';
 import { QuestionsService } from 'src/app/services/questions.service';
@@ -47,24 +49,58 @@ infoFunction(){
 }
 
 questions: Question[] = [];
-  constructor(
-    private qs: QuestionsService
-      // , firestore: AngularFirestore
-      ) { 
-         // this.questions = firestore.collection<Question>('questions').valueChanges();
-      }
+question: Question | undefined;
+id!: Observable<Question>;
+  constructor(private qs: QuestionsService,
+              private route: ActivatedRoute,// firestore: AngularFirestore
+                ) { 
+                  // this.questions = firestore.collection<Question>('questions').valueChanges();
+                }
 
   // : void 
   ngOnInit() {
     this.selectedVal3 ='Tests';
     
-    this.qs.getQuestions().subscribe((questions: any)  => {
-      console.log(questions); 
-      this.questions = questions;
+    // this.qs.getQuestions().subscribe((questions: any)  => {
+    //   console.log(questions); 
+    //   this.questions = questions;
+      
+    // }) ;
+
+    this.qs.getQuestions()
+    .subscribe((questions: any[])  => {
+      console.log("Questions:",questions); 
+      questions.forEach((question)=>{
+        console.log(question.id.trim(),this.route.snapshot.paramMap.get("id")?.trim(),question.id.trim() === this.route.snapshot.paramMap.get("id")?.trim())
+          if (question.id.trim() === this.route.snapshot.paramMap.get("id")?.trim()){
+            // // // Find the product that correspond with the id provided in route.
+            this.question = question;
+        }
+      })
       
     }) ;
+
+  
+ 
+
+  
+  this.questionDetail();
+
   } 
   
+
+  async questionDetail()  {
+    const id = this.route.snapshot.paramMap.get("id");
+    console.log(id); 
+  
+    if(id){
+      //this.question = await this.qs.getQDetails(id);
+    }
+    //this.question = id? await this.qs.getQDetails(id): '' ;
+    console.log("This.Question:", this.question);
+
+
+  }
 
   public onVal3Change(val3: string) {
     this.selectedVal3 = val3

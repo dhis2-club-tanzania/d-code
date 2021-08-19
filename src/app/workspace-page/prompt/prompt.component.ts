@@ -5,7 +5,7 @@ import {MatDialog} from '@angular/material/dialog';
 import { LoginComponent } from 'src/app/login/login.component';
 
 
-import { Question, questions } from 'src/app/models/Question';
+import { Question} from 'src/app/models/Question';
 import { QuestionsService } from 'src/app/services/questions.service';
 import { ActivatedRoute } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore/firestore';
@@ -65,8 +65,7 @@ constructor(public dialog: MatDialog,
 
   ) {
 
-    // const id: string = route.snapshot.paramMap.get('id');
-    // console.log('Animal ID form URL: ', id)
+  
    }
 openDialog() {
   this.dialog.open(LoginComponent);
@@ -81,48 +80,37 @@ openDialog() {
     // const qIdFromRoute = String(routeParams.get('qId'));
 
     this.qs.getQuestions()
-    .subscribe((questions: any)  => {
-      console.log(questions); 
-      this.questions = questions;
-      // if (questions.id){
-      //     // // // Find the product that correspond with the id provided in route.
-      //   this.questions = questions.find((question: { id: string; }) => question.id === this.questions.id);
-      // }
+    .subscribe((questions: any[])  => {
+      console.log("Questions:",questions); 
+      questions.forEach((question)=>{
+        console.log(question.id.trim(),this.route.snapshot.paramMap.get("id")?.trim(),question.id.trim() === this.route.snapshot.paramMap.get("id")?.trim())
+          if (question.id.trim() === this.route.snapshot.paramMap.get("id")?.trim()){
+            // // // Find the product that correspond with the id provided in route.
+            this.question = question;
+        }
+      })
       
     }) ;
 
   
-  // //         // First get the product id from the current route.
-  //   const routeParams = this.route.snapshot.paramMap;
-  //   const idFromRoute = String(routeParams.get('id'));
-
-  // this.qs.getQuestions()
-  // .subscribe((question: any)  => {
-  //   console.log(question); 
-  //   this.question = question;
-  //   if (question.id){
-  //        // Find the product that correspond with the id provided in route.
-  //    this.question = questions.find((question: { id: string; }) => question.id === idFromRoute);
-  //   }
-  //   }) ;
+ 
 
   
   this.questionDetail();
 
   }
 
-  questionDetail()  {
+  async questionDetail()  {
     const id = this.route.snapshot.paramMap.get("id");
-    console.log(id); //I see the doc id correctly
+    console.log(id); 
   
-    this.question = this.qs.getQDetails(id!) ;
-    console.log(this.question);//I can't see the correct doc data
+    if(id){
+      //this.question = await this.qs.getQDetails(id);
+    }
+    //this.question = id? await this.qs.getQDetails(id): '' ;
+    console.log("This.Question:", this.question);
 
 
-    // return this.qs.getQDetails(id!).then(question => {
-    //   console.log(this.question);
-    //   return this.question;  // ... and here
-    //     });
   }
 
 
@@ -130,9 +118,7 @@ openDialog() {
     this.selectedVal1 = val1
 
   }
-    // 5lSgn877rDPEdOTUw02x
 
-    // 895I382Yb9eJxQKZYgZn
 
 
 

@@ -17,20 +17,25 @@
             <!-- <mat-label>Autosize textarea</mat-label>  style="height: 340px;"-->
             <!-- <textarea matInput >
            //tests here    
-                </textarea> -->
+                </textarea>  *ngFor = "let question of questions  question " -->
 
-                <div *ngIf="$any(questions)?.length > 0;else noQuestions" >
-                    <ul *ngFor = "let question of questions " class="collection">
-                        <li   class="collection-question">
-                            <!-- <strong>{{question.Difficulty}}</strong>
-                            {{question.Category}} 
-                            <strong>{{question.Name}}</strong>
-                                {{question.Description}}  -->
-                                {{question.functionName}} 
-                                <!-- {{question.Tests?.Inputs}} -->
+                <div *ngIf=" question noQuestions" >
+                    <div  class="collection">
+                        <p   class="collection-question">
+                            
+                                <br/>
+                             functionName:   {{  question.functionName}} 
+                           
+                             
                         
-                        </li>
-                    </ul>
+                        </p>
+                        <div *ngFor = "let tests of question.tests ">
+                            <br/> tests:  {{  question.tests}}
+                            <!-- <div *ngFor = "let tests of tests.name ">
+                                <br/> tests:  {{  question.tests.name}}
+                             </div> -->
+                         </div>
+                    </div>
                 </div>
 
           <!-- </mat-form-field> -->
