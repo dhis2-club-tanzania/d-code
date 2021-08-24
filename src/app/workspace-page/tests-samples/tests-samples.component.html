@@ -21,20 +21,24 @@
 
                 <div *ngIf=" question noQuestions" >
                     <div  class="collection">
-                        <p   class="collection-question">
+                        <ol >
+                        <div *ngFor = "let tests of question.tests " class="collection-question" style="color: white;">
+                            <br/> 
+                           <li>
+                            <mat-card style="background-color: #1c3653; color: white;">
+                               {{  tests.name}}
+                                <br/> 
+                                <!-- <br/>  -->
+                               {{tests?.inputs | json}} <br/>
                             
-                                <br/>
-                             functionName:   {{  question.functionName}} 
-                           
-                             
+                           </mat-card>
                         
-                        </p>
-                        <div *ngFor = "let tests of question.tests ">
-                            <br/> tests:  {{  question.tests}}
-                            <!-- <div *ngFor = "let tests of tests.name ">
-                                <br/> tests:  {{  question.tests.name}}
-                             </div> -->
+                           </li>
+                            
+                          
                          </div>
+                        </ol>
+                         <br/>
                     </div>
                 </div>
 

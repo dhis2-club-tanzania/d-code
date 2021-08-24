@@ -12,9 +12,19 @@ export interface Question{
   name?:string;
   description?:string;
   functionName?:string;
-  output? : string
+  output? : string,
   
-  tests?:Array<any>;
-  // Tests?:Array<Map<Inputs, Output>>;
+  tests:[
+    {
+      name?: string,
+      
+      inputs?: { undefined: any }
+
+      output?: undefined,
+      variables?: undefined
+    }
+  ],
+  variables?: undefined
+
   }
 

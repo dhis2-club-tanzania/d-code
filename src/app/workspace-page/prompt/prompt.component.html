@@ -20,6 +20,7 @@
                 <!-- <textarea matInput >                 
                                 // Display Question Here.  
                     </textarea> -->
+                    <!-- <div matInput placeholder="No Question Selected"  appearance="fill " > </div> -->
 
                     <div *ngIf="question noQuestions" > 
                         <div  class="collection">
@@ -47,11 +48,30 @@
                                     </p>
                                     
                                     <br/>
-                                    <p style="color: #854e0b;">
+                                    <!-- <p style="color: #854e0b;">
                                       Using the function: {{question.functionName}}
-                                    </p>
+                                    </p> -->
+                                
+                                    <div fxLayout="row" fxLayoutAlign="start start" style="color: wheat;">
+                                        <p style = "margin-right: 4pt; color: whitesmoke;"> Using the function: </p>
+                                
+                                        <p style = "color: brown; margin-right: 4pt;">{{  question.functionName}}  </p>
+                                        (<div > 
+                                        
+                                            <div >
+                                                <p   style = "color: #ffa1a1;"> 
+                                                    {{question.variables}}
+                                                </p>
+                                            </div>   
+                                        </div>)
+                                    
+                                    </div>
+                          
                                     <br/>
-                                     
+                                    <!-- <div >
+                                        Expected Output: {{  question.output}}
+                                    </div> -->
+                                  
                                 </div>
                             </div>
                         </div>
@@ -59,7 +79,7 @@
 
             
             
-              <ng-template #noQuestions>
+              <ng-template #noQuestions style="color: darkgrey;">
                 <hr>
                 <h5>There are no questions to list</h5>
             </ng-template> 

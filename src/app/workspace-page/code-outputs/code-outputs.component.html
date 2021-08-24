@@ -18,31 +18,39 @@
     </mat-button-toggle-group>
     <div style="background-color: #030e1a" class="answer-card1">
 
-        <!-- <div *ngIf=" question noQuestions" >
+        <div *ngIf=" question noQuestions" >
             <div  class="collection">
-                <p   class="collection-question">
+                <div   class="collection-question">
                     
                         <br/>
-                     functionName:   {{  question.functionName}} 
-                     <br/> tests:  {{  question.tests}}
+                      <ol>
+                        
+                        <div *ngFor = "let tests of question.tests ">
+                            <li>
+                                <mat-card style="background-color: #1c3653; color: white;">
+                                    Test name: {{  tests.name}}
+                                    <br/> 
+                                Expected Output: {{  tests.output | json}}
+                                <br/> 
+                            </mat-card>
+                            <br/> 
+                          </li>
+                            <!-- Expected Output: {{  tests.output | json}} -->
+                        </div>
+                      </ol>  
+                    
+                     <br/>
                 
-                </p>
+                    </div>
             </div>
         </div>
 
         <ng-template #noQuestions>
             <hr>
             <h5>There are no questions to list</h5>
-        </ng-template>  -->
+        </ng-template> 
 
-
-        <!-- <mat-form-field  appearance="fill" class="example-full-width">  -->
-            
-            <!-- <mat-label>Autosize textarea</mat-label>  style="height: 340px;"-->
-
-            <!-- <input type="tel" matInput placeholder="555-555-1234">
-                
-          </mat-form-field> -->
+    
 
     </div>
 </div> 

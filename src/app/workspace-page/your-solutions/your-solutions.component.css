@@ -57,9 +57,9 @@
      color: white;
  }
 
- mat-form-field {
+ /* mat-form-field {
     margin-right: 6px;
-  }
+  } */
 
   .example-form {
     min-width: 150px;
@@ -82,7 +82,7 @@
   background-color: #00000000;
 }
 
-.wcard{
+/* .wcard{
     min-width: 460px;
      min-height: 405px;
      background-color: #030e1a;
@@ -96,13 +96,13 @@
   height: 369px;
   color: white;
   background-color: #00000000;
-}
+} */
 
 
 
  /* fullscreen-card css */
 
- #myDiv1.fullscreen{
+ /* #myDiv1.fullscreen{
     z-index: 9999; 
     width: 90%; 
     height: 100%; 
@@ -179,4 +179,4 @@
    min-height: 609px;
    color: white;
    background-color: #00000000;
-  }
+  } */

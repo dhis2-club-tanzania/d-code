@@ -133,4 +133,19 @@ export class CodeOutputsComponent implements OnInit {
   
   }
 
+  // public runCode(){
+  //   var template = "var exports ={}; {code};return exports;"
+  //   var func = Function(template.split("{code}").join("Code"));
+  //   var results = [];
+  //   this.question?.tests.forEach((test)=>{
+  //     var arg = Object.keys(test.inputs).map((inputKey)=>test.inputs[inputKey])
+  //     var result = func()["functionName"].apply(null,Array.prototype.slice.call(arg,1));
+  //     results.push({
+  //       name: test.name,
+  //       pass: result == test.output
+  //     })
+  //   })
+  // }
+  // var func = Function("var exports ={}; function maxProfitWithKTransactions(prices, k) {};exports.maxProfitWithKTransactions = maxProfitWithKTransactions;return exports;") 
+
 }

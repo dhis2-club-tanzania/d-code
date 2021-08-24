@@ -93,7 +93,7 @@ export class QuestionsService {
       .doc(id)
       .ref.get();
       console.log("Doc:",doc);
-    return doc.data();
+    return Object.assign(doc.data(), {id: doc.id} );
   }
  
 }
