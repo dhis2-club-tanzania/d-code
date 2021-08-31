@@ -226,6 +226,7 @@ a:hover.tip span {
 
 
 /* .workspace-card.fullscreen{
+
   
   background-color: #030e1a;
 }
@@ -293,3 +294,14 @@ background-color: #00000000;
  color: white;
  background-color: #00000000;
 } */
+
+
+
+.my-code-editor.editor-container{
+   
+    height: calc(100vh - 100px);
+  
+}
+
+
+

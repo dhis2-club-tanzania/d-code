@@ -18,10 +18,9 @@ export interface Question{
     {
       name?: string,
       
-      inputs?: { undefined: any }
+      inputs?: undefined,
 
-      output?: undefined,
-      variables?: undefined
+      output?: undefined
     }
   ],
   variables?: undefined

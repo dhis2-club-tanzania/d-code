@@ -12,23 +12,25 @@ import { QuestionsComponent } from './questions-page/questions/questions.compone
 
 
    const routes: Routes = [
-    { path: '', redirectTo: '/homepage-component', pathMatch: 'full' },
+    { path: '', redirectTo: '/homepage', pathMatch: 'full' },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent},
-    { path: 'user-component', component: UserComponent, canActivate: [AuthGuardService]},
-   { path: 'homepage-component',
+    { path: 'user-profile', component: UserComponent, canActivate: [AuthGuardService]},
+   { path: 'homepage',
    component: HomepageComponent
    },
-   { path: 'questions-page-component',
+   { path: 'questions-page',
     component: QuestionsPageComponent, canActivate: [AuthGuardService]
     },
-    { path: 'workspace-page-component',
+    { path: 'workspace-page',
       component: WorkspacePageComponent, canActivate: [AuthGuardService]
       },
-     { path: 'register-component',
-     component:  RegisterComponent
+    { path: '',
+     component: QuestionsComponent 
     },
-
+    { path: 'questions/:id',
+     component: WorkspacePageComponent 
+    },
     { path: 'questions',
     component:  QuestionsComponent
       }

@@ -12,7 +12,7 @@
                         <!--on large screen-->
                     <div  fxLayout="row" fxLayoutAlign="start stretch" style=" max-width: 200px;" >
                 
-                            <button  mat-raised-button routerLink="/homepage-component" routerLinkActive="active" style="background-color:#37045a; min-width: 115px;"  >
+                            <button  mat-raised-button routerLink="/homepage" routerLinkActive="active" style="background-color:#37045a; min-width: 115px;"  >
                         
                                 <div  style="background-image: url('/assets/images/logo.png') !important;
                                     /* background-color: #808c99e8;  */
@@ -32,7 +32,7 @@
                             </button>
                             
                             <button mat-raised-button class="example-icon " matTooltip="Questions List" 
-                            routerLink="/questions-page-component" routerLinkActive="active" >
+                            routerLink="/questions-page" routerLinkActive="active" >
                                 <mat-icon>list</mat-icon>
                             </button>
             
@@ -219,6 +219,7 @@
         </div>
     
         <br/>
+       
         
 
 
@@ -244,7 +245,9 @@
     
             </mat-grid-list> -->
 
-            <div fxLayoutGap *ngIf="fullscreen" > 
+            
+            <div fxLayoutGap  > 
+                <!-- on *ngIf="fullscreen"-->
                 <div fxShow="true" fxHide.lt-md="true"   >
                         <!--Top row-->
                         <div fxLayout="row" fxLayoutAlign="start center" >
@@ -286,7 +289,7 @@
                         </div>
                 </div>
 
-                
+                <!--not on *ngIf="fullscreen"-->
                 <div fxShow="true" fxHide.gt-sm="true"   >
                     <!--Top row-->
                     <div fxLayout="column" fxLayoutAlign="start center" >
@@ -301,6 +304,29 @@
                             <app-your-solutions ></app-your-solutions>
                         </div>
 
+                        <br/>
+
+                        <!-- <ngx-monaco-editor [options]="editorOptions" [(ngModel)]="code" (init)="editorInit($event)"></ngx-monaco-editor>
+                        <ngx-monaco-diff-editor [options]="editorOptions" [original]="originalCode" [modified]="code"></ngx-monaco-diff-editor> -->
+
+
+                        <div style="height: 405px">
+
+                            code : {{ code }} <br/>
+                            options: {{ editorOptions | json}} <br/>
+                            model: {{ model | json}}
+                            <ngx-monaco-editor  [options]="editorOptions"
+                             ></ngx-monaco-editor>
+                            
+                        </div>
+                        <ngx-monaco-diff-editor [options]="options" [originalModel]="originalModel" [modifiedModel]="modifiedModel"></ngx-monaco-diff-editor>
+
+                        <script>
+                            require.config({ paths: { 'vs': '/monaco-editor/min/vs' }})
+                            require(['vs/editor/editor.main'], function onMonacoLoaded(){
+                            console.log(monaco);
+                            });
+                        </script>
                     </div>
 
                         <br/> 

@@ -15,39 +15,16 @@
                 </button>
 
             <button mat-button style="border-radius: 0pt 0pt;"  > <mat-icon>replay</mat-icon> </button>
-            <button mat-button style="border-radius: 0pt 0pt; background-color: #0e639c;"  >Run Code</button>
+            <button mat-button style="border-radius: 0pt 0pt; background-color: #0e639c;" (click)="runCode()" >Run Code</button>
         </mat-button-toggle-group>
     </div>
     <div style="background-color: #030e1a; color: #f8f8f8;" class="answer-card"   >
-            
-            <!-- <mat-form-field  appearance="fill" class="example-full-width">  -->
-            
-                <!-- <mat-label>Autosize textarea</mat-label>  style="height: 340px;"   *ngIf=" question noQuestions"--> 
-                <!-- <textarea matInput>
-                         
-                    function  {{  question.functionName}}(inputs: {{question.tests}}) {
-
-
-                                // Write your code here
-
-
-                    }
-
-                    
-
-
-                        //Do not edit the line below
-
-                        exports.{{question.functionName}} = {{question.functionName}};
-                         
-                    </textarea>
-              </mat-form-field> -->
 
         <div *ngIf=" question noQuestions" >
             <div  class="collection">
                 <div  class="collection-question">      
                  <br/>
-       
+                
                 <mat-form-field  appearance="fill" class="example-full-width"> 
                             <!-- <mat-label style="color: wheat; font-size: 15pt;">
                                 <div fxLayout="row" fxLayoutAlign="start start">
@@ -68,8 +45,8 @@
                                 </div>
                             </mat-label>   -->
                  <br/>
-                <textarea matInput style="min-height: 240px; color: wheat; text-align: left; align-content: flex-start;">
-                    function {{  question.functionName}}({{question.variables }}) {
+                <textarea matInput style="min-height: 240px; color: wheat; text-align: left; align-content: flex-start;"  [(ngModel)]="code">
+                    <!-- function {{  question.functionName}}({{question.variables }}) {
                                     
                         // Write your code here
 
@@ -78,7 +55,7 @@
 
                     //You can not edit the line below
 
-                    exports.{{  question.functionName}} = {{  question.functionName}};
+                    exports.{{  question.functionName}} = {{  question.functionName}}; -->
                 </textarea>
                          
                 </mat-form-field>

@@ -12,7 +12,7 @@
                         <mat-card class="example-card" style="width: auto;  background-color: #f8f8f802; border: none;" >
                           <h2 style="  font-weight:bolder; font-size: 50pt; color: #2381fc;">d-code</h2>
                           <p style="padding-inline: 20px; line-height: 1.5;">
-                            The ultimate resource to prepare for coding interviews.
+                            The ultimate resource to share your knowledge on algorithms.
                             <br/> Everything you need, in one streamlined platform.
                             </p>
                         </mat-card >
@@ -68,7 +68,7 @@
 
                     <br/>
                     <button mat-raised-button color ="accent" style="background-color: #001f3f; font-weight: bold;" 
-                    routerLink="/questions-page-component" routerLinkActive="active" (click)="pageFunction()"
+                    routerLink="/questions-page" routerLinkActive="active" 
                     *ngIf="authservice.userData as user">View D-CODE Questions</button>
                     <ng-template #showLogin>
                       <button mat-raised-button (click)="openDialog()" style="background-color: #001f3f; font-weight: bold;">View D-CODE Questions</button>
@@ -88,7 +88,7 @@
 
                       <br/>
                       <button mat-raised-button style="color: #001f3f; font-weight: bold;"
-                      routerLink="/workspace-page-component" routerLinkActive="active" (click)="pageFunction()"
+                      routerLink="/workspace-page" routerLinkActive="active" 
                       *ngIf="authservice.userData as user">View D-CODE Workspace</button>
                       <ng-template #showLogin>
                         <button mat-raised-button (click)="openDialog()" style="color: #001f3f; font-weight: bold;">View D-CODE Workspace</button>

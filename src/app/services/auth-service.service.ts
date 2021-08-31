@@ -44,7 +44,7 @@ export class AuthServiceService {
                 localStorage.setItem('user',"email");
                 JSON.parse(localStorage.getItem('user')!);
               }
-            })
+            });
       }
 
            // Returns true when user is looged in and email is verified
@@ -68,7 +68,7 @@ export class AuthServiceService {
       try {
         const result = await this.afAuth.signInWithPopup(provider);
         this.ngZone.run(() => {
-          this.router.navigate(['user-component']);
+          this.router.navigate(['homepage']);
         });
         this.SetUserData(result.user);
       } catch (error) {
@@ -99,7 +99,7 @@ export class AuthServiceService {
           SignOut() {
             return this.afAuth.signOut().then(() => {
               localStorage.removeItem('user');
-              this.router.navigate(['login']);
+              this.router.navigate(['homepage']);
             })
           }
 

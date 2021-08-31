@@ -7,7 +7,7 @@
         </button>
 
 
-      <button mat-button  routerLink="/homepage-component"
+      <button mat-button  routerLink="/homepage"
 
        routerLinkActive="active" (click)="pageFunction()">
 
@@ -41,13 +41,13 @@
                   
                   <span class="example-spacer"></span>
                   <button mat-button style="background-color: #cfd8e2; margin-left: 4px;"
-                  routerLink="/questions-page-component" routerLinkActive="active"
-                  (click)="pageFunction()">Questions</button> 
+                  routerLink="/questions-page" routerLinkActive="active"
+                  >Questions</button> 
                   <span class="example-spacer"></span>
-                  <button mat-button style="background-color: #cfd8e2; margin-left: 4px; " 
+                  <!-- <button mat-button style="background-color: #cfd8e2; margin-left: 4px; " 
                   routerLink="/workspace-page-component" routerLinkActive="active" 
                   (click)="pageFunction()">WorkSpace</button> 
-                  <span class="example-spacer"></span>
+                  <span class="example-spacer"></span> -->
     
                     <button mat-button  class="nav-link"   (click)="authservice.SignOut()" 
                     style="background-color: #001f3f; color: white; margin-left: 4px;">
@@ -84,28 +84,28 @@
            
                 <div fxLayout="column" fxLayoutAlign="space-around none" *ngIf="authservice.userData as user; else showLogin">
                   <span class="example-spacer"></span>
-                  <p style="text-align: center; background-color: #cfd8e2; ">Hi, {{ user.displayName }}</p>
+                  <button mat-button style="text-align: center; background-color: #cfd8e2; ">Hi, {{ user.displayName }}</button>
                   <!-- <span class="example-spacer"></span> -->
-                  <button mat-raised-button style="background-color: #cfd8e2;"  
-                  routerLink="/homepage-component" routerLinkActive="active" 
-                  (click)="pageFunction()">Home</button>
-                  <button mat-button style="background-color: #cfd8e2; margin-left: 4px;"
-                  routerLink="/questions-page-component" routerLinkActive="active"
-                  (click)="pageFunction()">Questions</button> 
-                  <span class="example-spacer"></span>
+                  <button mat-button style="background-color: #cfd8e2;"  
+                  routerLink="/homepage" routerLinkActive="active" 
+                  >Home</button>
+                  <button mat-button style="background-color: #cfd8e2;"
+                  routerLink="/questions-page" routerLinkActive="active"
+                  >Questions</button> 
+                  <!-- <span class="example-spacer"></span>
                   <button mat-button style="background-color: #cfd8e2; margin-left: 4px; " 
-                  routerLink="/workspace-page-component" routerLinkActive="active" 
-                  (click)="pageFunction()">WorkSpace</button> 
+                  routerLink="/workspace-page" routerLinkActive="active" 
+                  (click)="pageFunction()">WorkSpace</button>  -->
                   <span class="example-spacer"></span>
     
-                  <button mat-button class="nav-link active" style="background-color: #cfd8e2;  margin-left: 4px;"
-                  routerLink="/user-component" routerLinkActive="active" >
-                  <mat-icon>account_box</mat-icon>User Profile
+                  <button mat-button class="nav-link active" style="background-color: #cfd8e2;  "
+                  routerLink="/user-profile" routerLinkActive="active" >
+                  <mat-icon>account_box</mat-icon>  User Profile
                   </button>
                   
                   <button mat-button  class="nav-link"   (click)="authservice.SignOut()" 
-                    style="background-color: #001f3f; color: white; margin-left: 4px;">
-                     <mat-icon>logout</mat-icon>Log out
+                    style="background-color: #001f3f; color: white;">
+                     <mat-icon>logout</mat-icon>  Log out
                   </button>
                 </div>
                 <ng-template #showLogin>

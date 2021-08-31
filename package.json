@@ -25,6 +25,8 @@
     "angularx-social-login": "^4.0.1",
     "bootstrap": "^5.1.0",
     "firebase": "^8.9.1",
+    "monaco-editor": "^0.27.0",
+    "ngx-monaco-editor": "^6.0.0",
     "ngx-textarea-autosize": "^2.0.3",
     "rxjs": "~6.6.0",
     "rxjs-compat": "^6.6.7",

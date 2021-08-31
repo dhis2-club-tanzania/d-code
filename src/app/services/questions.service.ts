@@ -8,7 +8,6 @@ import { Question } from '../models/Question';
 
 
 import { DocumentChangeType, DocumentReference, DocumentData } from '@angular/fire/firestore';
-// import { ReplaySubject } from 'rxjs';
 
 
 
@@ -51,6 +50,7 @@ export class QuestionsService {
 
         // private questionsDoc: AngularFirestoreDocument<Question>;
 
+ 
 
   constructor(public afs:  AngularFirestore) { 
           this.questions = this.afs.collection<Question>('Questions').valueChanges();

@@ -55,7 +55,7 @@ export class ToolbarComponent implements OnInit {
     async SignOut() {
       await this.afAuth.signOut();
       localStorage.removeItem('user');
-      this.router.navigate(['login']);
+      this.router.navigate(['homepage']);
     }
 
 

@@ -39,7 +39,7 @@ import { FacebookLoginProvider, SocialLoginModule, SocialAuthServiceConfig } fro
 import { GoogleLoginProvider } from 'angularx-social-login';
 import { QuestionsComponent } from './questions-page/questions/questions.component';
 import { QuestionsService } from './services/questions.service';
-import { AuthGuardService } from './guards/auth-guard.service';
+// import { AuthGuardService } from './guards/auth-guard.service';
 // import {  AngularFirestoreDocument } from '@angular/fire/firestore';
 import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
@@ -50,7 +50,56 @@ import { CodeOutputsComponent } from './workspace-page/code-outputs/code-outputs
 import {MatGridListModule} from '@angular/material/grid-list';
 import {TextFieldModule} from '@angular/cdk/text-field';
 import { TextareaAutosizeModule } from 'ngx-textarea-autosize';
+import { MonacoEditorModule, NgxMonacoEditorConfig, NGX_MONACO_EDITOR_CONFIG} from 'ngx-monaco-editor';
+// import { MONACO_PATH } from '@materia-ui/ngx-monaco-editor';
 
+// import {   } from '@materia-ui/ngx-monaco-editor';
+
+
+export function onMonacoLoad() {
+
+ 
+  console.log((window as any).monaco);
+
+  const uri = monaco.Uri.parse('a://b/foo.json');
+  monaco.languages.json.jsonDefaults.setDiagnosticsOptions({
+    validate: true,
+    schemas: [{
+      uri: 'http://myserver/foo-schema.json',
+      fileMatch: [uri.toString()],
+      schema: {
+        type: 'object',
+        properties: {
+          p1: {
+            enum: ['v1', 'v2']
+          },
+          p2: {
+            $ref: 'http://myserver/bar-schema.json'
+          }
+        }
+      }
+    }, {
+      uri: 'http://myserver/bar-schema.json',
+      fileMatch: [uri.toString()],
+      schema: {
+        type: 'object',
+        properties: {
+          q1: {
+            enum: ['x1', 'x2']
+          }
+        }
+      }
+    }]
+  });
+
+}
+
+
+const monacoConfig: NgxMonacoEditorConfig = {
+  baseUrl: 'assets',
+  defaultOptions: { scrollBeyondLastLine: false },
+  onMonacoLoad
+};
 
 
 @NgModule({
@@ -68,33 +117,19 @@ import { TextareaAutosizeModule } from 'ngx-textarea-autosize';
     MatMenuModule,  MatDialogModule, MatCardModule,
     FlexLayoutModule, MatSelectModule, MatFormFieldModule,
     MatInputModule,  MatTabsModule, MatTooltipModule,
+    // MonacoEditorModule.forRoot(),
     MatButtonToggleModule, MatCheckboxModule, MatDividerModule,
     MatListModule,
     FormsModule, ReactiveFormsModule, MatSidenavModule,
      AngularFireDatabaseModule,
-     RouterModule.forRoot([
-      { path: '', redirectTo: '/homepage-component', pathMatch: 'full' },
-      { path: 'login', component: LoginComponent },
-      { path: 'register', component: RegisterComponent},
-      { path: 'user-component', component: UserComponent, canActivate: [AuthGuardService]},
-      { path: 'homepage-component',
-      component: HomepageComponent
-      },
-      { path: 'questions-page-component',
-       component: QuestionsPageComponent, canActivate: [AuthGuardService]
-       },
-       { path: 'workspace-page-component',
-         component: WorkspacePageComponent, canActivate: [AuthGuardService]
-         },
-         { path: '', component: QuestionsComponent },
-         { path: 'questions/:id', component: WorkspacePageComponent }
-        
-     ]),
+     RouterModule,
+ 
    AngularFireModule.initializeApp(environment.firebaseConfig, 'yesplease'),
    AngularFirestoreModule, // imports firebase/firestore, only needed for database features  , 'yesplease'
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
     SocialLoginModule, MatTableModule, MatSortModule,
-    MatGridListModule, TextFieldModule, TextareaAutosizeModule
+    MatGridListModule, TextFieldModule, TextareaAutosizeModule,
+    MonacoEditorModule.forRoot(monacoConfig) // use forRoot() in main app module only.
     // AngularFirestore
   
   ],
@@ -124,7 +159,13 @@ import { TextareaAutosizeModule } from 'ngx-textarea-autosize';
         // }
       ]
     } as SocialAuthServiceConfig,
-  }    
+  
+} ,
+// {
+//   provide: MONACO_PATH,
+//   useValue: 'https://unpkg.com/monaco-editor@0.24.0/min/vs'
+// },
+// { provide: NGX_MONACO_EDITOR_CONFIG, useValue: monacoConfig }   
   ],
   bootstrap: [AppComponent]
 })
