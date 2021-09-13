@@ -81,9 +81,9 @@ openDialog() {
 
     this.qs.getQuestions()
     .subscribe((questions: any[])  => {
-      console.log("Questions:",questions); 
+      // console.log("Questions:",questions); 
       questions.forEach((question)=>{
-        console.log(question.id.trim(),this.route.snapshot.paramMap.get("id")?.trim(),question.id.trim() === this.route.snapshot.paramMap.get("id")?.trim())
+        // console.log(question.id.trim(),this.route.snapshot.paramMap.get("id")?.trim(),question.id.trim() === this.route.snapshot.paramMap.get("id")?.trim())
           if (question.id.trim() === this.route.snapshot.paramMap.get("id")?.trim()){
             // // // Find the product that correspond with the id provided in route.
             this.question = question;
@@ -96,22 +96,22 @@ openDialog() {
  
 
   
-  this.questionDetail();
+  // this.questionDetail();
 
   }
 
-  async questionDetail()  {
-    const id = this.route.snapshot.paramMap.get("id");
-    console.log(id); 
+  // async questionDetail()  {
+  //   const id = this.route.snapshot.paramMap.get("id");
+  //   console.log(id); 
   
-    if(id){
-      //this.question = await this.qs.getQDetails(id);
-    }
-    //this.question = id? await this.qs.getQDetails(id): '' ;
-    console.log("This.Question:", this.question);
+  //   if(id){
+  //     //this.question = await this.qs.getQDetails(id);
+  //   }
+  //   //this.question = id? await this.qs.getQDetails(id): '' ;
+  //   console.log("This.Question:", this.question);
 
 
-  }
+  // }
 
 
   public onVal1Change(val1: string) {

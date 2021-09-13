@@ -14,19 +14,13 @@
         </mat-button-toggle-group>
         </div>
         <div style="background-color: #030e1a;" class="answer-card"> 
-            <!-- <mat-form-field  appearance="fill" class="example-full-width">  -->
-            
-                <!-- <mat-label>Autosize textarea</mat-label>  style="height: 340px;"-->
-                <!-- <textarea matInput >                 
-                                // Display Question Here.  
-                    </textarea> -->
-                    <!-- <div matInput placeholder="No Question Selected"  appearance="fill " > </div> -->
+    
 
-                    <div *ngIf="question noQuestions" > 
+                    <div *ngIf="question noQuestions" style="margin-left: 12px; margin-right: 12px;"> 
                         <div  class="collection">
                                 <div   class="collection-question">
                                     <br/>
-                                    <div fxLayout="row" fxLayoutAlign="space-evenly" style="color: bisque;" >
+                                    <div fxLayout="row" fxLayoutAlign="space-evenly"  >
                                         <p >
                                             Difficulty:  {{  question.difficulty}}
                                           </p>   
@@ -48,14 +42,12 @@
                                     </p>
                                     
                                     <br/>
-                                    <!-- <p style="color: #854e0b;">
-                                      Using the function: {{question.functionName}}
-                                    </p> -->
+                             
                                 
                                     <div fxLayout="row" fxLayoutAlign="start start" style="color: wheat;">
                                         <p style = "margin-right: 4pt; color: whitesmoke;"> Using the function: </p>
                                 
-                                        <p style = "color: brown; margin-right: 4pt;">{{  question.functionName}}  </p>
+                                        <p style = " margin-right: 4pt;">{{  question.functionName}}</p>
                                         (<div > 
                                         
                                             <div >
@@ -68,14 +60,12 @@
                                     </div>
                           
                                     <br/>
-                                    <!-- <div >
-                                        Expected Output: {{  question.output}}
-                                    </div> -->
+                                
                                   
                                 </div>
                             </div>
                         </div>
-              <!-- </mat-form-field> -->
+           
 
             
             
@@ -84,12 +74,7 @@
                 <h5>There are no questions to list</h5>
             </ng-template> 
             
-              <!-- {{question.Description}} -->
-                        <!-- {{question.functionName}} -->
-                        <!-- {{question.Tests?.Inputs}} -->
-
-                        <!-- *ngIf="$any(questions)?.length > 0;else noQuestions" > 
-                             <div *ngFor = "let question of questions "  -->
+      
 
         </div>
  </div>        

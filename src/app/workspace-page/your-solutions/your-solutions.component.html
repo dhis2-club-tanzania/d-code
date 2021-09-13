@@ -1,28 +1,31 @@
  <!-- Your Solutions Space-->
- <div fxLayout="column" fxLayoutAlign="start stretch" class="workspace-card"   id="theDiv" > <!--*ngIf="fullscreen"-->
+ <div fxLayout="column" fxLayoutAlign="start stretch" class="workspace-card" [ngClass]="{'workspace-card': fullscreen, 'fullscreen': fullscreen_exit}"   id="theDiv" > <!--*ngIf="fullscreen"-->
+ 
     <div >
         <mat-button-toggle-group appearance="legacy" fxLayout="row" fxLayoutAlign="start start"
          #group="matButtonToggleGroup" [value]="selectedVal2" (change)="onVal2Change(group.value)">
             <mat-button-toggle  value="Your Solutions">Your Solutions</mat-button-toggle>
             <span class="example-spacer"> </span>
-            <button mat-button style="border-radius: 0pt 0pt;"
-            (click)="fullscreenFunction()" *ngIf="fullscreen"  id="theButton"> <!--(click)="fullscreenFunction()" *ngIf="fullscreen"-->
+            <button mat-button style="border-radius: 0pt 0pt;" fxShow="true" fxHide.lt-md="true" 
+            (click)="fullscreenFunction()" *ngIf="fullscreen"  matTooltip="fullscreen"> <!--(click)="fullscreenFunction()" *ngIf="fullscreen"-->
                 <mat-icon>fullscreen</mat-icon> </button>
 
-                <button mat-button style="border-radius: 0pt 0pt;" 
-                *ngIf="fullscreen_exit" (click)="fullscreen_exitFunction()" >
+                <button mat-button style="border-radius: 0pt 0pt;" fxShow="true" fxHide.lt-md="true" 
+                *ngIf="fullscreen_exit" (click)="fullscreen_exitFunction()" matTooltip="fullscreen_exit"> <!--*ngIf="fullscreen_exit" (click)="fullscreen_exitFunction()" -->
                  <mat-icon>fullscreen_exit</mat-icon> 
                 </button>
 
-            <button mat-button style="border-radius: 0pt 0pt;"  > <mat-icon>replay</mat-icon> </button>
+            <button mat-button style="border-radius: 0pt 0pt;" (click) = "refresh()" matTooltip="refresh" > <mat-icon>replay</mat-icon> </button>
             <button mat-button style="border-radius: 0pt 0pt; background-color: #0e639c;" (click)="runCode()" >Run Code</button>
         </mat-button-toggle-group>
     </div>
-    <div style="background-color: #030e1a; color: #f8f8f8;" class="answer-card"   >
+    
+
+    <div style="background-color: #030e1a; color: #f8f8f8;" class="answer-card"  [ngClass]="{'answer-card': fullscreen, 'fullscreen': fullscreen_exit}" >
 
         <div *ngIf=" question noQuestions" >
             <div  class="collection">
-                <div  class="collection-question">      
+                <div  class="collection-question" >      
                  <br/>
                 
                 <mat-form-field  appearance="fill" class="example-full-width"> 
@@ -45,13 +48,15 @@
                                 </div>
                             </mat-label>   -->
                  <br/>
-                <textarea matInput style="min-height: 240px; color: wheat; text-align: left; align-content: flex-start;"  [(ngModel)]="code">
+                <textarea matInput style="min-height: 240px; color: wheat; text-align: left; align-content: flex-start; "  [(ngModel)]="code" >
+
+                    {{code}}
                     <!-- function {{  question.functionName}}({{question.variables }}) {
                                     
                         // Write your code here
 
                     }
-
+                    *ngFor = "let tests of question.tests "
 
                     //You can not edit the line below
 

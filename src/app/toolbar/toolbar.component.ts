@@ -18,15 +18,15 @@ export class ToolbarComponent implements OnInit {
   // isLoggedIn= false;
   showFiller = false;
 
-  home:boolean=true;
+  // home:boolean=true;
   // login:boolean=true;
   // blogout:boolean=false;
 
 
-  pageFunction(){
-    this.home=false;
-    // this.isSignedIn = false
-}
+//   pageFunction(){
+//     this.home=false;
+//     // this.isSignedIn = false
+// }
 
 @Output() isLogout = new EventEmitter
   constructor(public dialog: MatDialog,

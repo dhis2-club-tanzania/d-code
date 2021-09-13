@@ -1,6 +1,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-<div style=" background-color: #03213d; min-width: 100%;" > <!--   022949 style=" margin-left: 10px; margin-right: 10px; height: 700px; background-color: #03213d;" -->
+<div  [ngClass]="{'dark': dark, 'light': !dark}" class="dark"> <!--   022949 style=" margin-left: 10px; margin-right: 10px; height: 700px; background-color: #03213d;" -->
 
 
 
@@ -8,12 +8,13 @@
     
         <!--Buttons-Header max & min  fxLayoutGap-->
 
-        <div style=" margin-left: 10px; margin-right: 10px; ">
-                        <!--on large screen-->
+        <div style=" margin-left: 10px; margin-right: 10px; " >
+                        <!--on both screen-->
                     <div  fxLayout="row" fxLayoutAlign="start stretch" style=" max-width: 200px;" >
                 
-                            <button  mat-raised-button routerLink="/homepage" routerLinkActive="active" style="background-color:#37045a; min-width: 115px;"  >
+                            <button  mat-raised-button routerLink="/homepage" routerLinkActive="active" style="background-color:#030e1a; min-width: 115px;"  >
                         
+
                                 <div  style="background-image: url('/assets/images/logo.png') !important;
                                     /* background-color: #808c99e8;  */
                                     min-width: 115px;
@@ -31,24 +32,31 @@
                         
                             </button>
                             
-                            <button mat-raised-button class="example-icon " matTooltip="Questions List" 
+                            <button mat-raised-button class="example-icon" matTooltip="Questions List" [ngClass]="{'button': dark, 'light': !dark}" class="button"
                             routerLink="/questions-page" routerLinkActive="active" >
                                 <mat-icon>list</mat-icon>
                             </button>
+
+
+
             
             <!--(click)="button_headerFunction()"-->
-                            <button mat-raised-button fxShow="true" fxHide.gt-sm="true"  #small style="margin-right: 20px;" (click)="button_headerFunction()">
+                            <button mat-raised-button fxShow="true" fxHide.gt-sm="true"  #small style="margin-right: 20px;"   (click)="button_headerFunction()"
+                            [ngClass]="{'button': dark, 'light': !dark}" class="button" > <!--(click)="button_headerFunction()"-->
                                 <mat-icon>more_horiz</mat-icon>
                             </button>
+
+
                                 <!-- On Larger Screens-->
-                            <div fxShow="true" fxHide.lt-md="true"   ><!-- fxShow="true" fxHide.lt-md="true"  -->
-                                <button mat-raised-button class="example-icon" matTooltip="Next Question" > 
+                            <div fxShow="true" fxHide.lt-md="true"  id="header" [ngClass]="{'old': button_header, 'new': ! button_header}" class="old"><!-- fxShow="true" fxHide.lt-md="true"  -->
+                                <button mat-raised-button class="example-icon" matTooltip="Next Question" 
+                                [ngClass]="{'button': dark, 'light': !dark}" class="button"> 
             
                                     <mat-icon>arrow_forward</mat-icon> 
                     
                                 </button>
                                 
-                                <button mat-raised-button  matTooltip="Workspace" style="min-width: 130px;" > 
+                                <button mat-raised-button  matTooltip="Workspace" style="min-width: 130px;" [ngClass]="{'button': dark, 'light': !dark}" class="button" > 
                                     
                                     <mat-select [(value)]="selectedWLayout" disableOptionCentering  panelClass="myPanelClass" > 
                                         
@@ -58,7 +66,8 @@
                                     </mat-select> 
                                 </button>
                             
-                                <button mat-raised-button matTooltip="Programming Languages" style="min-width: 130px;" > 
+                                <button mat-raised-button matTooltip="Programming Languages" style="min-width: 130px;"
+                                [ngClass]="{'button': dark, 'light': !dark}" class="button" > 
                                    
                                     <mat-select name="Programming Languages" disableOptionCentering  panelClass="myPanelClass" 
                                     [(value)]="selectedLanguage" > 
@@ -70,7 +79,8 @@
                                     </mat-select>
                                 </button>
                             
-                                <button mat-raised-button matTooltip="Editor Font Size" style="min-width: 90px;" >  
+                                <button mat-raised-button matTooltip="Editor Font Size" style="min-width: 90px;"
+                                [ngClass]="{'button': dark, 'light': !dark}" class="button" >  
                     
                                     <mat-select [(value)]="selectedFont" disableOptionCentering  panelClass="myPanelClass"> 
                                         
@@ -81,7 +91,8 @@
                                     </mat-select>
                                 </button>
                             
-                                <button mat-raised-button matTooltip="Editor Key Maps" style="min-width: 110px;" >
+                                <button mat-raised-button matTooltip="Editor Key Maps" style="min-width: 110px;"
+                                [ngClass]="{'button': dark, 'light': !dark}" class="button" >
                                 
                                     <mat-select [(value)]="selectedEditor" disableOptionCentering  panelClass="myPanelClass" > 
                                         
@@ -92,11 +103,19 @@
                                     </mat-select>
                                 </button>
                                 
-                                <button mat-raised-button matTooltip="light theme"  >
+                                <button *ngIf = "dark" mat-raised-button matTooltip="light theme"  (click)="darkFunction()"
+                                [ngClass]="{'button': dark, 'light': !dark}" class="button">
                                     <mat-icon>sunny</mat-icon> 
                                 </button>
+
+                                <button *ngIf = "light" mat-raised-button matTooltip="dark theme"  (click)="lightFunction()"
+                                [ngClass]="{'button': dark, 'light': !dark}" class="button">
+                                    
+                                <mat-icon>brightness_3</mat-icon>
+                                </button>
                                 
-                                <button mat-raised-button matTooltip="Syntax Highlighting Theme" style="min-width: 110px;"  >  
+                                <button mat-raised-button matTooltip="Syntax Highlighting Theme" style="min-width: 110px;" 
+                                [ngClass]="{'button': dark, 'light': !dark}" class="button" >  
                             
                                     <mat-select  [(value)]="selectedSyntaxTheme" disableOptionCentering  panelClass="myPanelClass" > 
                                         
@@ -107,50 +126,71 @@
                                     </mat-select>
                                 </button>
                                 
-                                <button mat-raised-button matTooltip="Whiteboard Mode"  >
+                                <button mat-raised-button matTooltip="Whiteboard Mode" 
+                                [ngClass]="{'button': dark, 'light': !dark}" class="button" >
                                     <mat-icon>tv</mat-icon> 
                                 </button>
                                 
-                                <button mat-raised-button matTooltip="Data Structure Visualizer"  >
+                                <button mat-raised-button matTooltip="Data Structure Visualizer" 
+                                [ngClass]="{'button': dark, 'light': !dark}" class="button" >
                                     <mat-icon>share</mat-icon> 
                                 </button>
                                 
+                              
+                                  
             
             
                             </div>  
             
                             <span class="example-spacer"></span>
-            
-                            <button fxShow="true" fxHide.lt-md="true"  mat-raised-button matTooltip="Timer | Stopwatch" >
-                                <mat-icon>alarm</mat-icon> 00:00:00|00:00:00   
+
+                     
+
+                            <!-- <button mat-raised-button  matTooltip="Timer | Stopwatch" style="width: auto;" 
+                            [ngClass]="{'button': dark, 'light': !dark}" class="button" (click) = "timerDialog()" 
+                            (onVariantChange)="variant = $event" (onProductChange)="product = $event"> Timer : {{variant | json}}
+                            Stopwatch : {{variant }}
+                                {{Tdisplay}} 
+                                <mat-icon>alarm</mat-icon> 
+                                {{display }} 
+                            </button> -->
+
+                            <button mat-raised-button  matTooltip="Timer | Stopwatch" style="min-width: 110px;" 
+                            [ngClass]="{'button': dark, 'light': !dark}" class="button" (click) = "timerFunction()">
+                                {{Tdisplay}} 
+                                <mat-icon>alarm</mat-icon> 
+                                {{display }} 
                             </button>
-            
-                            <button mat-raised-button matTooltip="Timer | Stopwatch" fxShow="true" fxHide.gt-sm="true">
-                                <mat-icon>alarm</mat-icon>
-                            </button>
-            
-                            <button mat-raised-button matTooltip="Bug Report"  >
+
+                             <button mat-raised-button matTooltip="Bug Report" (click) = "openDialog()" 
+                             [ngClass]="{'button': dark, 'light': !dark}" class="button">
                                 <mat-icon>bug_report</mat-icon> 
                             </button>
                     
+              
                     
                     
                             
                     </div>
+
+                    
+                   
                     
                     
                         <!--on smaller screens-->
-                    <div *ngIf="button_header"  class="button-header" fxShow="true" fxHide.gt-sm="true" #button_header>
+                    <div *ngIf="button_header"  class="button-header " fxShow="true" fxHide.gt-sm="true" >
                                         
-                        <button mat-raised-button class="example-icon" matTooltip="Next Question" > 
+                        <button mat-raised-button  matTooltip="Next Question" 
+                        [ngClass]="{'button': dark, 'light': !dark}" class="button"> 
 
                             <mat-icon>arrow_forward</mat-icon> 
 
                         </button>
                         
-                        <button mat-raised-button  matTooltip="Workspace" style="min-width: 130px;" > 
+                        <button mat-raised-button  matTooltip="Workspace" style="min-width: 130px;" 
+                        [ngClass]="{'button': dark, 'light': !dark}" class="button" > 
                             
-                            <mat-select [(value)]="selectedWLayout" disableOptionCentering  panelClass="myPanelClass" > 
+                            <mat-select [(value)]="selectedWLayout"   panelClass="myPanelClass" [ngClass]="{'mat-select-value-text': dark, 'mat-select-value-text1': !dark}" class="mat-select-value-text" >
                                 
                             <mat-option [value]="wlayout.value" *ngFor="let wlayout of wlayouts" >
                                 {{wlayout.viewValue}}
@@ -158,9 +198,10 @@
                             </mat-select> 
                         </button>
                     
-                        <button mat-raised-button matTooltip="Programming Languages" style="min-width: 130px;" > 
+                        <button mat-raised-button matTooltip="Programming Languages" style="min-width: 130px;" 
+                        [ngClass]="{'button': dark, 'light': !dark}" class="button"> 
                         
-                            <mat-select name="Programming Languages" disableOptionCentering  panelClass="myPanelClass" 
+                            <mat-select name="Programming Languages" disableOptionCentering  panelClass="myPanelClass"  style="color: whitesmoke;"
                             [(value)]="selectedLanguage" > 
                                 
                             <mat-option [value]="language.value" 
@@ -170,7 +211,8 @@
                             </mat-select>
                         </button>
                     
-                        <button mat-raised-button matTooltip="Editor Font Size" style="min-width: 90px;" >  
+                        <button mat-raised-button matTooltip="Editor Font Size" style="min-width: 90px;" 
+                        [ngClass]="{'button': dark, 'light': !dark}" class="button">  
 
                             <mat-select [(value)]="selectedFont" disableOptionCentering  panelClass="myPanelClass"> 
                                 
@@ -181,7 +223,8 @@
                             </mat-select>
                         </button>
                     
-                        <button mat-raised-button matTooltip="Editor Key Maps" style="min-width: 110px;" >
+                        <button mat-raised-button matTooltip="Editor Key Maps" style="min-width: 110px;" 
+                        [ngClass]="{'button': dark, 'light': !dark}" class="button">
                         
                             <mat-select [(value)]="selectedEditor" disableOptionCentering  panelClass="myPanelClass" > 
                                 
@@ -192,29 +235,94 @@
                             </mat-select>
                         </button>
                         
-                        <button mat-raised-button matTooltip="light theme"  >
-                            <mat-icon>sunny</mat-icon> 
-                        </button>
-                        
-                        <button mat-raised-button matTooltip="Syntax Highlighting Theme" style="min-width: 110px;"  >  
-                    
-                            <mat-select  [(value)]="selectedSyntaxTheme" disableOptionCentering  panelClass="myPanelClass" > 
+                        <button *ngIf = "dark" mat-raised-button matTooltip="light theme"  (click)="darkFunction()"
+                                [ngClass]="{'button': dark, 'light': !dark}" class="button">
+                                    <mat-icon>sunny</mat-icon> 
+                                </button>
+
+                                <button *ngIf = "light" mat-raised-button matTooltip="dark theme"  (click)="lightFunction()"
+                                [ngClass]="{'button': dark, 'light': !dark}" class="button">
+                                    
+                                <mat-icon>brightness_3</mat-icon>
+                                </button>
                                 
-                            <mat-option [value]="syntaxtheme.value"
-                            *ngFor="let syntaxtheme of syntaxthemes">
-                                {{syntaxtheme.viewValue}}
-                            </mat-option>
-                            </mat-select>
-                        </button>
-                        
-                        <button mat-raised-button matTooltip="Whiteboard Mode"  >
-                            <mat-icon>tv</mat-icon> 
-                        </button>
-                        
-                        <button mat-raised-button matTooltip="Data Structure Visualizer"  >
-                            <mat-icon>share</mat-icon> 
-                        </button>
+                                <button mat-raised-button matTooltip="Syntax Highlighting Theme" style="min-width: 110px;" 
+                                [ngClass]="{'button': dark, 'light': !dark}" class="button" >  
+                            
+                                    <mat-select  [(value)]="selectedSyntaxTheme" disableOptionCentering  panelClass="myPanelClass" > 
+                                        
+                                    <mat-option [value]="syntaxtheme.value"
+                                    *ngFor="let syntaxtheme of syntaxthemes">
+                                        {{syntaxtheme.viewValue}}
+                                    </mat-option>
+                                    </mat-select>
+                                </button>
+                                
+                                <button mat-raised-button matTooltip="Whiteboard Mode" 
+                                [ngClass]="{'button': dark, 'light': !dark}" class="button" >
+                                    <mat-icon>tv</mat-icon> 
+                                </button>
+                                
+                                <button mat-raised-button matTooltip="Data Structure Visualizer" 
+                                [ngClass]="{'button': dark, 'light': !dark}" class="button" >
+                                    <mat-icon>share</mat-icon> 
+                                </button>
+
                     </div> 
+
+                    <!--Timer | Stopwatch-->
+                    <div fxLayout="row" fxLayoutAlign="end end"  class="old" [ngClass]="{'old': timer, 'new': !timer}" *ngIf = "timer">
+                        <mat-card class="timer" [ngClass]="{'timer': dark, 'light': !dark}" >
+                            <div fxLayout="row" fxLayoutAlign="end end"  >
+                               
+                                <button  mat-dialog-close style=" border:none; background-color:transparent; align-items: flex-end;"
+                                (click) = "timerFunction()">
+                                  <mat-icon>close</mat-icon>
+                                </button>
+                            </div>
+
+                            <div fxLayout="column" fxLayoutAlign="space-evenly center"  >
+
+                      
+
+                            <p>Stopwatch</p>
+                        <p>{{display }}</p>
+
+                        <div fxLayout="row" fxLayoutAlign="space-evenly center"  >
+
+                            <button mat-raised-button *ngIf = "startSW" (click)='startStopwatch()' >Start Stopwatch</button>
+                            <button mat-raised-button *ngIf = "resumeSW" (click)='startStopwatch()' >Resume Stopwatch</button>
+                            <button mat-raised-button (click)='pauseStopwatch()'>Pause Stopwatch</button>
+                            <button mat-raised-button (click)='stopStopwatch()'>Reset Stopwatch</button>
+                        </div>
+                        <br/>
+                        <!-- <div fxLayout="column" fxLayoutAlign="space-around center"  > -->
+                        <!-- <mat-divider></mat-divider> -->
+                        <!-- </div> -->
+
+                        <br/>
+
+                        <p>Timer</p>
+                        <p>{{Tdisplay}}  <br/> {{Tmessage}}</p>
+
+                        
+                        
+                        <input  type="number" matInput placeholder="Enter the time in seconds" [(ngModel)]= "timeLeft" style="background-color: #f5f5f5; padding: 12pt 9pt ; margin-bottom: 10pt; max-width: 200px; color: #001f3f;" >
+
+                        <br/>
+
+
+                        <div fxLayout="row" fxLayoutAlign="space-evenly center"  >
+
+                        <button mat-raised-button *ngIf = "startT" (click)='startTimer()'>Start Timer</button>
+                        <button mat-raised-button *ngIf = "resumeT" (click)='startTimer()'>Resume Timer</button>
+                        <button mat-raised-button (click)='pauseTimer()'>Pause Timer</button>
+                        <button mat-raised-button (click)='stopTimer()'>Reset Timer</button>
+                    </div>
+
+                    </div>
+                    </mat-card>
+                     </div>
                                 
         </div>
     
@@ -251,19 +359,21 @@
                 <div fxShow="true" fxHide.lt-md="true"   >
                         <!--Top row-->
                         <div fxLayout="row" fxLayoutAlign="start center" >
-                            <!-- Prompt Space -->
-
-                            <div  class="example-full-width">
-                                <app-prompt style="width: 50%;" ></app-prompt>
+                            <!-- Prompt Space   *ngIf="ys.fullscreen_exit" -->
+                        <!-- <ng-template #fullscreen> -->
+                            <div  class="example-full-width"   >
+                                <app-prompt style="width: 50%; background-color: brown;" ></app-prompt>
                             </div> 
+                        <!-- </ng-template> -->
 
                             <span class="example-spacer"></span>
 
-                            <!-- Your Solutions Space -->
-                            <div style="min-width: 50%;" class="example-full-width">
-                
+                            <!-- Your Solutions Space class="screen" [ngClass]="{'screen': fullscreen, 'fullscreen': fullscreen_exit}"  *ngIf="ys.fullscreen" -->
+                            <div style="max-width: 100%;" class="example-full-width" >
+                               
+                          
         
-                                  <app-your-solutions ></app-your-solutions>
+                                  <app-your-solutions [(ngModel)]="code"></app-your-solutions>
         
                              
                             </div>
@@ -275,14 +385,14 @@
                         <div  fxLayout="row" fxLayoutAlign="start center" > 
                 
                             <!-- Tests Space -->
-                             <div style="min-width: 50%;" class="example-full-width" >
+                             <div style="min-width: 50%;" class="example-full-width" #fullscreen>
                                 <app-tests-samples ></app-tests-samples>
                             </div> 
 
                             <span class="example-spacer"></span> 
                 
                             <!-- Output Space -->
-                            <div style="min-width: 50%;" class="example-full-width" >
+                            <div style="min-width: 50%;" class="example-full-width" #fullscreen>
                                 <app-code-outputs ></app-code-outputs>
                                 
                             </div> 
@@ -300,7 +410,7 @@
 
                         <br/>
                         <!-- Your Solutions Space -->
-                        <div class="example-full-width">
+                        <div class="example-full-width" >
                             <app-your-solutions ></app-your-solutions>
                         </div>
 
@@ -309,24 +419,23 @@
                         <!-- <ngx-monaco-editor [options]="editorOptions" [(ngModel)]="code" (init)="editorInit($event)"></ngx-monaco-editor>
                         <ngx-monaco-diff-editor [options]="editorOptions" [original]="originalCode" [modified]="code"></ngx-monaco-diff-editor> -->
 
-
+<!-- 
                         <div style="height: 405px">
 
                             code : {{ code }} <br/>
                             options: {{ editorOptions | json}} <br/>
                             model: {{ model | json}}
-                            <ngx-monaco-editor  [options]="editorOptions"
-                             ></ngx-monaco-editor>
+                            <ngx-monaco-editor  [options]="editorOptions" [(ngModel)]="code" (onInit)="onInit($event)"></ngx-monaco-editor>
                             
                         </div>
-                        <ngx-monaco-diff-editor [options]="options" [originalModel]="originalModel" [modifiedModel]="modifiedModel"></ngx-monaco-diff-editor>
+                        <ngx-monaco-diff-editor [options]="options" [originalModel]="originalModel" [modifiedModel]="modifiedModel"></ngx-monaco-diff-editor> -->
 
-                        <script>
+                        <!-- <script>
                             require.config({ paths: { 'vs': '/monaco-editor/min/vs' }})
                             require(['vs/editor/editor.main'], function onMonacoLoaded(){
                             console.log(monaco);
                             });
-                        </script>
+                        </script> -->
                     </div>
 
                         <br/> 
@@ -392,24 +501,7 @@
     </div> -->
 
     </div> 
-    <script>
-//     $(document).ready(function(){
-//       $("small").click(function(){
-//         $("button_header").toggle();
-//       });
-//     });
 
-//     $('#theButton').click(function() {
-//     $('#theDiv').css({
-//         position: 'fixed',
-//         top: 0,
-//         right: 0,
-//         bottom: 0,
-//         left: 0,
-//         zIndex: 999
-//     });
-// });
-    </script>
 
 </div>
 
@@ -419,11 +511,7 @@ cdkTextareaAutosize
 cdkAutosizeMinRows="1"
 cdkAutosizeMaxRows="5" -->
 
-<!-- resizable-draggable
-[width]="300" 
-[height]="150" 
-[left]="100" 
-[top]="100" -->
+
 
 
           <!-- <div fxFill fxLayout="column" fxLayoutAlign="space-around stretch" style="width: 50%;" >

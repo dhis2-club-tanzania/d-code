@@ -47,3 +47,15 @@
   .example-sidenav {
     padding: 20px;
   }
+
+  button.active{
+
+    background-color: #eeeded;
+    color: #001f3f;
+  }
+
+  button:hover {
+    /* border: 1px #00000000 solid !important; */
+    background-color: #001f3f !important; 
+    color: whitesmoke;  
+  } 

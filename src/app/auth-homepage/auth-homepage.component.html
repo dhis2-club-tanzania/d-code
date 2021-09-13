@@ -1,0 +1,80 @@
+      <!--Getting started-->
+      <div  fxLayout="column" fxLayoutAlign="space-evenly center" class="wrapper" style="padding: 50px; padding-inline: 20px; font-size: 12pt; background-color: #001f3f; color: whitesmoke; ">
+          
+        <br/>
+        <div >
+
+          <br/>
+          <!-- <ng-template >
+            <h2 style="font-size: 20pt; font-weight: bold;" >Getting started at d-code?</h2>
+             <br/>
+            <p>First start by loging into your account to save your progress.
+            </p>
+            <button mat-raised-button (click)="login()" style="color: #001f3f; font-weight: bold;">LOGIN</button>
+           </ng-template> -->
+
+
+           <div style="text-align: center;" *ngIf="authservice.userData as user;  ">
+              <P style="color: #f8f8f8; font-weight: bold; font-size: 20pt;">{{ user.displayName }} !</P>  
+              <p> You are officially a D-CODER. 
+              <br/> Continue with D-CODE by choosing the question of your choice.
+               <br/> Enjoy!! 
+              </p>
+               <br/>
+               <button mat-raised-button  class="nav-link" 
+                 (click)="logout()" 
+               style="color: #001f3f; font-weight: bold;" >
+               <mat-icon>logout</mat-icon>LOG OUT
+             </button>
+           </div>
+          <br/>
+
+        <!-- </mat-card > -->
+
+      </div>
+
+       
+        
+        <br/>
+        </div>
+
+        <!--Questions page-->
+        <div class="wrapper" style="background-color: #f8f8f8;  " fxLayout="column" fxLayoutAlign="space-evenly center">
+
+          <h2 style="  font-weight:bolder; font-size: 40pt; color: #001f3f; text-align: center;">D-CODE Questions</h2>
+          <p style="padding-inline: 20px; line-height: 2.5; font-size: 12pt; text-align: center; color: #001f3f;">
+            With questions spanning, different categories and 4 difficulty levels, we've got you covered. 
+            <br/>
+            Now choose the question you want to challenge yourself with.
+          </p>
+
+          <br/>
+          <button mat-raised-button color ="accent" style="background-color: #001f3f; font-weight: bold;" 
+          routerLink="/questions-page" routerLinkActive="active" 
+          *ngIf="authservice.userData as user">View D-CODE Questions</button>
+          <!-- <ng-template #showLogin>
+            <button mat-raised-button (click)="openDialog()" style="background-color: #001f3f; font-weight: bold;">View D-CODE Questions</button>
+          </ng-template> -->
+          <br/>
+        </div >
+
+        <!--Buttons and WorkSpace-->
+        <div class="wrapper"  style="background-color: #001f3f; " fxLayout="column" fxLayoutAlign="space-evenly center">
+            <h2 style="  font-weight:bold; font-size: 40pt; color: whitesmoke; text-align: center;">d-code WorkSpace</h2>
+            <p style="padding-inline: 20px; line-height: 2.5; font-size: 12pt; text-align: center; color: whitesmoke;">
+              Pick a language. Read the prompt. Write your solution.  <br/>
+              Get some hints. Run your code again. Check the output. <br/>
+              Pass the tests. View our solution. Watch our video. <br/>
+              All within the same workspace.
+            </p>
+
+            <br/>
+            <button mat-raised-button style="color: #001f3f; font-weight: bold;"
+            routerLink="/workspace-page" routerLinkActive="active" 
+            *ngIf="authservice.userData as user">View D-CODE Workspace</button>
+            <!-- <ng-template #showLogin>
+              <button mat-raised-button (click)="openDialog()" style="color: #001f3f; font-weight: bold;">View D-CODE Workspace</button>
+              </ng-template> -->
+            <br/>
+        </div>
+

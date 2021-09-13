@@ -1,0 +1,32 @@
+
+<input type="text"  [(ngModel)]="variant" name="reorder" class=" theme-input" id="text" 
+placeholder=" Starting Inventory" (ngModelChange)="onChange()">
+
+<p>Stopwatch</p>
+<p>{{display }}</p>
+
+    <button mat-raised-button (click)='startStopwatch()' >Start Stopwatch</button>
+    <button mat-raised-button (click)='pauseStopwatch()'>Pause Stopwatch</button>
+     <button mat-raised-button (click)='stopStopwatch()'>Stop Stopwatch</button>
+
+
+<p>Timer</p>
+<p>{{Tdisplay}}  {{Tmessage}}</p>
+<input  type="string" matInput placeholder="Enter the time in seconds" [(ngModel)]= "timeLeft" >
+
+
+
+
+<button mat-raised-button (click)='startTimer()' (ngModelChange)="onChange()">Start Timer</button><br/>
+<button mat-raised-button (click)='pauseTimer()'>Pause Timer</button><br/>
+<button mat-raised-button (click)='stopTimer()'>Stop Timer</button>
+   
+   
+   <!-- <div> {{timeLeft}} | {{display }} </div>
+      <button mat-raised-button (click)='startStopwatch()'>Start Stopwatch</button>
+      <button mat-raised-button (click)='pauseStopwatch()'>Pause Stopwatch</button>
+
+
+      <input appearance = "legacy" type="datetime" matInput [(ngModel)]= "timeLeft" style="background-color: teal;">
+      <button mat-raised-button (click)='startTimer()'>Start Timer</button>
+      <button mat-raised-button (click)='pauseTimer()'>Pause Timer</button> -->

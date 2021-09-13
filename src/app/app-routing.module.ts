@@ -9,13 +9,16 @@ import { RegisterComponent } from './register/register.component';
 import { UserComponent } from './user/user.component';
 import { AuthGuardService} from './guards/auth-guard.service';
 import { QuestionsComponent } from './questions-page/questions/questions.component';
+import { AuthHomepageComponent } from './auth-homepage/auth-homepage.component';
 
 
    const routes: Routes = [
     { path: '', redirectTo: '/homepage', pathMatch: 'full' },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent},
-    { path: 'user-profile', component: UserComponent, canActivate: [AuthGuardService]},
+    { path: 'user-profile', component: UserComponent,
+     canActivate: [AuthGuardService]
+    },
    { path: 'homepage',
    component: HomepageComponent
    },
@@ -33,7 +36,10 @@ import { QuestionsComponent } from './questions-page/questions/questions.compone
     },
     { path: 'questions',
     component:  QuestionsComponent
-      }
+      },
+    { path: 'auth-homepage',
+      component:  AuthHomepageComponent
+     }
    ];
 
 

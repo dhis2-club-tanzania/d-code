@@ -51,6 +51,10 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {TextFieldModule} from '@angular/cdk/text-field';
 import { TextareaAutosizeModule } from 'ngx-textarea-autosize';
 import { MonacoEditorModule, NgxMonacoEditorConfig, NGX_MONACO_EDITOR_CONFIG} from 'ngx-monaco-editor';
+import { TimerComponent } from './workspace-page/timer/timer.component';
+import { AuthHomepageComponent } from './auth-homepage/auth-homepage.component';
+import { BugReportComponent } from './dialogues/bug-report/bug-report.component';
+import { MoreInfoComponent } from './dialogues/more-info/more-info.component';
 // import { MONACO_PATH } from '@materia-ui/ngx-monaco-editor';
 
 // import {   } from '@materia-ui/ngx-monaco-editor';
@@ -108,7 +112,11 @@ const monacoConfig: NgxMonacoEditorConfig = {
     WorkspacePageComponent,  HomepageComponent, LoginComponent,
     RegisterComponent,  UserComponent, QuestionsComponent,
     PromptComponent, YourSolutionsComponent, TestsSamplesComponent,
-    CodeOutputsComponent
+    CodeOutputsComponent,
+    TimerComponent,
+    AuthHomepageComponent,
+    BugReportComponent,
+    MoreInfoComponent
     
   ],
   imports: [

@@ -1,6 +1,6 @@
 
   <div style="height: 91%;">
-    <mat-toolbar style="background-color: #eeeded;">
+    <mat-toolbar style="background-color: whitesmoke; color: #001f3f;">
       <!-- <div fxShow="true" fxHide.gt-sm="true"> -->
         <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="sidenav.toggle()">
           <mat-icon>menu</mat-icon>
@@ -9,7 +9,7 @@
 
       <button mat-button  routerLink="/homepage"
 
-       routerLinkActive="active" (click)="pageFunction()">
+       routerLinkActive="active" >
 
           <div  
                   style="background-image: url('/assets/images/logo.png') !important;
@@ -36,21 +36,21 @@
         
             <!--buttons--> 
 
-                <div fxLayout="row" fxLayoutAlign="space-between stretch" *ngIf="authservice.userData as user; else showLogin">
+                <div fxLayout="row" fxLayoutAlign="space-between stretch" *ngIf="authservice.userData as user; else showLogin" style="color: #001f3f;">
                   <span class="example-spacer"></span>
                   
                   <span class="example-spacer"></span>
-                  <button mat-button style="background-color: #cfd8e2; margin-left: 4px;"
+                  <button mat-button style=" margin-left: 6px;"
                   routerLink="/questions-page" routerLinkActive="active"
                   >Questions</button> 
                   <span class="example-spacer"></span>
                   <!-- <button mat-button style="background-color: #cfd8e2; margin-left: 4px; " 
                   routerLink="/workspace-page-component" routerLinkActive="active" 
-                  (click)="pageFunction()">WorkSpace</button> 
+               >WorkSpace</button> 
                   <span class="example-spacer"></span> -->
     
                     <button mat-button  class="nav-link"   (click)="authservice.SignOut()" 
-                    style="background-color: #001f3f; color: white; margin-left: 4px;">
+                    style="margin-left: 4px;">
                     
                      <!-- <mat-icon>logout</mat-icon> -->
                      Hi, {{ user.displayName }}  |   Log out
@@ -73,38 +73,44 @@
   
     <mat-sidenav-container fxFlexFill class="example-container">
   
-      <mat-sidenav #sidenav fxLayout="column"  style="background-color: #eeeded; width: 250px;" mode="side" >
+      <mat-sidenav #sidenav fxLayout="column"  style="background-color: whitesmoke; width: 250px; color: #001f3f;" mode="side" >
    
-        <div fxLayout="column" fxLayoutAlign="space-around none"  style="background-color: #eeeded; width: 250px; margin-bottom: 9px;">
+        <div fxLayout="column" fxLayoutAlign="space-around none"  style=" width: 250px; margin-bottom: 9px;">
 
 
 
 
            
            
-                <div fxLayout="column" fxLayoutAlign="space-around none" *ngIf="authservice.userData as user; else showLogin">
+                <div fxLayout="column" fxLayoutAlign="space-around none" *ngIf="authservice.userData as user; else showLogin" >
                   <span class="example-spacer"></span>
-                  <button mat-button style="text-align: center; background-color: #cfd8e2; ">Hi, {{ user.displayName }}</button>
+                  <button  mat-button class="nav-link " 
+                  routerLink="/user-profile" routerLinkActive="active" >
+                  <!-- <mat-icon>account_box</mat-icon> -->
+                   Hi, {{ user.displayName }} | Profile</button>
                   <!-- <span class="example-spacer"></span> -->
-                  <button mat-button style="background-color: #cfd8e2;"  
+                  <button mat-button  
                   routerLink="/homepage" routerLinkActive="active" 
                   >Home</button>
-                  <button mat-button style="background-color: #cfd8e2;"
+                  <button mat-button 
                   routerLink="/questions-page" routerLinkActive="active"
                   >Questions</button> 
                   <!-- <span class="example-spacer"></span>
                   <button mat-button style="background-color: #cfd8e2; margin-left: 4px; " 
                   routerLink="/workspace-page" routerLinkActive="active" 
-                  (click)="pageFunction()">WorkSpace</button>  -->
+                  >WorkSpace</button>  -->
                   <span class="example-spacer"></span>
     
-                  <button mat-button class="nav-link active" style="background-color: #cfd8e2;  "
+                  <!-- <button mat-button class="nav-link active" 
                   routerLink="/user-profile" routerLinkActive="active" >
-                  <mat-icon>account_box</mat-icon>  User Profile
-                  </button>
+                  <mat-icon>account_box</mat-icon>
+                   Hi, {{ user.displayName }} | Profile
+                  </button> 
+                
+                style="background-color: #001f3f; color: white;"-->
                   
                   <button mat-button  class="nav-link"   (click)="authservice.SignOut()" 
-                    style="background-color: #001f3f; color: white;">
+                    >
                      <mat-icon>logout</mat-icon>  Log out
                   </button>
                 </div>

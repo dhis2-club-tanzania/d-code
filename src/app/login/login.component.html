@@ -54,9 +54,9 @@
   
             <div  fxLayout="column" fxLayoutAlign="space-around center"  >
   
-                <button mat-raised-button style="background-color: teal; color: whitesmoke;"
+                <button mat-raised-button [mat-dialog-close] style="background-color: teal; color: whitesmoke;"
                  (click)="authservice.GoogleAuth()" 
-                routerLink="/homepage" routerLinkActive="active">
+                routerLink="/user-profile" routerLinkActive="active">
                   <mat-icon class="fab fa-google-plus-g">Google_plus</mat-icon>
                   Connect with Google
                 </button> 
@@ -121,7 +121,7 @@
     
           </div>
          
-            <p *ngIf="isSignedIn" style="align-items: center; " > You are Logged In!</p>
+            <!-- <p *ngIf="isSignedIn" style="align-items: center; " > You are Logged In!</p> -->
             <br/>
           <!-- <div  (isLogout) = "handleLogout()">
           </div> -->

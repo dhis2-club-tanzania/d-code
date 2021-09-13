@@ -30,7 +30,7 @@
   
     mat-button-toggle:hover {
       /* border: 1px #00000000 solid !important; */
-      background-color: #b884da !important;
+      background-color:  #001f3f  !important;
       /* border-radius: 5px !important; */
   }
   
@@ -101,3 +101,16 @@ mat-form-field {
   width: 100%;
   min-height: 179px;
 }
+
+
+
+
+.blurBg {
+  /* opacity: 0.05; */
+  filter: blur(4px);
+  margin-left: 10px;
+ margin-right: 10px;
+}
+
+
+

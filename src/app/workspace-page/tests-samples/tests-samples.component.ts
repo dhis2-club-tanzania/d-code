@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { MoreInfoComponent } from 'src/app/dialogues/more-info/more-info.component';
 
 import { Question } from 'src/app/models/Question';
 import { QuestionsService } from 'src/app/services/questions.service';
@@ -27,13 +29,25 @@ export class TestsSamplesComponent implements OnInit {
 
   //div-mat-card-buttons3
   test:boolean=true;
+  notest:boolean=false;
+
   quicktest:boolean=false;
   info:boolean=true;
 
   testFunction(){
-    this.test=true;
+    this.test= false;
     this.quicktest=false;
     this.info=true
+}
+
+visibilityFunction(){
+  this.test = false;
+  this.notest = true;
+}
+
+visibility_offFunction(){
+  this.notest = false;
+  this.test = true;
 }
 
 quicktestFunction(){
@@ -53,6 +67,7 @@ question: Question | undefined;
 id!: Observable<Question>;
   constructor(private qs: QuestionsService,
               private route: ActivatedRoute,// firestore: AngularFirestore
+              public dialog: MatDialog
                 ) { 
                   // this.questions = firestore.collection<Question>('questions').valueChanges();
                 }
@@ -69,9 +84,9 @@ id!: Observable<Question>;
 
     this.qs.getQuestions()
     .subscribe((questions: any[])  => {
-      console.log("Questions:",questions); 
+      // console.log("Questions:",questions); 
       questions.forEach((question)=>{
-        console.log(question.id.trim(),this.route.snapshot.paramMap.get("id")?.trim(),question.id.trim() === this.route.snapshot.paramMap.get("id")?.trim())
+        // console.log(question.id.trim(),this.route.snapshot.paramMap.get("id")?.trim(),question.id.trim() === this.route.snapshot.paramMap.get("id")?.trim())
           if (question.id.trim() === this.route.snapshot.paramMap.get("id")?.trim()){
             // // // Find the product that correspond with the id provided in route.
             this.question = question;
@@ -84,23 +99,25 @@ id!: Observable<Question>;
  
 
   
-  this.questionDetail();
+  // this.questionDetail();
 
   } 
   
-
-  async questionDetail()  {
-    const id = this.route.snapshot.paramMap.get("id");
-    console.log(id); 
-  
-    if(id){
-      //this.question = await this.qs.getQDetails(id);
-    }
-    //this.question = id? await this.qs.getQDetails(id): '' ;
-    console.log("This.Question:", this.question);
-
-
+  openDialog() {
+    this.dialog.open(MoreInfoComponent);
   }
+  // async questionDetail()  {
+  //   const id = this.route.snapshot.paramMap.get("id");
+  //   console.log(id); 
+  
+  //   if(id){
+  //     //this.question = await this.qs.getQDetails(id);
+  //   }
+  //   //this.question = id? await this.qs.getQDetails(id): '' ;
+  //   console.log("This.Question:", this.question);
+
+
+  // }
 
   public onVal3Change(val3: string) {
     this.selectedVal3 = val3

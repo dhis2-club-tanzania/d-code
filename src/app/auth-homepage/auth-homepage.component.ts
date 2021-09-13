@@ -6,19 +6,15 @@ import { EventEmitter } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
-import { GoogleLoginProvider } from 'angularx-social-login';
-//email validator
-// import {FormControl, FormGroup  } from '@angular/forms';
-
 
 @Component({
-  selector: 'app-homepage',
-  templateUrl: './homepage.component.html',
-  styleUrls: ['./homepage.component.css']
+  selector: 'app-auth-homepage',
+  templateUrl: './auth-homepage.component.html',
+  styleUrls: ['./auth-homepage.component.css']
 })
-export class HomepageComponent implements OnInit {
+export class AuthHomepageComponent implements OnInit {
 
-
+ 
   // home:boolean=true;
   errorMessage: string | undefined;
   successMessage: string | undefined;
@@ -61,8 +57,7 @@ export class HomepageComponent implements OnInit {
 
 
         login(){
-          return this.authservice.GoogleAuth()
+          return this.authservice
         }
-
 
 }
