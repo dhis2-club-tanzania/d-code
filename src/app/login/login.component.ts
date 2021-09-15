@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SocialAuthService, FacebookLoginProvider, GoogleLoginProvider,  SocialUser } from 'angularx-social-login';
-
+import {Router, NavigationExtras} from "@angular/router";
 
 //email validator
 import {FormControl, FormGroupDirective, NgForm, Validators, FormGroup, FormBuilder } from '@angular/forms';
@@ -36,23 +36,36 @@ export class LoginComponent implements OnInit {
   isSignedIn= false
   loginForm: FormGroup ;
   socialUser!: SocialUser;
+  ngZone: any;
+ 
   // = new SocialUser
 
 ngOnInit(){
   //button-toggle
       this.selectedVal1 ='login';
 
-      // this.socialAuthService.authState.subscribe((user) => {
-      //   this.socialUser = user;
-      //   this.isSignedIn = (user != null);
-      // });
+      this.socialAuthService.authState.subscribe((user) => {
+        this.socialUser = user;
+        this.isSignedIn = (user != null);
+      });
 
-      // if(localStorage.getItem('user') != null)
-      // this.isSignedIn = true
-      // else
-      // this.isSignedIn = false
+      if(localStorage.getItem('user') != null){
+      this.isSignedIn = true}
+      else{
+      this.isSignedIn = false
+    }
 
+
+      this.authuser();
     } 
+
+    authuser(){
+      return this.ngZone.run(() => {
+        this.router.navigate(['homepage']);
+      });
+    }
+
+    
     
 //      fbLoginOptions = {
 //       scope: 'pages_messaging,pages_messaging_subscriptions,email,pages_show_list,manage_pages',
@@ -128,10 +141,19 @@ myForm: FormGroup;
 
 matcher = new MyErrorStateMatcher();
 
+
+
+
+
+
   constructor(private formBuilder: FormBuilder, 
               public authservice: AuthServiceService, 
-              private socialAuthService: SocialAuthService
-    ){
+              private socialAuthService: SocialAuthService,
+              private router: Router
+    )
+    
+    
+    {
     this.myForm = this.formBuilder.group({
       password: ['', [Validators.required]],
       confirmPassword: ['']
@@ -154,6 +176,15 @@ matcher = new MyErrorStateMatcher();
   }
 
 
+  public onTap() {
+    let navigationExtras: NavigationExtras = {
+        queryParams: { 
+            "firstname": "Nic",
+            "lastname": "Raboy"
+        }
+    };
+    this.router.navigate(['homepage'], navigationExtras);
+}
   // // constructor() { }
 
   // loginWithFacebook(): void {

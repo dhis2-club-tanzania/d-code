@@ -1,32 +1,56 @@
 
-<input type="text"  [(ngModel)]="variant" name="reorder" class=" theme-input" id="text" 
-placeholder=" Starting Inventory" (ngModelChange)="onChange()">
+ <!-- <div fxLayout="row" fxLayoutAlign="end end"  class="old" [ngClass]="{'old': timer, 'new': !timer}" *ngIf = "timer"> -->
+   <mat-card class="timer" [ngClass]="{'timer': dark, 'light': !dark}" >
+       <div fxLayout="row" fxLayoutAlign="end end"  >
+          
+           <button  mat-dialog-close style=" border:none; background-color:transparent; align-items: flex-end;">
+             <mat-icon>close</mat-icon>
+           </button>
+       </div>
 
-<p>Stopwatch</p>
-<p>{{display }}</p>
+       <div fxLayout="column" fxLayoutAlign="space-evenly center"  >
 
-    <button mat-raised-button (click)='startStopwatch()' >Start Stopwatch</button>
-    <button mat-raised-button (click)='pauseStopwatch()'>Pause Stopwatch</button>
-     <button mat-raised-button (click)='stopStopwatch()'>Stop Stopwatch</button>
+ 
 
+       <p>Stopwatch</p>
+   <p>{{Sdisplay }}</p>
 
-<p>Timer</p>
-<p>{{Tdisplay}}  {{Tmessage}}</p>
-<input  type="string" matInput placeholder="Enter the time in seconds" [(ngModel)]= "timeLeft" >
+   <div fxLayout="row" fxLayoutAlign="space-evenly center"  >
 
+       <button mat-raised-button *ngIf = "startSW" (click)='startStopwatch()' >Start Stopwatch</button>
+       <button mat-raised-button *ngIf = "resumeSW" (click)='startStopwatch()' >Resume Stopwatch</button>
+       <button mat-raised-button (click)='pauseStopwatch()'>Pause Stopwatch</button>
+      </div>
+       <br/>
+       <button mat-raised-button (click)='stopStopwatch()'>Reset Stopwatch</button>
+  
+   <br/>
+   <!-- <div fxLayout="column" fxLayoutAlign="space-around center"  > -->
+   <!-- <mat-divider></mat-divider> -->
+   <!-- </div> -->
 
+   <br/>
 
+   <p>Timer</p>
+   <p>{{Tdisplay}}  <br/> {{Tmessage}}</p>
 
-<button mat-raised-button (click)='startTimer()' (ngModelChange)="onChange()">Start Timer</button><br/>
-<button mat-raised-button (click)='pauseTimer()'>Pause Timer</button><br/>
-<button mat-raised-button (click)='stopTimer()'>Stop Timer</button>
    
    
-   <!-- <div> {{timeLeft}} | {{display }} </div>
-      <button mat-raised-button (click)='startStopwatch()'>Start Stopwatch</button>
-      <button mat-raised-button (click)='pauseStopwatch()'>Pause Stopwatch</button>
+   <input  type="number" matInput placeholder="Enter the time in seconds" [(ngModel)]= "timeLeft" style="background-color: #f5f5f5; padding: 12pt 9pt ; margin-bottom: 10pt; max-width: 200px; color: #001f3f;" >
+
+   <br/>
 
 
-      <input appearance = "legacy" type="datetime" matInput [(ngModel)]= "timeLeft" style="background-color: teal;">
-      <button mat-raised-button (click)='startTimer()'>Start Timer</button>
-      <button mat-raised-button (click)='pauseTimer()'>Pause Timer</button> -->
+   <div fxLayout="row" fxLayoutAlign="space-evenly center"  >
+
+   <button mat-raised-button *ngIf = "startT" (click)='startTimer()'>Start Timer</button>
+   <button mat-raised-button *ngIf = "resumeT" (click)='startTimer()'>Resume Timer</button>
+   <button mat-raised-button (click)='pauseTimer()'>Pause Timer</button>
+</div>
+<br/>
+   <button mat-raised-button (click)='stopTimer()'>Reset Timer</button>
+
+
+</div>
+</mat-card>
+<!-- </div> -->

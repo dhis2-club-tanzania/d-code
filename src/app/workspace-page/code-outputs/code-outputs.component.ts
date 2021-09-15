@@ -1,5 +1,5 @@
 
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 // import { Subscription } from 'rxjs';
 import { Observable } from 'rxjs';
@@ -27,7 +27,13 @@ export class CodeOutputsComponent implements OnInit {
 
   // : void 
 
-
+  data: any[] = [];
+  
+  userData: any[] = [];
+  finalC!: string;
+  code!: string;
+  
+  
   ngOnInit() {
     this.selectedVal4 ='Custom Output';
     this.qs.getQuestions()
@@ -46,45 +52,122 @@ export class CodeOutputsComponent implements OnInit {
 
   // this.questionDetail();
 
-  
+  // this.qs.getData().subscribe(
+  //   (data: any) => this.data = data
+  // );
+
+  // this.qs.currentfinalC.subscribe(finalC => this.finalC = finalC);
+  this.qs.currentfinalC.subscribe(code => this.code = code);
 
   } 
 
 
 
-  // async questionDetail()  {
-  //   const id = this.route.snapshot.paramMap.get("id");
-  //   console.log(id); 
-  
-  //   if(id){
-  //     //this.question = await this.qs.getQDetails(id);
-  //   }
-  //   //this.question = id? await this.qs.getQDetails(id): '' ;
-  //   console.log("This.Question:", this.question);
-
-
-  // }
   
   public onVal4Change(val4: string) {
     this.selectedVal4 = val4
   
   }
 
-  public runCode(){
-    var template = "var exports ={}; {code};return exports;"
-    var func = Function(template.split("{code}").join("Code"));
-    var results = [];
-    this.question?.tests.forEach((test)=>{
-      var arg = Object.keys(test.inputs!).map((inputKey)=>test.inputs![inputKey])
-      var result = func()["functionName"].apply(null,Array.prototype.slice.call(arg,1));
-      results.push({
-        name: test.name,
-        pass: result == test.output
-      })
-    })
+
+  @Output() myEvent = new EventEmitter();
+
+  submitCode(){
+    // this.qs.changefinalC(this.childMessage)
+
+    this.myEvent.emit(null)
   }
 
 
+  sCode(){
+    this.qs.changefinalC(this.code)
+
+    console.log(this.code)
+    // this.myEvent.emit(null)
+  }
+
+
+
+
+
+
+
+  // public runCode(){
+  //   var template = "var exports ={}; {code};return exports;"
+  //   var func = Function(template.split("{code}").join("Code"));
+  //   var results = [];
+  //   this.question?.tests.forEach((test)=>{
+  //     var arg = Object.keys(test.inputs!).map((inputKey)=>test.inputs![inputKey])
+  //     var result = func()["functionName"].apply(null,Array.prototype.slice.call(arg,1));
+  //     results.push({
+  //       name: test.name,
+  //       pass: result == test.output
+  //     })
+  //   })
+  // }
+
+  // @Input() childProperty!: boolean;
+
+  // dark:boolean = true;
+  // light: boolean = false;
+  //  darkFunction(){
+  
+  //   this.dark = !this.dark;
+  //   this.light = true;
+  
+  // }
+
+  // lightFunction(){
+  
+  //   this.dark = true;
+  //   this.light = false
+  // }
+
+  // public runCode(){
+  //   var template = "var exports ={}; {code};return exports;"
+  //   var func = Function(template.split("{code}").join("Code"));
+  //   var results = [];
+  //   this.question?.tests.forEach((test)=>{
+  //     var arg = Object.keys(test.inputs!).map((inputKey)=>test.inputs![inputKey])
+  //     var result = func()["functionName"].apply(null,Array.prototype.slice.call(arg,1));
+  //     results.push({
+  //       name: test.name,
+  //       pass: result == test.output
+  //     })
+  //   })
+  // }
+  // @Input() childProperty!: boolean;
+  // dark:boolean = true;
+  // light: boolean = false;
+  //  darkFunction(){
+  //   this.dark = !this.dark;
+  //   this.light = true;
+  // }
+  // lightFunction(){
+  //   this.dark = true;
+  //   this.light = false
+  // }
+
+
+ 
+
+
+
+
+  // @Input()
+  // coderesults!: string; 
+  // = this.coderesults;
+
+  @Input()
+  childMessage!: string; 
+
+  // @Input()
+  coderesults = this.childMessage;
+
+
+  // const ys = require('./ys');
+  // console.log(`User: ${ys.getName()}`);
+  
   // var func = Function("var exports ={}; function maxProfitWithKTransactions(prices, k) {};exports.maxProfitWithKTransactions = maxProfitWithKTransactions;return exports;") 
 
 }

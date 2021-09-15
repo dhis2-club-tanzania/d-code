@@ -1,37 +1,11 @@
 import { Injectable } from '@angular/core';
 // import {  AngularFirestoreDocument } from '@angular/fire/firestore';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+// import { Observable } from 'rxjs';
 import { Question } from '../models/Question';
-// import { map } from 'rxjs/operators';
-// import { switchMap } from 'rxjs/operators';
+import {of, BehaviorSubject, Observable} from 'rxjs';
+import { YourSolutionsComponent } from '../workspace-page/your-solutions/your-solutions.component';
 
-
-import { DocumentChangeType, DocumentReference, DocumentData } from '@angular/fire/firestore';
-
-
-
-              interface DocumentChangeAction {
-                //'added' | 'modified' | 'removed';
-                type: DocumentChangeType;
-                payload: DocumentChange;
-              }
-
-              interface DocumentChange {
-                type: DocumentChangeType;
-                doc: DocumentSnapshot;
-                oldIndex: number;
-                newIndex: number;
-              }
-
-              interface DocumentSnapshot {
-                exists: boolean;
-                ref: DocumentReference;
-                pId: string;
-                // metadata: SnapshotMetadata;
-                data(): DocumentData;
-                get(fieldPath: string): any;
-              }
 
 
 
@@ -46,36 +20,16 @@ export class QuestionsService {
 
         questionsCollection!: AngularFirestoreCollection<Question>;
         questions:  Observable<Question[]> | any;
-       
-
-        // private questionsDoc: AngularFirestoreDocument<Question>;
+   
+        public userdata!: Observable<YourSolutionsComponent[]> | any;
 
  
 
-  constructor(public afs:  AngularFirestore) { 
+  constructor(public afs:  AngularFirestore,
+    // public userdata : YourSolutionsComponent
+    ) { 
           this.questions = this.afs.collection<Question>('Questions').valueChanges();
-      //     this.questionsCollection = afs.collection<Question>('Questions');
-   
-
-      // this.question = this.questionsCollection.snapshotChanges().pipe(switchMap(actions => {
-      //     return actions.map(a => {
-      //         const data = a.payload.doc.data() as Question;
-      //         const id = a.payload.doc.id;
-      //         console.log('id', id, 'data', data);
-      //         return {id, data};
-      //       }
-      //     );
-      // }))
-   
-      
-      
-
-      // this.questions.forEach((question: any) =>{
-      //   console.log(question) 
-      // })
-
-            // this.questionsDoc = afs.doc<Question>('Questions');
-            // this.questions = this.questionsDoc.valueChanges();
+  
   }
 
 
@@ -95,7 +49,73 @@ export class QuestionsService {
       console.log("Doc:",doc);
     return Object.assign(doc.data(), {id: doc.id} );
   }
- 
+
+  // private _data: BehaviorSubject<any> = new BehaviorSubject<any>(null)
+
+  // getData(): Observable<any> {
+  //   return this._data
+  //   // .asObservable()
+  //   ;
+  // }
+
+  // setData(data: any) {
+  //   this._data.next(data);
+  // }
+
+  // getSomeData() {
+  //   return of([
+  //     {id: 1, name: 'Name 1'},
+  //     // {id: 2, name: 'Name 2'},
+  //     // {id: 3, name: 'Name 3'},
+  //   ]);
+  // }
+  
+  // getSData() {
+
+  //   // console.log(this.getSData());
+
+  //   // console.log(`${this.userdata.runCode()}`);
+  
+
+  //  return of([{id: 2, car: 'Suzuki'}, 
+  //  {id: 3, car: `${this.userdata.coderesults}` }
+  // ]);
+
+
+//     return 
+//       this.userdata = "heyyy";
+    // }
+
+   
+    Sdisplay!: string ;
+    Tdisplay!: string ;
+    private SdisplaySource = new BehaviorSubject(this.Sdisplay);
+    private TdisplaySource = new BehaviorSubject(this.Tdisplay);
+    currentSdisplay = this.SdisplaySource.asObservable();
+    currentTdisplay = this.TdisplaySource.asObservable();
+
+    changeSdisplay(Sdisplay: string) {
+      this.SdisplaySource.next(Sdisplay)
+    }
+
+    changeTdisplay(Tdisplay: string) {
+      this.TdisplaySource.next(Tdisplay)
+    }
+
+    // finalC!: string ;
+    // private finalCSource = new BehaviorSubject(this.finalC);
+    // currentfinalC = this.finalCSource.asObservable();
+    // changefinalC(finalC: string) {
+    //   this.finalCSource.next(finalC)
+    // }
+
+    code!: string ;
+    private finalCSource = new BehaviorSubject(this.code);
+    currentfinalC = this.finalCSource.asObservable();
+    changefinalC(code: string) {
+      this.finalCSource.next(code)
+    }
+  
 }
 
 

@@ -5,16 +5,10 @@
         <div >
 
           <br/>
-          <!-- <ng-template >
-            <h2 style="font-size: 20pt; font-weight: bold;" >Getting started at d-code?</h2>
-             <br/>
-            <p>First start by loging into your account to save your progress.
-            </p>
-            <button mat-raised-button (click)="login()" style="color: #001f3f; font-weight: bold;">LOGIN</button>
-           </ng-template> -->
+  
 
 
-           <div style="text-align: center;" *ngIf="authservice.userData as user;  ">
+           <div style="text-align: center;" *ngIf="authservice.afAuth.authState | async as user  ">
               <P style="color: #f8f8f8; font-weight: bold; font-size: 20pt;">{{ user.displayName }} !</P>  
               <p> You are officially a D-CODER. 
               <br/> Continue with D-CODE by choosing the question of your choice.
@@ -29,7 +23,6 @@
            </div>
           <br/>
 
-        <!-- </mat-card > -->
 
       </div>
 
@@ -49,12 +42,10 @@
           </p>
 
           <br/>
-          <button mat-raised-button color ="accent" style="background-color: #001f3f; font-weight: bold;" 
+          <button mat-raised-button class="lbutton" style="background-color: #001f3f; font-weight: bold; color: #f5f5f5;" 
           routerLink="/questions-page" routerLinkActive="active" 
-          *ngIf="authservice.userData as user">View D-CODE Questions</button>
-          <!-- <ng-template #showLogin>
-            <button mat-raised-button (click)="openDialog()" style="background-color: #001f3f; font-weight: bold;">View D-CODE Questions</button>
-          </ng-template> -->
+          *ngIf="authservice.afAuth.authState | async as user">View D-CODE Questions</button>
+   
           <br/>
         </div >
 
@@ -71,10 +62,8 @@
             <br/>
             <button mat-raised-button style="color: #001f3f; font-weight: bold;"
             routerLink="/workspace-page" routerLinkActive="active" 
-            *ngIf="authservice.userData as user">View D-CODE Workspace</button>
-            <!-- <ng-template #showLogin>
-              <button mat-raised-button (click)="openDialog()" style="color: #001f3f; font-weight: bold;">View D-CODE Workspace</button>
-              </ng-template> -->
+            *ngIf="authservice.afAuth.authState | async as user">View D-CODE Workspace</button>
+           
             <br/>
         </div>
 

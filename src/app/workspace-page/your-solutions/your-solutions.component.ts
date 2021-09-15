@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+
+import { Component, EventEmitter, OnInit, Output  } from '@angular/core';
 // import {CdkTextareaAutosize} from '@angular/cdk/text-field';
 // import { NgZone, ViewChild} from '@angular/core';
 // import {take} from 'rxjs/operators';
@@ -7,12 +8,11 @@ import { Observable } from 'rxjs';
 
 import { Question } from 'src/app/models/Question';
 import { QuestionsService } from 'src/app/services/questions.service';
-// import { Subscription } from 'rxjs';
 import { initialCodeTemplate } from 'src/app/template/code.template';
 // import { MonacoEditorModule } from 'ngx-monaco-editor';
 
 @Component({
-  selector: 'app-your-solutions',
+  selector: 'appyoursolutions',
   templateUrl: './your-solutions.component.html',
   styleUrls: ['./your-solutions.component.css']
 })
@@ -42,25 +42,33 @@ export class YourSolutionsComponent implements OnInit {
     questions: Question[] = [];
     question: Question | undefined;
     id!: Observable<Question>;
-    results: any;
+    
    
 
     code!: string;
     originalcode!: string;
 
- 
 
   constructor(
     private qs: QuestionsService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute) 
+    {
+      // this.qs.currentfinalC.subscribe(finalC => this.finalC = finalC);
+      this.qs.currentfinalC.subscribe(code => this.code = code);
+     }
 
  
 
    // : void 
+
+  //  dlab!: string;
    ngOnInit() {
+     
 
 
     this.selectedVal2 ='Your Solutions';
+
+    
     this.qs.getQuestions()
     .subscribe((questions: any[])  => {
       // console.log("Questions:",questions); 
@@ -69,7 +77,7 @@ export class YourSolutionsComponent implements OnInit {
           if (question.id.trim() === this.route.snapshot.paramMap.get("id")?.trim()){
             // // // Find the product that correspond with the id provided in route.
             this.question = question;
-
+            console.log("Questions:",question);
             this.originalcode = `function ${this.question?.functionName}(${this.question?.variables }) {
                          
               // Write your code here
@@ -81,44 +89,22 @@ export class YourSolutionsComponent implements OnInit {
         
           exports.${  this.question?.functionName} = ${  this.question?.functionName};`
 
-
- // console.log(${this.question?.variables === this.tests?.inputs });
-          // console.log(${this.question?.tests }); 
-          // console.log(${this.question?.variables});  
-          
-          // this.code = initialCodeTemplate;
-
           this.code = this.originalcode;
         }
       })
       
     }) ;
+    this.qs.currentfinalC.subscribe(code => this.code = code);
+   
 
-  
-    // this.code = initialCodeTemplate;
 
-  
-  // this.questionDetail();
-
+ 
  
 
   } 
   
- 
 
 
-  // async questionDetail()  {
-  //   const id = this.route.snapshot.paramMap.get("id");
-  //   console.log(id); 
-  
-  //   if(id){
-  //     //this.question = await this.qs.getQDetails(id);
-  //   }
-  //   //this.question = id? await this.qs.getQDetails(id): '' ;
-  //   // console.log("This.Question:", this.question);
-
-
-  // }
 
   public onVal2Change(val2: string) {
     this.selectedVal2 = val2
@@ -130,12 +116,16 @@ export class YourSolutionsComponent implements OnInit {
     return this.code = this.originalcode;
   }
 
-  result: any;
-  template!: string;
+  
+  coderesults! : string;
+  // coderesults = this.code;
+  @Output() messageEvent = new EventEmitter<string>();
 
   public runCode(){
 
     // console.log(this.code);
+
+  
 
     var template = "var exports ={code}; {code};return exports;";
     var func = Function(template.split("{code}").join(this.code));
@@ -147,36 +137,43 @@ export class YourSolutionsComponent implements OnInit {
         name: test.name,
         pass: result == test.output
       })
-    })
+    });
 
 
-    // console.log(this.code);
+    this.coderesults = this.code;
 
-    console.log(eval(this.code));
-
-
-    console.log(this.template);
-
-    console.log(this.results);
-    // console.log(this.result.func());
-
-    ////////
-
-    console.log(eval(this.template));
-
-    console.log(eval(this.results));
-    // console.log(eval(this.result.func()));
-
+    console.log(this.coderesults);
+    // console.log(this.finalCode());
+    this.messageEvent.emit(this.coderesults)
    
   }
 
+
+  finalC!: string;
+  // finalC = this.code;
+  public finalCode(){
+
+    // this.code = this.coderesults;
+    // this.finalC = this.code;
+    this.finalC = this.coderesults;
+    // this.qs.changefinalC(this.code)
+    // console.log(this.runCode());
+    // console.log(this.coderesults);
+    console.log(this.code);
+    console.log(this.finalC);
+    // this.messageEvent.emit(this.coderesults)
+  }
  
 
   // editorOptions = {theme: 'vs-dark', language: 'javascript'};
   // code: string= 'function x() {\nconsole.log("Hello world!");\n}';
 
 
-
+  // const getName = () => {
+  //   return 'Jim';
+  // };
+  
+  // exports.getName = this.getName;
 
 
 

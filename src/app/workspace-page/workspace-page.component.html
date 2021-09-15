@@ -146,21 +146,21 @@
 
                      
 
-                            <!-- <button mat-raised-button  matTooltip="Timer | Stopwatch" style="width: auto;" 
-                            [ngClass]="{'button': dark, 'light': !dark}" class="button" (click) = "timerDialog()" 
-                            (onVariantChange)="variant = $event" (onProductChange)="product = $event"> Timer : {{variant | json}}
-                            Stopwatch : {{variant }}
+              
+
+                            <button mat-raised-button  matTooltip="Timer | Stopwatch" style="min-width: 125px;" 
+                            [ngClass]="{'button': dark, 'light': !dark}" class="button" (click) = "timerDialog()">
                                 {{Tdisplay}} 
                                 <mat-icon>alarm</mat-icon> 
-                                {{display }} 
-                            </button> -->
+                                {{Sdisplay }} 
+                            </button>
 
-                            <button mat-raised-button  matTooltip="Timer | Stopwatch" style="min-width: 110px;" 
+                            <!-- <button mat-raised-button  matTooltip="Timer | Stopwatch" style="min-width: 125px;" 
                             [ngClass]="{'button': dark, 'light': !dark}" class="button" (click) = "timerFunction()">
                                 {{Tdisplay}} 
                                 <mat-icon>alarm</mat-icon> 
                                 {{display }} 
-                            </button>
+                            </button> -->
 
                              <button mat-raised-button matTooltip="Bug Report" (click) = "openDialog()" 
                              [ngClass]="{'button': dark, 'light': !dark}" class="button">
@@ -271,7 +271,7 @@
                     </div> 
 
                     <!--Timer | Stopwatch-->
-                    <div fxLayout="row" fxLayoutAlign="end end"  class="old" [ngClass]="{'old': timer, 'new': !timer}" *ngIf = "timer">
+                    <!-- <div fxLayout="row" fxLayoutAlign="end end"  class="old" [ngClass]="{'old': timer, 'new': !timer}" *ngIf = "timer">
                         <mat-card class="timer" [ngClass]="{'timer': dark, 'light': !dark}" >
                             <div fxLayout="row" fxLayoutAlign="end end"  >
                                
@@ -296,9 +296,7 @@
                             <button mat-raised-button (click)='stopStopwatch()'>Reset Stopwatch</button>
                         </div>
                         <br/>
-                        <!-- <div fxLayout="column" fxLayoutAlign="space-around center"  > -->
-                        <!-- <mat-divider></mat-divider> -->
-                        <!-- </div> -->
+                     
 
                         <br/>
 
@@ -322,14 +320,13 @@
 
                     </div>
                     </mat-card>
-                     </div>
+                     </div> -->
                                 
         </div>
     
         <br/>
        
         
-
 
         <!--Cards-->
         <div fxLayoutGap style=" margin-left: 10px; margin-right: 10px; ">
@@ -360,11 +357,11 @@
                         <!--Top row-->
                         <div fxLayout="row" fxLayoutAlign="start center" >
                             <!-- Prompt Space   *ngIf="ys.fullscreen_exit" -->
-                        <!-- <ng-template #fullscreen> -->
+              
                             <div  class="example-full-width"   >
                                 <app-prompt style="width: 50%; background-color: brown;" ></app-prompt>
                             </div> 
-                        <!-- </ng-template> -->
+                        
 
                             <span class="example-spacer"></span>
 
@@ -373,7 +370,7 @@
                                
                           
         
-                                  <app-your-solutions [(ngModel)]="code"></app-your-solutions>
+                                  <appyoursolutions #appyoursolutions  (messageEvent)="receiveMessage($event)" ></appyoursolutions> <!--(dataLoaded)="data = $event"-->
         
                              
                             </div>
@@ -393,7 +390,7 @@
                 
                             <!-- Output Space -->
                             <div style="min-width: 50%;" class="example-full-width" #fullscreen>
-                                <app-code-outputs ></app-code-outputs>
+                                <app-code-outputs (myEvent)="appyoursolutions.finalCode()" [childMessage]="coderesults" ></app-code-outputs>
                                 
                             </div> 
                         </div>
@@ -409,9 +406,9 @@
                         </div> 
 
                         <br/>
-                        <!-- Your Solutions Space -->
+                        <!-- Your Solutions Space  (dataLoaded)="data = $event" -->
                         <div class="example-full-width" >
-                            <app-your-solutions ></app-your-solutions>
+                            <appyoursolutions #appyoursolutions  (messageEvent)="receiveMessage($event)" ></appyoursolutions>
                         </div>
 
                         <br/>
@@ -452,7 +449,7 @@
 
                         <!-- Output Space -->
                         <div class="example-full-width" >
-                            <app-code-outputs ></app-code-outputs>
+                            <app-code-outputs (myEvent)="appyoursolutions.finalCode()" [childMessage]="coderesults" ></app-code-outputs> <!--[childProperty]="darkFunction()"-->
                             
                         </div> 
                     </div>
@@ -510,24 +507,3 @@ cdkTextareaAutosize
 #autosize
 cdkAutosizeMinRows="1"
 cdkAutosizeMaxRows="5" -->
-
-
-
-
-          <!-- <div fxFill fxLayout="column" fxLayoutAlign="space-around stretch" style="width: 50%;" >
-                <mat-card>
-
-                </mat-card>
-                <mat-card >
-                    
-                </mat-card>
-            </div>
-
-            <div fxFill fxLayout="column" fxLayoutAlign="space-around stretch" style="width: 50%;">
-                <mat-card>
-
-                </mat-card>
-                <mat-card style="background-color: #001f3f; width: 100%;">
-                    <p> Content content content</p>
-                </mat-card>
-            </div> -->

@@ -10,6 +10,7 @@ import { UserComponent } from './user/user.component';
 import { AuthGuardService} from './guards/auth-guard.service';
 import { QuestionsComponent } from './questions-page/questions/questions.component';
 import { AuthHomepageComponent } from './auth-homepage/auth-homepage.component';
+import { YourSolutionsComponent } from './workspace-page/your-solutions/your-solutions.component';
 
 
    const routes: Routes = [
@@ -39,6 +40,9 @@ import { AuthHomepageComponent } from './auth-homepage/auth-homepage.component';
       },
     { path: 'auth-homepage',
       component:  AuthHomepageComponent
+     },
+     { path: 'ys',
+      component:  YourSolutionsComponent
      }
    ];
 

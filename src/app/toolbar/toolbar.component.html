@@ -7,7 +7,7 @@
         </button>
 
 
-      <button mat-button  routerLink="/homepage"
+      <button mat-button class="lbutton" routerLink="/homepage"
 
        routerLinkActive="active" >
 
@@ -36,7 +36,7 @@
         
             <!--buttons--> 
 
-                <div fxLayout="row" fxLayoutAlign="space-between stretch" *ngIf="authservice.userData as user; else showLogin" style="color: #001f3f;">
+                <div fxLayout="row" fxLayoutAlign="space-between stretch" *ngIf="authservice.afAuth.authState | async as user; else showLogin" style="color: #001f3f;">
                   <span class="example-spacer"></span>
                   
                   <span class="example-spacer"></span>
@@ -49,7 +49,7 @@
                >WorkSpace</button> 
                   <span class="example-spacer"></span> -->
     
-                    <button mat-button  class="nav-link"   (click)="authservice.SignOut()" 
+                    <button mat-button  class="nav-link" *ngIf="(authservice.afAuth.authState | async)"  (click)="authservice.SignOut()" 
                     style="margin-left: 4px;">
                     
                      <!-- <mat-icon>logout</mat-icon> -->
@@ -61,7 +61,7 @@
                  
                 </div>
                 <ng-template #showLogin>
-                  <button mat-button  (click)="openDialog()"    style="background-color: #001f3f; color: white; margin-left: 4px;">
+                  <button mat-button  (click)="openDialog()" class="lbutton"   style="background-color: #001f3f; color: white; margin-left: 4px;">
                     Login
                   </button>
                 </ng-template>
@@ -79,10 +79,10 @@
 
 
 
-
+<!--*ngIf="authservice.userData as user; else showLogin" -->
            
            
-                <div fxLayout="column" fxLayoutAlign="space-around none" *ngIf="authservice.userData as user; else showLogin" >
+                <div fxLayout="column" fxLayoutAlign="space-around none" *ngIf="authservice.afAuth.authState | async as user; else showLogin" >
                   <span class="example-spacer"></span>
                   <button  mat-button class="nav-link " 
                   routerLink="/user-profile" routerLinkActive="active" >
@@ -109,13 +109,14 @@
                 
                 style="background-color: #001f3f; color: white;"-->
                   
-                  <button mat-button  class="nav-link"   (click)="authservice.SignOut()" 
+                  <button mat-button  class="nav-link" 
+                  *ngIf="(authservice.afAuth.authState | async)"  (click)="authservice.SignOut()" 
                     >
                      <mat-icon>logout</mat-icon>  Log out
                   </button>
                 </div>
                 <ng-template #showLogin>
-                  <button mat-button  (click)="openDialog()"    style="background-color: #001f3f; color: white; margin-left: 4px;">
+                  <button mat-button  (click)="openDialog()"  class="lbutton"  style="background-color: #001f3f; color: white; margin-left: 4px;">
                     Login
                   </button>
                 </ng-template>

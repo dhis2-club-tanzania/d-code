@@ -50,7 +50,7 @@ import { CodeOutputsComponent } from './workspace-page/code-outputs/code-outputs
 import {MatGridListModule} from '@angular/material/grid-list';
 import {TextFieldModule} from '@angular/cdk/text-field';
 import { TextareaAutosizeModule } from 'ngx-textarea-autosize';
-import { MonacoEditorModule, NgxMonacoEditorConfig, NGX_MONACO_EDITOR_CONFIG} from 'ngx-monaco-editor';
+// import { MonacoEditorModule, NgxMonacoEditorConfig, NGX_MONACO_EDITOR_CONFIG} from 'ngx-monaco-editor';
 import { TimerComponent } from './workspace-page/timer/timer.component';
 import { AuthHomepageComponent } from './auth-homepage/auth-homepage.component';
 import { BugReportComponent } from './dialogues/bug-report/bug-report.component';
@@ -60,50 +60,50 @@ import { MoreInfoComponent } from './dialogues/more-info/more-info.component';
 // import {   } from '@materia-ui/ngx-monaco-editor';
 
 
-export function onMonacoLoad() {
+// export function onMonacoLoad() {
 
  
-  console.log((window as any).monaco);
+//   console.log((window as any).monaco);
 
-  const uri = monaco.Uri.parse('a://b/foo.json');
-  monaco.languages.json.jsonDefaults.setDiagnosticsOptions({
-    validate: true,
-    schemas: [{
-      uri: 'http://myserver/foo-schema.json',
-      fileMatch: [uri.toString()],
-      schema: {
-        type: 'object',
-        properties: {
-          p1: {
-            enum: ['v1', 'v2']
-          },
-          p2: {
-            $ref: 'http://myserver/bar-schema.json'
-          }
-        }
-      }
-    }, {
-      uri: 'http://myserver/bar-schema.json',
-      fileMatch: [uri.toString()],
-      schema: {
-        type: 'object',
-        properties: {
-          q1: {
-            enum: ['x1', 'x2']
-          }
-        }
-      }
-    }]
-  });
+//   const uri = monaco.Uri.parse('a://b/foo.json');
+//   monaco.languages.json.jsonDefaults.setDiagnosticsOptions({
+//     validate: true,
+//     schemas: [{
+//       uri: 'http://myserver/foo-schema.json',
+//       fileMatch: [uri.toString()],
+//       schema: {
+//         type: 'object',
+//         properties: {
+//           p1: {
+//             enum: ['v1', 'v2']
+//           },
+//           p2: {
+//             $ref: 'http://myserver/bar-schema.json'
+//           }
+//         }
+//       }
+//     }, {
+//       uri: 'http://myserver/bar-schema.json',
+//       fileMatch: [uri.toString()],
+//       schema: {
+//         type: 'object',
+//         properties: {
+//           q1: {
+//             enum: ['x1', 'x2']
+//           }
+//         }
+//       }
+//     }]
+//   });
 
-}
+// }
 
 
-const monacoConfig: NgxMonacoEditorConfig = {
-  baseUrl: 'assets',
-  defaultOptions: { scrollBeyondLastLine: false },
-  onMonacoLoad
-};
+// const monacoConfig: NgxMonacoEditorConfig = {
+//   baseUrl: 'assets',
+//   defaultOptions: { scrollBeyondLastLine: false },
+//   onMonacoLoad
+// };
 
 
 @NgModule({
@@ -137,7 +137,7 @@ const monacoConfig: NgxMonacoEditorConfig = {
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
     SocialLoginModule, MatTableModule, MatSortModule,
     MatGridListModule, TextFieldModule, TextareaAutosizeModule,
-    MonacoEditorModule.forRoot(monacoConfig) // use forRoot() in main app module only.
+   // MonacoEditorModule.forRoot(monacoConfig) // use forRoot() in main app module only.
     // AngularFirestore
   
   ],

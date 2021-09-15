@@ -106,21 +106,15 @@ export class WorkspacePageComponent implements OnInit {
 
   home:boolean=false;
 
-  
-    data: any;
     editor: any;
  
-
-  
-
-  
-  // questions: Observable<any[]>;
   questions: Question[] = [];
   question: Question | undefined;
   id!: Observable<Question>;
   results: any;
  
-
+  Sdisplay = "0:0:0 ";
+  Tdisplay = "0:0:0";
   code!: string;
 
    ys!: YourSolutionsComponent;
@@ -143,6 +137,8 @@ export class WorkspacePageComponent implements OnInit {
       //      // here, we retrieve monaco-editor instance
       //     //  monaco.setTheme(...);
       // });
+      this.qs.currentSdisplay.subscribe(Sdisplay => this.Sdisplay = Sdisplay);
+      this.qs.currentTdisplay.subscribe(Tdisplay => this.Tdisplay = Tdisplay);
 
      }
   
@@ -150,24 +146,12 @@ export class WorkspacePageComponent implements OnInit {
     this.dialog.open(BugReportComponent);
   }
 
-  variant = {};
-  product = {};
-
-
 
 
   timerDialog() {
     this.dialog.open(TimerComponent);
   }
 
-  onSubmit() {
-    console.log(this.product);
-    console.log(this.variant);
-  }
-
-  runcode(){
-    return this.ys.runCode();
-  }
 
 
   //toggle-active
@@ -175,6 +159,9 @@ export class WorkspacePageComponent implements OnInit {
   // : void 
   ngOnInit() {
     this.selectedVal2 ='Your Solutions';
+
+    this.qs.currentSdisplay.subscribe(Sdisplay => this.Sdisplay = Sdisplay)
+    this.qs.currentTdisplay.subscribe(Tdisplay => this.Tdisplay = Tdisplay)
   } 
   
  
@@ -198,7 +185,7 @@ export class WorkspacePageComponent implements OnInit {
 
   dark:boolean = true;
   light: boolean = false;
-  darkFunction(){
+   darkFunction(){
   
     this.dark = !this.dark;
     this.light = true;
@@ -240,30 +227,6 @@ export class WorkspacePageComponent implements OnInit {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
   // editorOptions = {theme: 'vs-dark', language: 'javascript'};
   // code: string= 'function x() {\nconsole.log("Hello world!");\n}';
 
@@ -301,145 +264,155 @@ export class WorkspacePageComponent implements OnInit {
   // console.log("Hello");
 
 
-  time!: number;
-  display = "0:0:0 ";
-  // display!: string;
-  Sinterval!: NodeJS.Timeout;
-  startSW:boolean = true;
-  resumeSW: boolean = false;
+//   time!: number;
+//   display = "0:0:0 ";
+  
+//   Sinterval!: NodeJS.Timeout;
+//   startSW:boolean = true;
+//   resumeSW: boolean = false;
 
- startStopwatch() {
+//  startStopwatch() {
     
-    this.time = 0;
-    this.Sinterval = setInterval(() => {
-      if (this.time === 0) {
-        this.time++;
-      } else {
-        this.time++;
-      }
-      this.display=this.transform( this.time)
-    }, 1000);
+//     this.time = 0;
+//     this.Sinterval = setInterval(() => {
+//       if (this.time === 0) {
+//         this.time++;
+//       } else {
+//         this.time++;
+//       }
+//       this.display=this.transform( this.time)
+//     }, 1000);
 
-    this.resumeSW = true;
-    this.startSW = false;
-  }
+//     this.resumeSW = true;
+//     this.startSW = false;
+//   }
 
 
 
-  transform(value: number): string {
-    var sec_num = value; 
-    var hours   = Math.floor(sec_num / 3600);
-    var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
-    var seconds = sec_num - (hours * 3600) - (minutes * 60);
+//   transform(value: number): string {
+//     var sec_num = value; 
+//     var hours   = Math.floor(sec_num / 3600);
+//     var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
+//     var seconds = sec_num - (hours * 3600) - (minutes * 60);
 
-    // if (hours   < 10) {hours   = 0;}
-    // if (minutes < 10) {minutes = 0;}
-    // if (seconds < 10) {seconds = 0;}
-    return hours+':'+minutes+':'+seconds;
-  }
-  pauseStopwatch() {
-    clearInterval(this.Sinterval);
-  }
+//     // if (hours   < 10) {hours   = 0;}
+//     // if (minutes < 10) {minutes = 0;}
+//     // if (seconds < 10) {seconds = 0;}
+//     return hours+':'+minutes+':'+seconds;
+//   }
+//   pauseStopwatch() {
+//     clearInterval(this.Sinterval);
+//   }
 
-  stopStopwatch(){
+//   stopStopwatch(){
 
     
   
-       this.time = 0
+//        this.time = 0
 
-        if (this.time === 0) {
-          this.time = 0;
-        } else {
-          this.time = 0;
+//         if (this.time === 0) {
+//           this.time = 0;
+//         } else {
+//           this.time = 0;
          
-        }
+//         }
 
-        this.startSW = true;
-      this.resumeSW = false;
+//         this.startSW = true;
+//       this.resumeSW = false;
   
-      return  clearInterval(this.Sinterval), this.display = "0:0:0 ";
+//       return  clearInterval(this.Sinterval), this.display = "0:0:0 ";
      
      
         
-    }
+//     }
 
 
-  timeLeft!: number;
-  Tinterval!: NodeJS.Timeout;
-  Tdisplay = "0:0:0";
-  // Tdisplay!: string;
-  Tmessage!: string;
+//   timeLeft!: number;
+//   Tinterval!: NodeJS.Timeout;
+//   Tdisplay = "0:0:0";
+//   // Tdisplay!: string;
+//   Tmessage!: string;
  
-  startT:boolean = true;
-  resumeT: boolean = false;
+//   startT:boolean = true;
+//   resumeT: boolean = false;
  
 
   
 
-  startTimer() {
-    this.resumeT = true;
-    this.startT = false;
+//   startTimer() {
+//     this.resumeT = true;
+//     this.startT = false;
 
-    this.Tinterval = setInterval(() => {
-      if(this.timeLeft > 0) {
-        this.timeLeft--;
-      }
+//     this.Tinterval = setInterval(() => {
+//       if(this.timeLeft > 0) {
+//         this.timeLeft--;
+//       }
   
-       else {
-        this.timeLeft = 0;
-      }
+//        else {
+//         this.timeLeft = 0;
+//       }
      
-      this.Tdisplay=this.Ttransform( this.timeLeft)
+//       this.Tdisplay=this.Ttransform( this.timeLeft)
      
      
-    },1000);
+//     },1000);
 
    
  
-  }
+//   }
 
 
 
  
 
-  Ttransform(value: number): string {
+//   Ttransform(value: number): string {
 
 
-  var sec_num = value; 
-  var hours   = Math.floor(sec_num / 3600);
-  var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
-  var seconds = sec_num - (hours * 3600) - (minutes * 60);
+//   var sec_num = value; 
+//   var hours   = Math.floor(sec_num / 3600);
+//   var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
+//   var seconds = sec_num - (hours * 3600) - (minutes * 60);
 
-    // if (hours   < 10) {hours   = 0;}
-    // if (minutes < 10) {minutes = 0;}
-    // if (seconds < 10) {seconds = 0;}
-    return hours+':'+minutes+':'+seconds; 
+//     // if (hours   < 10) {hours   = 0;}
+//     // if (minutes < 10) {minutes = 0;}
+//     // if (seconds < 10) {seconds = 0;}
+//     return hours+':'+minutes+':'+seconds; 
 
-  }
+//   }
 
-  pauseTimer() {
-    clearInterval(this.Tinterval);
-  }
+//   pauseTimer() {
+//     clearInterval(this.Tinterval);
+//   }
 
-  stopTimer(){
+//   stopTimer(){
 
   
 
-       this.timeLeft = 0
+//        this.timeLeft = 0
      
-      clearInterval(this.timeLeft)
+//       clearInterval(this.timeLeft)
 
-      this.startT = true;
-      this.resumeT = false;
+//       this.startT = true;
+//       this.resumeT = false;
   
-      // return this.Tmessage = "Timer Complete!";
+//       // return this.Tmessage = "Timer Complete!";
         
+//     }
+
+
+    coderesults!: string;
+
+    receiveMessage($event: any) {
+      this.coderesults = $event
     }
 
 
 
-
   
+}
+
+export class CodeOutputsComponent{
+
 }
 
 

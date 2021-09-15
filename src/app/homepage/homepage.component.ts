@@ -6,7 +6,9 @@ import { EventEmitter } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
+import {ActivatedRoute} from "@angular/router"
 import { GoogleLoginProvider } from 'angularx-social-login';
+import firebase from 'firebase/app';
 //email validator
 // import {FormControl, FormGroup  } from '@angular/forms';
 
@@ -24,6 +26,10 @@ export class HomepageComponent implements OnInit {
   successMessage: string | undefined;
 
 
+  firstname!: string;
+  lastname!: string;
+
+
 //   pageFunction(){
 //     this.home=false
 // }
@@ -33,7 +39,14 @@ export class HomepageComponent implements OnInit {
      public authservice: AuthServiceService,
      public afs: AngularFirestore,   // Inject Firestore service
      public afAuth: AngularFireAuth, // Inject Firebase auth service
-     public router: Router) { }
+     public router: Router,
+     private route: ActivatedRoute) {
+
+      this.route.queryParams.subscribe(params => {
+        this.firstname = params["firstname"];
+        this.lastname = params["lastname"];
+    });
+      }
  
  
  
@@ -55,14 +68,22 @@ export class HomepageComponent implements OnInit {
       //   this.router.navigate(['login']);
       // }
       
-          logout(){
-            return this.authservice.SignOut()
-             }
+        //   logout(){
+        //     return this.authservice.SignOut()
+        //      }
 
 
         login(){
           return this.authservice.GoogleAuth()
         }
 
+        signIn() {
+          const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
+          this.afAuth.signInWithPopup(googleAuthProvider);
+        }
+      
+        signOut() {
+          this.afAuth.signOut();
+        }
 
 }

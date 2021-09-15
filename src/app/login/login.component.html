@@ -13,8 +13,9 @@
     
     
           <!--LOG IN *ngIf="isSignedIn"-->
+          <!-- <ng-template #showLogin>  -->
     
-          <div   fxLayout="column" fxLayoutAlign="start center" style="align-items: center; padding: 5px 5px 5px 5px; width: auto; height: auto;">
+          <div   fxLayout="column" fxLayoutAlign="start center" style="align-items: center; padding: 5px 5px 5px 5px; width: auto; height: auto;" >
     
             <!-- <p mat-dialog-title>D-CODE</p> -->
 
@@ -39,71 +40,31 @@
               
             <div mat-dialog-content>Connect to save your progress</div>
             <br/>
-            <!-- <div  >
-              <mat-button-toggle-group  appearance="legacy" fxLayout="row " fxLayoutAlign="start stretch" #group="matButtonToggleGroup"
-               [value]="selectedVal1" (change)="onVal1Change(group.value)" style="min-width: 350px; " >
-                  <mat-button-toggle value="login"  style="width: 50%;"
-            
-                  >LOG IN</mat-button-toggle>
-                  <mat-button-toggle value="register" (click)="registerFunction()" style="width: 50%;"
-                 
-                  >REGISTER</mat-button-toggle>
-              </mat-button-toggle-group>
-            </div>   <colour background-color: #021936;> 
-            type="button" class="btn googleBtn"-->
+  
   
             <div  fxLayout="column" fxLayoutAlign="space-around center"  >
   
-                <button mat-raised-button [mat-dialog-close] style="background-color: teal; color: whitesmoke;"
-                 (click)="authservice.GoogleAuth()" 
-                routerLink="/user-profile" routerLinkActive="active">
+                <!-- <button mat-raised-button style="background-color: teal; color: whitesmoke;"
+                 (click)="authservice.GoogleAuth()" >
                   <mat-icon class="fab fa-google-plus-g">Google_plus</mat-icon>
                   Connect with Google
-                </button> 
+                </button>  -->
+
+                <button mat-raised-button [mat-dialog-close] style="background-color: teal; color: whitesmoke;"
+                *ngIf="(authservice.afAuth.authState | async) === null" (click)="authservice.GoogleAuth()">
+                 <mat-icon class="fab fa-google-plus-g">Google_plus</mat-icon>
+                 Connect with Google
+               </button> 
       
                   <br/>
-                  <!-- <button mat-raised-button style="background-color: teal; color: whitesmoke;"
-                type="button" class="btn facebookBtn" (click)="authservice.FacebookAuth()" 
-                routerLink="/user-component" routerLinkActive="active">
+                  <button mat-raised-button [mat-dialog-close] style="background-color: teal; color: whitesmoke;"
+                *ngIf="(authservice.afAuth.authState | async) === null" (click)="authservice.FacebookAuth()" >
                   <mat-icon >facebook</mat-icon>
                   Connect with Facebook
-                </button> -->
-      
-  
-              <!-- <div>
-                <mat-form-field appearance="fill" style="min-width: 350px; background-color: #0080808a;">
-                  <mat-label>Enter Email</mat-label>
-                  <input matInput type="text | email"  #email>
-                </mat-form-field>
-              </div>
-              <br/>
-              <div>
-                  <mat-form-field appearance="fill" style="min-width: 350px; background-color: #0080808a;">
-                    <mat-label>Password</mat-label>
-                    <input matInput [type]="hide ? 'password' : 'text'" #password>
-                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                    </button>
-                    
-                  </mat-form-field>
-              </div>
-                <br/>
-                 
-                <button  mat-raised-button style="min-width: 350px; background-color: #008080;"
-                (click)="onSignin(email.value,password.value)">LOG IN</button> 
-                <br/>
-                <div fxLayout="column" fxLayoutAlign="space-around center" >
-               
-                  
-                  <a href="#">Forgot password? </a>
+                </button>
     
-                  <p>New to D-CODE? 
-                    <a (click)="registerFunction()"  >Register </a> 
-                  </p> -->
-                  <!-- routerLink="/questions-page-component" routerLinkActive="active" -->
-                  <!-- <mat-divider></mat-divider> -->
-                  <!-- <p> You may also do the following </p>   -->
-    
+
+                <!-- <button (click)="onTap()">Navigate to page2</button> -->
                
                   <!-- <br/>
                   <button  mat-raised-button style="min-width: 350px; background-color: teal;" > 
@@ -120,18 +81,16 @@
               
     
           </div>
+
+          <!-- </ng-template> -->
+
+          <!-- <app-auth-homepage *ngIf="authservice.userData as user; else showLogin"></app-auth-homepage> -->
          
-            <!-- <p *ngIf="isSignedIn" style="align-items: center; " > You are Logged In!</p> -->
             <br/>
-          <!-- <div  (isLogout) = "handleLogout()">
-          </div> -->
+          
          
   
   
 </div>
   
-  <!-- <app-user *ngIf="!isSignedIn" ></app-user>  -->
-  
-  <!-- <div fxLayoutGap *ngIf="register" fxLayout="column" fxLayoutAlign="space-evenly center" style="background-color: #356db38a;">
-    <app-register ></app-register>
-  </div> -->
+

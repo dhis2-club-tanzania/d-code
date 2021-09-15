@@ -18,14 +18,15 @@ import  firebase from 'firebase/app';
 export class AuthServiceService {
 
 
-  // user: Observable<User>
-
-
-
-
-  // isLoggedIn = false //*ngIf="!isSignedIn"
-  // doRegister: any;
+  user!: Observable<User>
+ 
   userData: any; // Save logged in user data
+
+      // // Returns true when user is looged in and email is verified
+      // get isLoggedIn(): boolean {
+      //   const user = JSON.parse(localStorage.getItem('user')!);
+      //   return (user !== null) ? true : false;
+      // }
 
   constructor(    
    public afs: AngularFirestore,   // Inject Firestore service
@@ -47,11 +48,7 @@ export class AuthServiceService {
             });
       }
 
-           // Returns true when user is looged in and email is verified
-    get isLoggedIn(): boolean {
-      const user = JSON.parse(localStorage.getItem('user')!);
-      return (user !== null) ? true : false;
-    }
+
     
 
     // Sign in with Google
@@ -75,6 +72,8 @@ export class AuthServiceService {
         window.alert(error);
       }
     }
+
+           
 
     /* Setting up user data when sign in with username/password, 
     sign up with username/password and sign in with social auth  
@@ -107,33 +106,7 @@ export class AuthServiceService {
 
 
 
-
-      // doFacebookLogin(){
-      //   return new Promise<any>((resolve, reject) => {
-      //     let provider = new firebase.auth.FacebookAuthProvider();
-      //     this.afAuth
-      //     .signInWithPopup(provider)
-      //     .then(res => {
-      //       resolve(res);
-      //     }, err => {
-      //       console.log(err);
-      //       reject(err);
-      //     })
-      //   })
-      // }
-
-      // doGoogleLogin(){
-      //   return new Promise<any>((resolve, _reject) => {
-      //     let provider = new firebase.auth.GoogleAuthProvider();
-      //     provider.addScope('profile');
-      //     provider.addScope('email');
-      //     this.afAuth
-      //     .signInWithPopup(provider)
-      //     .then(res => {
-      //       resolve(res);
-      //     })
-      //   })
-      //   }
+   
 
 
 
