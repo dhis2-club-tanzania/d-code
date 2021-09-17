@@ -1,8 +1,9 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-<div  [ngClass]="{'dark': dark, 'light': !dark}" class="dark"> <!--   022949 style=" margin-left: 10px; margin-right: 10px; height: 700px; background-color: #03213d;" -->
-
-
+<div  [ngClass]="{'dark': dark, 'light': !dark}" class="dark" [style.fontSize]="fontSize.value"  matInput
+cdkTextareaAutosize
+cdkAutosizeMinRows="1"
+cdkAutosizeMaxRows="5" > <!--   022949 style=" margin-left: 10px; margin-right: 10px; height: 700px; background-color: #03213d;" -->
 
     <div >
     
@@ -41,6 +42,22 @@
 
             
             <!--(click)="button_headerFunction()"-->
+                            
+
+                            <!-- <button mat-raised-button matTooltip="Editor Font Size" style="min-width: 90px;" 
+                                [ngClass]="{'button': dark, 'light': !dark}" class="button">
+
+                                <mat-select #fontSize value="16px" (selectionChange)="triggerResize()" disableOptionCentering  panelClass="myPanelClass">
+                                  <mat-option value="10px">10px</mat-option>
+                                  <mat-option value="12px">12px</mat-option>
+                                  <mat-option value="14px">14px</mat-option>
+                                  <mat-option value="16px">16px</mat-option>
+                                  <mat-option value="18px">18px</mat-option>
+                                  <mat-option value="20px">20px</mat-option>
+                                </mat-select>
+
+                            </button> -->
+
                             <button mat-raised-button fxShow="true" fxHide.gt-sm="true"  #small style="margin-right: 20px;"   (click)="button_headerFunction()"
                             [ngClass]="{'button': dark, 'light': !dark}" class="button" > <!--(click)="button_headerFunction()"-->
                                 <mat-icon>more_horiz</mat-icon>
@@ -56,11 +73,12 @@
                     
                                 </button>
                                 
-                                <button mat-raised-button  matTooltip="Workspace" style="min-width: 130px;" [ngClass]="{'button': dark, 'light': !dark}" class="button" > 
+                                <button mat-raised-button  matTooltip="Workspace" style="min-width: 130px; color: #030e1a !important;"
+                                 [ngClass]="{'button': dark, 'light': !dark}" class="button" > 
                                     
-                                    <mat-select [(value)]="selectedWLayout" disableOptionCentering  panelClass="myPanelClass" > 
+                                    <mat-select [(value)]="selectedWLayout" disableOptionCentering  panelClass="myPanelClass"  > 
                                         
-                                    <mat-option [value]="wlayout.value" *ngFor="let wlayout of wlayouts" >
+                                    <mat-option [value]="wlayout.value" *ngFor="let wlayout of wlayouts" (click) = "triLayoutF()" >
                                         {{wlayout.viewValue}}
                                     </mat-option>
                                     </mat-select> 
@@ -79,17 +97,34 @@
                                     </mat-select>
                                 </button>
                             
-                                <button mat-raised-button matTooltip="Editor Font Size" style="min-width: 90px;"
-                                [ngClass]="{'button': dark, 'light': !dark}" class="button" >  
-                    
-                                    <mat-select [(value)]="selectedFont" disableOptionCentering  panelClass="myPanelClass"> 
+                            
+
+                                <!-- <button mat-raised-button matTooltip="Editor Font Size" style="min-width: 90px;" 
+                                [ngClass]="{'button': dark, 'light': !dark}" class="button">   -->
+        
+                                    <!-- <mat-select [(value)]="selectedFont" disableOptionCentering  panelClass="myPanelClass"> 
                                         
                                     <mat-option [value]="font.value"
                                     *ngFor="let font of fonts"  >
                                         {{font.viewValue}}
                                     </mat-option>
-                                    </mat-select>
-                                </button>
+                                    </mat-select> -->
+                                    
+                                <!-- </button> -->
+
+                                <button mat-raised-button matTooltip="Editor Font Size" style="min-width: 90px;" 
+                                [ngClass]="{'button': dark, 'light': !dark}" class="button"> 
+
+                                <mat-select #fontSize value="16px" (selectionChange)="triggerResize()" disableOptionCentering  panelClass="myPanelClass">
+                                  <mat-option value="10px">10px</mat-option>
+                                  <mat-option value="12px">12px</mat-option>
+                                  <mat-option value="14px">14px</mat-option>
+                                  <mat-option value="16px">16px</mat-option>
+                                  <mat-option value="18px">18px</mat-option>
+                                  <mat-option value="20px">20px</mat-option>
+                                </mat-select>
+
+                            </button>
                             
                                 <button mat-raised-button matTooltip="Editor Key Maps" style="min-width: 110px;"
                                 [ngClass]="{'button': dark, 'light': !dark}" class="button" >
@@ -114,7 +149,7 @@
                                 <mat-icon>brightness_3</mat-icon>
                                 </button>
                                 
-                                <button mat-raised-button matTooltip="Syntax Highlighting Theme" style="min-width: 110px;" 
+                                <!-- <button mat-raised-button matTooltip="Syntax Highlighting Theme" style="min-width: 110px;" 
                                 [ngClass]="{'button': dark, 'light': !dark}" class="button" >  
                             
                                     <mat-select  [(value)]="selectedSyntaxTheme" disableOptionCentering  panelClass="myPanelClass" > 
@@ -124,17 +159,17 @@
                                         {{syntaxtheme.viewValue}}
                                     </mat-option>
                                     </mat-select>
-                                </button>
+                                </button> -->
                                 
-                                <button mat-raised-button matTooltip="Whiteboard Mode" 
+                                <!-- <button mat-raised-button matTooltip="Whiteboard Mode" 
                                 [ngClass]="{'button': dark, 'light': !dark}" class="button" >
                                     <mat-icon>tv</mat-icon> 
-                                </button>
+                                </button> -->
                                 
-                                <button mat-raised-button matTooltip="Data Structure Visualizer" 
+                                <!-- <button mat-raised-button matTooltip="Data Structure Visualizer" 
                                 [ngClass]="{'button': dark, 'light': !dark}" class="button" >
                                     <mat-icon>share</mat-icon> 
-                                </button>
+                                </button> -->
                                 
                               
                                   
@@ -148,19 +183,19 @@
 
               
 
-                            <button mat-raised-button  matTooltip="Timer | Stopwatch" style="min-width: 125px;" 
+                            <!-- <button mat-raised-button  matTooltip="Timer | Stopwatch" style="min-width: auto;" 
                             [ngClass]="{'button': dark, 'light': !dark}" class="button" (click) = "timerDialog()">
                                 {{Tdisplay}} 
                                 <mat-icon>alarm</mat-icon> 
                                 {{Sdisplay }} 
-                            </button>
+                            </button> -->
 
-                            <!-- <button mat-raised-button  matTooltip="Timer | Stopwatch" style="min-width: 125px;" 
+                            <button mat-raised-button  matTooltip="Timer | Stopwatch" style="min-width: auto;" 
                             [ngClass]="{'button': dark, 'light': !dark}" class="button" (click) = "timerFunction()">
                                 {{Tdisplay}} 
                                 <mat-icon>alarm</mat-icon> 
                                 {{display }} 
-                            </button> -->
+                            </button>
 
                              <button mat-raised-button matTooltip="Bug Report" (click) = "openDialog()" 
                              [ngClass]="{'button': dark, 'light': !dark}" class="button">
@@ -187,12 +222,12 @@
 
                         </button>
                         
-                        <button mat-raised-button  matTooltip="Workspace" style="min-width: 130px;" 
+                        <button mat-raised-button  matTooltip="Workspace" style="min-width: 130px; " 
                         [ngClass]="{'button': dark, 'light': !dark}" class="button" > 
                             
                             <mat-select [(value)]="selectedWLayout"   panelClass="myPanelClass" [ngClass]="{'mat-select-value-text': dark, 'mat-select-value-text1': !dark}" class="mat-select-value-text" >
                                 
-                            <mat-option [value]="wlayout.value" *ngFor="let wlayout of wlayouts" >
+                            <mat-option [value]="wlayout.value" *ngFor="let wlayout of wlayouts" (click) = "triLayoutF()" >
                                 {{wlayout.viewValue}}
                             </mat-option>
                             </mat-select> 
@@ -211,7 +246,7 @@
                             </mat-select>
                         </button>
                     
-                        <button mat-raised-button matTooltip="Editor Font Size" style="min-width: 90px;" 
+                        <!-- <button mat-raised-button matTooltip="Editor Font Size" style="min-width: 90px;" 
                         [ngClass]="{'button': dark, 'light': !dark}" class="button">  
 
                             <mat-select [(value)]="selectedFont" disableOptionCentering  panelClass="myPanelClass"> 
@@ -221,7 +256,22 @@
                                 {{font.viewValue}}
                             </mat-option>
                             </mat-select>
-                        </button>
+                         
+                        </button> -->
+
+                        <!-- <button mat-raised-button matTooltip="Editor Font Size" style="min-width: 90px;" 
+                                [ngClass]="{'button': dark, 'light': !dark}" class="button"> 
+
+                                <mat-select #SfontSize value="16px" (selectionChange)="triggerResize()" disableOptionCentering  panelClass="myPanelClass">
+                                  <mat-option value="10px">10px</mat-option>
+                                  <mat-option value="12px">12px</mat-option>
+                                  <mat-option value="14px">14px</mat-option>
+                                  <mat-option value="16px">16px</mat-option>
+                                  <mat-option value="18px">18px</mat-option>
+                                  <mat-option value="20px">20px</mat-option>
+                                </mat-select>
+
+                            </button> -->
                     
                         <button mat-raised-button matTooltip="Editor Key Maps" style="min-width: 110px;" 
                         [ngClass]="{'button': dark, 'light': !dark}" class="button">
@@ -271,8 +321,8 @@
                     </div> 
 
                     <!--Timer | Stopwatch-->
-                    <!-- <div fxLayout="row" fxLayoutAlign="end end"  class="old" [ngClass]="{'old': timer, 'new': !timer}" *ngIf = "timer">
-                        <mat-card class="timer" [ngClass]="{'timer': dark, 'light': !dark}" >
+                    <div fxLayout="row" fxLayoutAlign="end end"  class="old" [ngClass]="{'old': timer, 'new': !timer}" *ngIf = "timer">
+                        <mat-card class="timer" [ngClass]="{'timer': dark, 'light1': !dark}" >
                             <div fxLayout="row" fxLayoutAlign="end end"  >
                                
                                 <button  mat-dialog-close style=" border:none; background-color:transparent; align-items: flex-end;"
@@ -305,7 +355,7 @@
 
                         
                         
-                        <input  type="number" matInput placeholder="Enter the time in seconds" [(ngModel)]= "timeLeft" style="background-color: #f5f5f5; padding: 12pt 9pt ; margin-bottom: 10pt; max-width: 200px; color: #001f3f;" >
+                        <input  *ngIf = "startT"  type="number" matInput placeholder="Enter the time in seconds" [(ngModel)]= "timeLeft" style="background-color: #f5f5f5; padding: 12pt 9pt ; margin-bottom: 10pt; max-width: 200px; color: #001f3f;" >
 
                         <br/>
 
@@ -320,12 +370,32 @@
 
                     </div>
                     </mat-card>
-                     </div> -->
+                     </div>
                                 
         </div>
     
         <br/>
        
+        <!-- <mat-form-field appearance="fill" [ngClass]="{'dark': dark, 'light': !dark}" class="dark">
+            <mat-label>Font size</mat-label>
+            <mat-select #fontSize value="16px" (selectionChange)="triggerResize()" [ngClass]="{'dark': dark, 'light': !dark}" class="dark">
+              <mat-option value="10px">10px</mat-option>
+              <mat-option value="12px">12px</mat-option>
+              <mat-option value="14px">14px</mat-option>
+              <mat-option value="16px">16px</mat-option>
+              <mat-option value="18px">18px</mat-option>
+              <mat-option value="20px">20px</mat-option>
+            </mat-select>
+          </mat-form-field> -->
+          
+          <!-- <mat-form-field [style.fontSize]="fontSize.value" appearance="fill">
+            <mat-label>Autosize textarea</mat-label>
+            <textarea matInput
+                      cdkTextareaAutosize
+                      cdkAutosizeMinRows="1"
+                      cdkAutosizeMaxRows="5"></textarea>
+          </mat-form-field> -->
+
         
 
         <!--Cards-->
@@ -352,107 +422,281 @@
 
             
             <div fxLayoutGap  > 
+
+            
                 <!-- on *ngIf="fullscreen"-->
-                <div fxShow="true" fxHide.lt-md="true"   >
-                        <!--Top row-->
-                        <div fxLayout="row" fxLayoutAlign="start center" >
-                            <!-- Prompt Space   *ngIf="ys.fullscreen_exit" -->
-              
-                            <div  class="example-full-width"   >
-                                <app-prompt style="width: 50%; background-color: brown;" ></app-prompt>
-                            </div> 
-                        
+                <div  fxShow="true" fxHide.lt-md="true"   >
 
-                            <span class="example-spacer"></span>
+                    <div *ngIf="!triLayout">
+                            <!--Top row-->
+                            <div fxLayout="row" fxLayoutAlign="start center" >
+                                <!-- Prompt Space   *ngIf="ys.fullscreen_exit" -->
+                
+                                <div style="min-width: 50%;"  class="example-full-width"    >
+                                    <div   [ngClass]="{'dark1': dark, 'light1': !dark}" class="dark1">
 
-                            <!-- Your Solutions Space class="screen" [ngClass]="{'screen': fullscreen, 'fullscreen': fullscreen_exit}"  *ngIf="ys.fullscreen" -->
-                            <div style="max-width: 100%;" class="example-full-width" >
-                               
-                          
-        
-                                  <appyoursolutions #appyoursolutions  (messageEvent)="receiveMessage($event)" ></appyoursolutions> <!--(dataLoaded)="data = $event"-->
-        
-                             
+                                        <app-prompt ></app-prompt>
+
+                                    </div>
+                                    
+                                </div> 
+                            
+
+                                <span class="example-spacer"></span>
+
+                                <!-- Your Solutions Space class="screen" [ngClass]="{'screen': fullscreen, 'fullscreen': fullscreen_exit}"  *ngIf="ys.fullscreen" -->
+                                <div style="min-width: 50%;" class="example-full-width" >
+
+                                    <div   [ngClass]="{'dark1': dark, 'light1': !dark}" class="dark1">
+                                
+                            
+
+                                    <appyoursolutions #appyoursolutions  (messageEvent)="receiveMessage($event)" ></appyoursolutions> <!--(dataLoaded)="data = $event"-->
+
+                                    </div>
+
+                                
+                                </div>
+
                             </div>
 
-                        </div>
+                                <br/> 
+                                <!--Bottom row-->
+                            <div  fxLayout="row" fxLayoutAlign="start center" > 
+                    
+                                <!-- Tests Space -->
+                                <div style="min-width: 50%;" class="example-full-width" #fullscreen>
 
-                            <br/> 
-                            <!--Bottom row-->
-                        <div  fxLayout="row" fxLayoutAlign="start center" > 
-                
-                            <!-- Tests Space -->
-                             <div style="min-width: 50%;" class="example-full-width" #fullscreen>
-                                <app-tests-samples ></app-tests-samples>
-                            </div> 
+                                    <div   [ngClass]="{'dark1': dark, 'light1': !dark}" class="dark1">
+                                    <app-tests-samples ></app-tests-samples>
+                                    </div>
+                                </div> 
 
-                            <span class="example-spacer"></span> 
+                                <span class="example-spacer"></span> 
+                    
+                                <!-- Output Space -->
+                                <div style="min-width: 50%;" class="example-full-width" #fullscreen>
+                                    <div   [ngClass]="{'dark1': dark, 'light1': !dark}" class="dark1">
+                                    <app-code-outputs (myEvent)="appyoursolutions.finalCode()" [childMessage]="coderesults" ></app-code-outputs>
+                                    </div>
+                                    
+                                </div> 
+                            </div>
+                    </div>
+
+                        <!-- on *ngIf="triLayout"-->
+                    <div   *ngIf="triLayout" >
+                       
+                            <!--Top row-->
+                            <div fxLayout="row" fxLayoutAlign="start center" >
+                                <!-- Prompt Space   *ngIf="ys.fullscreen_exit" -->
                 
-                            <!-- Output Space -->
-                            <div style="min-width: 50%;" class="example-full-width" #fullscreen>
-                                <app-code-outputs (myEvent)="appyoursolutions.finalCode()" [childMessage]="coderesults" ></app-code-outputs>
+                                <div style="min-width: 50%;"  class="example-full-width"    >
+                                    <div   [ngClass]="{'dark1': dark, 'light1': !dark}" class="dark1">
+
+                                        <app-prompt ></app-prompt>
+
+                                    </div>
+                                    
+                                </div> 
+                            
+
+                                <span class="example-spacer"></span>
+
+                                <!-- Your Solutions Space class="screen" [ngClass]="{'screen': fullscreen, 'fullscreen': fullscreen_exit}"  *ngIf="ys.fullscreen" -->
+                                <div style="min-width: 50%;" class="example-full-width" >
+
+                                    <div   [ngClass]="{'dark1': dark, 'light1': !dark}" class="dark1">
                                 
-                            </div> 
-                        </div>
+                            
+
+                                    <appyoursolutions #appyoursolutions  (messageEvent)="receiveMessage($event)" ></appyoursolutions> <!--(dataLoaded)="data = $event"-->
+
+                                    </div>
+
+                                
+                                </div>
+
+                            </div>
+
+                                <br/> 
+                                <!--Bottom row-->
+                            <div  fxLayout="row" fxLayoutAlign="start center" > 
+                    
+                                <!-- Tests Space -->
+                                <!-- <div style="min-width: 50%;" class="example-full-width" #fullscreen>
+
+                                    <div   [ngClass]="{'dark1': dark, 'light1': !dark}" class="dark1">
+                                    <app-tests-samples ></app-tests-samples>
+                                    </div>
+                                </div>  -->
+
+                                <span class="example-spacer"></span> 
+                    
+                                <!-- Output Space -->
+                                <div style="min-width: 50%;" class="example-full-width" #fullscreen>
+                                    <div   [ngClass]="{'dark1': dark, 'light1': !dark}" class="dark1">
+                                    <app-code-outputs (myEvent)="appyoursolutions.finalCode()" [childMessage]="coderesults" ></app-code-outputs>
+                                    </div>
+                                    
+                                </div> 
+                            </div>
+
+                    </div>
+          
                 </div>
 
                 <!--not on *ngIf="fullscreen"-->
-                <div fxShow="true" fxHide.gt-sm="true"   >
-                    <!--Top row-->
-                    <div fxLayout="column" fxLayoutAlign="start center" >
-                        <!-- Prompt Space-->
-                        <div class="example-full-width">
-                            <app-prompt ></app-prompt>
-                        </div> 
+                <div  fxShow="true" fxHide.gt-sm="true"   >
+                    <div *ngIf="!triLayout">
 
-                        <br/>
-                        <!-- Your Solutions Space  (dataLoaded)="data = $event" -->
-                        <div class="example-full-width" >
-                            <appyoursolutions #appyoursolutions  (messageEvent)="receiveMessage($event)" ></appyoursolutions>
-                        </div>
+                            <!--Top row-->
+                            <div fxLayout="column" fxLayoutAlign="space-evenly center" >
+                                <!-- Prompt Space   *ngIf="ys.fullscreen_exit" -->
+                
+                                <div style="min-width: 50%;"  class="example-full-width"    >
+                                    <div   [ngClass]="{'dark1': dark, 'light1': !dark}" class="dark1">
 
-                        <br/>
+                                        <app-prompt ></app-prompt>
 
-                        <!-- <ngx-monaco-editor [options]="editorOptions" [(ngModel)]="code" (init)="editorInit($event)"></ngx-monaco-editor>
-                        <ngx-monaco-diff-editor [options]="editorOptions" [original]="originalCode" [modified]="code"></ngx-monaco-diff-editor> -->
+                                    </div>
+                                    
+                                </div> 
+                            <br/>
 
-<!-- 
-                        <div style="height: 405px">
+                                <span class="example-spacer"></span>
 
-                            code : {{ code }} <br/>
-                            options: {{ editorOptions | json}} <br/>
-                            model: {{ model | json}}
-                            <ngx-monaco-editor  [options]="editorOptions" [(ngModel)]="code" (onInit)="onInit($event)"></ngx-monaco-editor>
+                                <!-- Your Solutions Space class="screen" [ngClass]="{'screen': fullscreen, 'fullscreen': fullscreen_exit}"  *ngIf="ys.fullscreen" -->
+                                <div style="min-width: 50%;" class="example-full-width" >
+
+                                    <div   [ngClass]="{'dark1': dark, 'light1': !dark}" class="dark1">
+                                
                             
-                        </div>
-                        <ngx-monaco-diff-editor [options]="options" [originalModel]="originalModel" [modifiedModel]="modifiedModel"></ngx-monaco-diff-editor> -->
 
-                        <!-- <script>
-                            require.config({ paths: { 'vs': '/monaco-editor/min/vs' }})
-                            require(['vs/editor/editor.main'], function onMonacoLoaded(){
-                            console.log(monaco);
-                            });
-                        </script> -->
+                                    <appyoursolutions #appyoursolutions  (messageEvent)="receiveMessage($event)" ></appyoursolutions> <!--(dataLoaded)="data = $event"-->
+
+                                    </div>
+
+                                
+                                </div>
+
+                            </div>
+
+                                <br/> 
+                                <!--Bottom row-->
+                            <div  fxLayout="column" fxLayoutAlign="space-evenly center" > 
+                    
+                                <!-- Tests Space -->
+                                <div style="min-width: 50%;" class="example-full-width" #fullscreen>
+
+                                    <div   [ngClass]="{'dark1': dark, 'light1': !dark}" class="dark1">
+                                    <app-tests-samples ></app-tests-samples>
+                                    </div>
+                                </div> 
+
+                                <span class="example-spacer"></span> 
+                                <br/>
+                    
+                                <!-- Output Space -->
+                                <div style="min-width: 50%;" class="example-full-width" #fullscreen>
+                                    <div   [ngClass]="{'dark1': dark, 'light1': !dark}" class="dark1">
+                                    <app-code-outputs (myEvent)="appyoursolutions.finalCode()" [childMessage]="coderesults" ></app-code-outputs>
+                                    </div>
+                                    
+                                </div> 
+                            
+
+
+                                <br/>
+
+                                <!-- <ngx-monaco-editor [options]="editorOptions" [(ngModel)]="code" (init)="editorInit($event)"></ngx-monaco-editor>
+                                <ngx-monaco-diff-editor [options]="editorOptions" [original]="originalCode" [modified]="code"></ngx-monaco-diff-editor> -->
+
+        <!-- 
+                                <div style="height: 405px">
+
+                                    code : {{ code }} <br/>
+                                    options: {{ editorOptions | json}} <br/>
+                                    model: {{ model | json}}
+                                    <ngx-monaco-editor  [options]="editorOptions" [(ngModel)]="code" (onInit)="onInit($event)"></ngx-monaco-editor>
+                                    
+                                </div>
+                                <ngx-monaco-diff-editor [options]="options" [originalModel]="originalModel" [modifiedModel]="modifiedModel"></ngx-monaco-diff-editor> -->
+
+                                <!-- <script>
+                                    require.config({ paths: { 'vs': '/monaco-editor/min/vs' }})
+                                    require(['vs/editor/editor.main'], function onMonacoLoaded(){
+                                    console.log(monaco);
+                                    });
+                                </script> -->
+                            </div>
+
+                         
+
                     </div>
 
-                        <br/> 
-                        <!--Bottom row-->
-                    <div  fxLayout="column" fxLayoutAlign="start center"> 
-                        <!-- Tests Space -->
-                    
-                        <div class="example-full-width">
-                            <app-tests-samples ></app-tests-samples>
-                        </div>
+                        <!-- on *ngIf="triLayout"-->
+                        <div   *ngIf="triLayout" >
 
-                    
-                        <br/>
-
-                        <!-- Output Space -->
-                        <div class="example-full-width" >
-                            <app-code-outputs (myEvent)="appyoursolutions.finalCode()" [childMessage]="coderesults" ></app-code-outputs> <!--[childProperty]="darkFunction()"-->
                             
-                        </div> 
+                            <!--Top row-->
+                            <div fxLayout="column" fxLayoutAlign="space-evenly center" >
+                                <!-- Prompt Space   *ngIf="ys.fullscreen_exit" -->
+                
+                                <div style="min-width: 50%;"  class="example-full-width"    >
+                                    <div   [ngClass]="{'dark1': dark, 'light1': !dark}" class="dark1">
+
+                                        <app-prompt ></app-prompt>
+
+                                    </div>
+                                    
+                                </div> 
+                            <br/>
+
+                                <span class="example-spacer"></span>
+
+                                <!-- Your Solutions Space class="screen" [ngClass]="{'screen': fullscreen, 'fullscreen': fullscreen_exit}"  *ngIf="ys.fullscreen" -->
+                                <div style="min-width: 50%;" class="example-full-width" >
+
+                                    <div   [ngClass]="{'dark1': dark, 'light1': !dark}" class="dark1">
+                                
+                            
+
+                                    <appyoursolutions #appyoursolutions  (messageEvent)="receiveMessage($event)" ></appyoursolutions> <!--(dataLoaded)="data = $event"-->
+
+                                    </div>
+
+                                
+                                </div>
+
+                            </div>
+
+                                <br/> 
+                                <!--Bottom row-->
+                            <div  fxLayout="column" fxLayoutAlign="space-evenly center" > 
+                    
+                                <!-- Tests Space -->
+                                <!-- <div style="min-width: 50%;" class="example-full-width" #fullscreen>
+
+                                    <div   [ngClass]="{'dark1': dark, 'light1': !dark}" class="dark1">
+                                    <app-tests-samples ></app-tests-samples>
+                                    </div>
+                                </div>  -->
+
+                                <span class="example-spacer"></span> 
+                    
+                                <!-- Output Space -->
+                                <div style="min-width: 50%;" class="example-full-width" #fullscreen>
+                                    <div   [ngClass]="{'dark1': dark, 'light1': !dark}" class="dark1">
+                                    <app-code-outputs (myEvent)="appyoursolutions.finalCode()" [childMessage]="coderesults" ></app-code-outputs>
+                                    </div>
+                                    
+                                </div> 
+                            </div>
+
+                          
                     </div>
+                 
                 </div>
     
 

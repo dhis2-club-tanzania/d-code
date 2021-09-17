@@ -1,5 +1,11 @@
+<!-- css
+  background-color: #ccfcfc86;
 
-<div  style="background-color: #ccfcfc86;">
+  background-color: teal; color: whitesmoke;
+
+   color: #2381fc;
+ -->
+<div  style="background-color: #030e1a; color: whitesmoke;">
 
     <div fxLayout="column" fxLayoutAlign="space-around end"  >
       <!-- <div  style="background-color:transparent; width: 150px; height: 50px; color: black; font-weight: bold; align-items: center;"> 
@@ -15,7 +21,7 @@
           <!--LOG IN *ngIf="isSignedIn"-->
           <!-- <ng-template #showLogin>  -->
     
-          <div   fxLayout="column" fxLayoutAlign="start center" style="align-items: center; padding: 5px 5px 5px 5px; width: auto; height: auto;" >
+          <div   fxLayout="column" fxLayoutAlign="start center" style="align-items: center; padding: 5px 5px 5px 5px; width: auto; height: auto; " >
     
             <!-- <p mat-dialog-title>D-CODE</p> -->
 
@@ -50,18 +56,30 @@
                   Connect with Google
                 </button>  -->
 
-                <button mat-raised-button [mat-dialog-close] style="background-color: teal; color: whitesmoke;"
+                <button mat-raised-button [mat-dialog-close] style="color: #030e1a; background-color: whitesmoke;"
                 *ngIf="(authservice.afAuth.authState | async) === null" (click)="authservice.GoogleAuth()">
                  <mat-icon class="fab fa-google-plus-g">Google_plus</mat-icon>
                  Connect with Google
                </button> 
       
-                  <br/>
-                  <button mat-raised-button [mat-dialog-close] style="background-color: teal; color: whitesmoke;"
+                  <!-- <br/>
+
+                  <button mat-raised-button [mat-dialog-close] style="color: #030e1a; background-color: whitesmoke;">
+                 <mat-icon class="fab fa-google-plus-g">Google_plus</mat-icon>
+                 Connect with Google
+               </button> 
+            
+            <br/> -->
+<!-- 
+            <button mat-raised-button [mat-dialog-close] style="background-color: #2381fc; color: #030e1a;">
+           <mat-icon class="fab fa-google-plus-g">Google_plus</mat-icon>
+           Connect with Google
+         </button> -->
+                  <!-- <button mat-raised-button [mat-dialog-close] style="background-color: teal; color: whitesmoke;"
                 *ngIf="(authservice.afAuth.authState | async) === null" (click)="authservice.FacebookAuth()" >
                   <mat-icon >facebook</mat-icon>
                   Connect with Facebook
-                </button>
+                </button> -->
     
 
                 <!-- <button (click)="onTap()">Navigate to page2</button> -->

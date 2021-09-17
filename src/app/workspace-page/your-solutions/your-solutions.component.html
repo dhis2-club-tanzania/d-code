@@ -20,8 +20,8 @@
         </mat-button-toggle-group>
     </div>
     
-
-    <div style="background-color: #030e1a; color: #f8f8f8;" class="answer-card"  [ngClass]="{'answer-card': fullscreen, 'fullscreen': fullscreen_exit}" >
+<!--style="background-color: #030e1a; color: #f8f8f8;"-->
+    <div  class="answer-card"  [ngClass]="{'answer-card': fullscreen, 'fullscreen': fullscreen_exit}" >
 
         <div *ngIf=" question noQuestions" >
             <div  class="collection">
@@ -48,7 +48,7 @@
                                 </div>
                             </mat-label>   -->
                  <br/>
-                <textarea matInput style="min-height: 240px; color: wheat; text-align: left; align-content: flex-start; "  [(ngModel)]="code" >
+                <textarea matInput style="min-height: 240px; color: #2381fc; text-align: left; align-content: flex-start; "  [(ngModel)]="code" >
 
                     {{code}}
                 

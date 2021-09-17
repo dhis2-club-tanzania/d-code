@@ -20,6 +20,12 @@ export class QuestionsService {
 
         questionsCollection!: AngularFirestoreCollection<Question>;
         questions:  Observable<Question[]> | any;
+        questionsCData:  Observable<Question[]> | any;
+        questionsDData:  Observable<Question[]> | any;
+        Cquestions: any;
+        // Cquestions:  Observable<Question[]> | any;
+        Dquestions:  any;
+        Rquestions:  any;
    
         public userdata!: Observable<YourSolutionsComponent[]> | any;
 
@@ -28,7 +34,15 @@ export class QuestionsService {
   constructor(public afs:  AngularFirestore,
     // public userdata : YourSolutionsComponent
     ) { 
-          this.questions = this.afs.collection<Question>('Questions').valueChanges();
+          this.questions = this.afs.collection<Question>('Questions', ref => ref.orderBy('name','asc')).valueChanges();
+          // this.questionsRData = this.afs.collection<Question>('Questions');
+          this.questionsCData = this.afs.collection<Question>('Questions', ref => ref.orderBy('category','asc'));
+          this.questionsDData = this.afs.collection<Question>('Questions', ref => ref.orderBy('difficulty','asc'));
+          
+
+
+            this.Cquestions = this.questionsCData.valueChanges();
+            this.Dquestions = this.questionsDData.valueChanges();
   
   }
 
@@ -36,9 +50,22 @@ export class QuestionsService {
 
 
   getQuestions(){
+    
     return this.questions;
  
   }
+
+  getCQuestions(){
+  
+    return this.Cquestions;
+ 
+  }
+
+  getDQuestions(){
+    return this.Dquestions;
+ 
+  }
+
 
   async getQDetails(id: string):Promise<any>{
     const doc = await this.afs
@@ -49,6 +76,14 @@ export class QuestionsService {
       console.log("Doc:",doc);
     return Object.assign(doc.data(), {id: doc.id} );
   }
+
+
+  default(){
+    // else{
+      alert('You must choose a question!');
+    // }
+  }
+  
 
   // private _data: BehaviorSubject<any> = new BehaviorSubject<any>(null)
 

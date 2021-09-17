@@ -17,7 +17,7 @@
         <button mat-button style="background-color: #18ad38; color: white; border-radius: 0pt 0pt;" (click)="submitCode()" >Submit Code</button>
         <!-- <button mat-button style="color: #18ad38; background-color: white; border-radius: 0pt 0pt;" (click)="sCode()" >SCode</button> -->
     </mat-button-toggle-group>
-    <div style="background-color: #030e1a; color: white;" class="answer-card1">
+    <div  class="answer-card1">
 
 
         <div *ngIf=" question noQuestions" >
@@ -27,39 +27,30 @@
 
                     {{code}}
 
-                    <!-- {{childMessage}} -->
+                    <!-- {{childMessage}} style="background-color: #1c3653; color: white;" -->
                         <br/>
                       <ol>
                         
                         <div *ngFor = "let tests of question.tests ">
                             <li>
-                                <mat-card style="background-color: #1c3653; color: white;">
+                                <mat-card class="card" >
                                     Test name: {{  tests.name}}
                                     <br/> 
-                                Expected Output: {{  tests.output | json}}
-                                <br/>
-                                
-                                Your Output: 
-                                <br/>
-                                {{childMessage}}
-
-                                <!-- <div *ngFor="let item of data">
-
-                                    Your Output: {{ item?.name }}
-
+                                    Expected Output: {{  tests.output | json}}
                                     <br/>
-                                     Output: {{ item?.car }}
-
-                                    
-
-
-                                </div> -->
-
-                                
                             
-                            </mat-card>
+                                <!-- </mat-card>
+                                <br/>
+                                <mat-card  class="card"> -->
+                           
+                                    Your Output: 
+                                    <br/>
+                                    {{childMessage}}
+                                    <br/>
+                            
+                                </mat-card>
 
-                            {{coderesults}}
+                            <!-- {{coderesults}} -->
 
                             <br/> 
                           </li>

@@ -88,6 +88,8 @@ export class AuthServiceService {
               displayName: user.displayName,
               photoURL: user.photoURL,
               emailVerified: user.emailVerified
+              // ,
+              // submittedCode: user.submittedCode
             }
             return userRef.set(userData, {
               merge: true

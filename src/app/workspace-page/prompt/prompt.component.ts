@@ -88,9 +88,14 @@ openDialog() {
             // // // Find the product that correspond with the id provided in route.
             this.question = question;
         }
+        
       })
+
+    
       
     }) ;
+
+
 
   
  
@@ -118,7 +123,20 @@ openDialog() {
     this.selectedVal1 = val1
 
   }
+  dark:boolean = true;
+  light: boolean = false;
+   darkFunction(){
+  
+    this.dark = !this.dark;
+    this.light = true;
+  
+  }
 
+  lightFunction(){
+  
+    this.dark = true;
+    this.light = false
+  }
 
 
 

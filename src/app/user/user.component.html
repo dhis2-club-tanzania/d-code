@@ -14,7 +14,7 @@
         </div>
         <br/>
         <!-- Show user data when logged in   class="pt-3 pb-2 mb-3 border-bottom  " class="col-md-12" min-height: 550px; -->
-        <div class="row" *ngIf="authService.userData as user" style=" background-color: whitesmoke; color: #001f3f;  padding: 50px;">
+        <div class="row" *ngIf="authService.afAuth.authState | async as user " style=" background-color: whitesmoke; color: #001f3f;  padding: 50px;">
           <div >
             <br/>
             <div class="media">
@@ -31,8 +31,11 @@
                 <!-- <p>Email Verified: <strong>{{user.emailVerified}}</strong></p> -->
 
                 <br/>
+                <!-- <div *ngFor = "let user of user "> -->
+                <!-- <p><strong>Your Code: </strong>{{user.submittedCode | json}}</p> -->
+                <!-- </div> -->
 
-                <button mat-raised-button style="background-color: #001f3f; color: white; margin-left: 4px;"> View Submitted Codes</button>
+                <!-- <button mat-raised-button style="background-color: #001f3f; color: white; margin-left: 4px;"> View Submitted Codes</button> -->
               </div>
             </div>
           </div>

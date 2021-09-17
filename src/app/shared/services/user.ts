@@ -4,4 +4,10 @@ export interface User {
     displayName: string;
     photoURL: string;
     emailVerified: boolean;
+    // submittedCode : string;
+    // [
+    //     { 
+    //     //   yourCode: string;
+    //     }
+    //   ]
 }

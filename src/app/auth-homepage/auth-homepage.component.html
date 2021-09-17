@@ -61,8 +61,8 @@
 
             <br/>
             <button mat-raised-button style="color: #001f3f; font-weight: bold;"
-            routerLink="/workspace-page" routerLinkActive="active" 
-            *ngIf="authservice.afAuth.authState | async as user">View D-CODE Workspace</button>
+            routerLink="/questions-page" routerLinkActive="active" 
+            *ngIf="authservice.afAuth.authState | async as user" (click) = "default()">View D-CODE Workspace</button>
            
             <br/>
         </div>

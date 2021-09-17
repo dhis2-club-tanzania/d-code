@@ -1,48 +1,200 @@
-<!-- <p>questions works!</p> --> 
+<!-- <p>questions works!</p>  [ngClass]="{'lbutton': active,'button': active}"--> 
+<br/>
+    <div fxLayout="row" fxLayoutAlign="space-around center">
+
+        <button mat-raised-button [ngClass]="{ 'buttons': cactive}" class="button" (click)="getCQuestions()" >Group By Category</button>
+        <button mat-raised-button [ngClass]="{ 'buttons': dactive}" class="button" (click)="getDQuestions()" >Group By Difficulty</button>
+        <button mat-raised-button  [ngClass]="{ 'buttons': active}" class="button" (click)="getRQuestions()" >Group  Random</button>
+
+    </div>
+            
 
 <br/>
 
 <div fxLayout="column" fxLayoutAlign="space-around center" >
+    <!--On Larger Screens-->
     <div fxLayout="row" fxLayoutAlign="space-around center" fxShow="true" fxHide.lt-md="true" 
      *ngIf="$any(questions)?.length > 0;else noQuestions" >
-        <!-- <h2 style=" text-align: center; ">Name</h2> -->
+
+
+              <!--Random-->
+     <div *ngIf="random" fxLayout="row" fxLayoutAlign="space-around center">
+        <br/>
+
         <div class="collection-question" *ngFor = "let question of questions " class="collection">
+            
             <mat-card style="margin: 10px;">
                 <strong>
                     <a routerLink="/questions/{{question.id}} "
                     routerLinkActive="active"
                     [title]="question.name" style="color: #001f3f;">
                     {{question.name}}
-                    <!-- {{question.Description}} -.data -->
-                    <!-- {{question.id}} -->
-                    <br/>
+                  
                     </a>
                 </strong> 
             </mat-card>
              
         </div>
+     </div>
+
+          <!--Category-->
+          <div *ngIf="category" fxLayout="row" fxLayoutAlign="space-around center">
+            <br/>
+                    
+            <div class="collection-question" *ngFor = "let question of Cquestions " class="collection">
+               <div fxLayout="row" fxLayoutAlign="space-around center">
+                <h3 style=" text-align: center; ">{{question.category}}</h3> 
+
+            </div>
+
+            <br/>
+               
+            <div fxLayout="row" fxLayoutAlign="space-around center"> 
+                <mat-card style="margin: 10px;">
+                    <strong>
+                        <a routerLink="/questions/{{question.id}} "
+                        routerLinkActive="active"
+                        [title]="question.name" style="color: #001f3f;">
+                       {{question.name}}
+                        </a>
+                    </strong> 
+                </mat-card>
+               </div>
+          
+               
+                 
+            </div>
+    
+           
+         </div>
+
+           <!--Difficulty-->
+           <div *ngIf="difficulty" fxLayout="row" fxLayoutAlign="space-around center">
+            <br/>
+                    
+            <div class="collection-question" *ngFor = "let question of Dquestions " class="collection">
+               <div fxLayout="row" fxLayoutAlign="space-around center">
+                <h3 style=" text-align: center; ">{{question.difficulty}}</h3>  
+
+            </div>
+
+            <br/>
+               
+            <div fxLayout="row" fxLayoutAlign="space-around center"> 
+                <mat-card style="margin: 10px;">
+                    <strong>
+                        <a routerLink="/questions/{{question.id}} "
+                        routerLinkActive="active"
+                        [title]="question.name" style="color: #001f3f;">
+                       {{question.name}}
+                        
+                        </a>
+                    </strong> 
+                </mat-card>
+               </div>
+          
+               
+                 
+            </div>
+    
+           
+         </div>   
+
     </div>
 
+<br/>
+
+<!--On Small Screens-->
 
     <div fxLayout="column" fxLayoutAlign="space-around center" fxShow="true" fxHide.gt-sm="true"
-     *ngIf="$any(questions)?.length > 0;else noQuestions" >
-        <!-- <h2 style=" text-align: center; ">Name</h2> -->
+     *ngIf="$any(questions)?.length > 0; else noQuestion" >
+
+     <!--Random-->
+     <div *ngIf="random">
+        <br/>
+
         <div class="collection-question" *ngFor = "let question of questions " class="collection">
+            
             <mat-card style="margin: 10px;">
                 <strong>
                     <a routerLink="/questions/{{question.id}} "
                     routerLinkActive="active"
                     [title]="question.name" style="color: #001f3f;">
-                    {{question.name}}
-                    <!-- {{question.Description}} -.data -->
-                    <!-- {{question.id}} -->
-                    <br/>
+                     {{question.name}}
+                  
                     </a>
                 </strong> 
             </mat-card>
              
         </div>
+     </div>
+
+          <!--Category-->
+          <div *ngIf="category" fxLayout="row" fxLayoutAlign="space-around center">
+            <br/>
+                    
+            <div class="collection-question" *ngFor = "let question of Cquestions " class="collection">
+               <div fxLayout="row" fxLayoutAlign="space-around center">
+                <h4 style=" text-align: center; ">{{question.category}}</h4> 
+
+            </div>
+
+            <br/>
+               
+            <div fxLayout="row" fxLayoutAlign="space-around center"> 
+                <mat-card style="margin: 10px;">
+                    <strong>
+                        <a routerLink="/questions/{{question.id}} "
+                        routerLinkActive="active"
+                        [title]="question.name" style="color: #001f3f;">
+                       {{question.name}}
+                        </a>
+                    </strong> 
+                </mat-card>
+               </div>
+          
+               
+                 
+            </div>
+    
+           
+         </div>
+
+           <!--Difficulty-->
+           <div *ngIf="difficulty" fxLayout="row" fxLayoutAlign="space-around center">
+            <br/>
+                    
+            <div class="collection-question" *ngFor = "let question of Dquestions " class="collection">
+               <div fxLayout="row" fxLayoutAlign="space-around center">
+                <h4 style=" text-align: center; ">{{question.difficulty}}</h4>  
+
+            </div>
+
+            <br/>
+               
+            <div fxLayout="row" fxLayoutAlign="space-around center"> 
+                <mat-card style="margin: 10px;">
+                    <strong>
+                        <a routerLink="/questions/{{question.id}} "
+                        routerLinkActive="active"
+                        [title]="question.name" style="color: #001f3f;">
+                       {{question.name}}
+                        
+                        </a>
+                    </strong> 
+                </mat-card>
+               </div>
+          
+               
+                 
+            </div>
+    
+           
+         </div>
+       
     </div>
+
+ 
 
     <!-- <div fxLayout="column" fxLayoutAlign="space-around center" *ngIf="$any(questions)?.length > 0;else noQuestions" >
         <h2 style=" text-align: center; ">Difficulty</h2>
@@ -66,6 +218,11 @@
 
 <!-- *ngIf="questions?.length > 0;else noQuestions" -->
 <ng-template #noQuestions>
+    <hr>
+    <h5>There are no questions to list</h5>
+</ng-template> 
+
+<ng-template #noQuestion>
     <hr>
     <h5>There are no questions to list</h5>
 </ng-template> 

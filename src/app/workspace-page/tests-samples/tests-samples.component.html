@@ -11,7 +11,7 @@
         <!-- <button mat-button style="border-radius: 0pt 0pt;" *ngIf="quicktest"  > <mat-icon>replay</mat-icon> </button> -->
         <button mat-button style="border-radius: 0pt 0pt;" matTooltip="more info" *ngIf="info" (click) = "openDialog()"> <mat-icon>info</mat-icon> </button>
     </mat-button-toggle-group>
-    <div style="background-color: #030e1a; color: #f8f8f8;" class="answer-card1" [ngClass]="{'answer-card1': notest, 'blurBg': test}"  >
+    <div  class="answer-card1" [ngClass]="{'answer-card1': notest, 'blurBg': test}"  >
         
         <!-- <mat-form-field  appearance="fill" class="example-full-width">  -->
             
@@ -23,10 +23,10 @@
                 <div *ngIf=" question noQuestions" >
                     <div  class="collection">
                         <ol >
-                        <div *ngFor = "let tests of question.tests " class="collection-question" style="color: white;">
+                        <div *ngFor = "let tests of question.tests " class="collection-question" >
                             <br/> 
                            <li>
-                            <mat-card style="background-color: #1c3653; color: white;">
+                            <mat-card class="mcard">
                                {{  tests.name}}
                                 <br/> 
                                 <!-- <br/>  -->

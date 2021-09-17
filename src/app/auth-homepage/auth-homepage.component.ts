@@ -6,6 +6,7 @@ import { EventEmitter } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
+import { QuestionsService } from '../services/questions.service';
 
 @Component({
   selector: 'app-auth-homepage',
@@ -29,7 +30,8 @@ export class AuthHomepageComponent implements OnInit {
      public authservice: AuthServiceService,
      public afs: AngularFirestore,   // Inject Firestore service
      public afAuth: AngularFireAuth, // Inject Firebase auth service
-     public router: Router) { }
+     public router: Router,
+     public qs: QuestionsService) { }
  
  
  
@@ -58,6 +60,13 @@ export class AuthHomepageComponent implements OnInit {
 
         login(){
           return this.authservice
+        }
+
+        default(){
+          // else{
+            // alert('You must choose a question!');
+          // }
+          return this.qs.default();
         }
 
 }

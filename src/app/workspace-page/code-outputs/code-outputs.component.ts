@@ -69,13 +69,15 @@ export class CodeOutputsComponent implements OnInit {
   
   }
 
-
+  coderesults! : string;
   @Output() myEvent = new EventEmitter();
 
   submitCode(){
     // this.qs.changefinalC(this.childMessage)
 
-    this.myEvent.emit(null)
+    this.coderesults = this.childMessage;
+    console.log(this.coderesults);
+    // this.myEvent.emit(null)
   }
 
 
@@ -87,82 +89,14 @@ export class CodeOutputsComponent implements OnInit {
   }
 
 
-
-
-
-
-
-  // public runCode(){
-  //   var template = "var exports ={}; {code};return exports;"
-  //   var func = Function(template.split("{code}").join("Code"));
-  //   var results = [];
-  //   this.question?.tests.forEach((test)=>{
-  //     var arg = Object.keys(test.inputs!).map((inputKey)=>test.inputs![inputKey])
-  //     var result = func()["functionName"].apply(null,Array.prototype.slice.call(arg,1));
-  //     results.push({
-  //       name: test.name,
-  //       pass: result == test.output
-  //     })
-  //   })
-  // }
-
-  // @Input() childProperty!: boolean;
-
-  // dark:boolean = true;
-  // light: boolean = false;
-  //  darkFunction(){
-  
-  //   this.dark = !this.dark;
-  //   this.light = true;
-  
-  // }
-
-  // lightFunction(){
-  
-  //   this.dark = true;
-  //   this.light = false
-  // }
-
-  // public runCode(){
-  //   var template = "var exports ={}; {code};return exports;"
-  //   var func = Function(template.split("{code}").join("Code"));
-  //   var results = [];
-  //   this.question?.tests.forEach((test)=>{
-  //     var arg = Object.keys(test.inputs!).map((inputKey)=>test.inputs![inputKey])
-  //     var result = func()["functionName"].apply(null,Array.prototype.slice.call(arg,1));
-  //     results.push({
-  //       name: test.name,
-  //       pass: result == test.output
-  //     })
-  //   })
-  // }
-  // @Input() childProperty!: boolean;
-  // dark:boolean = true;
-  // light: boolean = false;
-  //  darkFunction(){
-  //   this.dark = !this.dark;
-  //   this.light = true;
-  // }
-  // lightFunction(){
-  //   this.dark = true;
-  //   this.light = false
-  // }
-
-
- 
-
-
-
-
-  // @Input()
-  // coderesults!: string; 
-  // = this.coderesults;
-
   @Input()
-  childMessage!: string; 
+  childMessage!: string;
+  
+  // results = this.childMessage;
+
 
   // @Input()
-  coderesults = this.childMessage;
+  // coderesults = this.childMessage;
 
 
   // const ys = require('./ys');

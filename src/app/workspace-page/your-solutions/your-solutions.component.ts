@@ -123,6 +123,7 @@ export class YourSolutionsComponent implements OnInit {
 
   public runCode(){
 
+
     // console.log(this.code);
 
   
@@ -142,7 +143,7 @@ export class YourSolutionsComponent implements OnInit {
 
     this.coderesults = this.code;
 
-    console.log(this.coderesults);
+    // console.log(this.coderesults);
     // console.log(this.finalCode());
     this.messageEvent.emit(this.coderesults)
    

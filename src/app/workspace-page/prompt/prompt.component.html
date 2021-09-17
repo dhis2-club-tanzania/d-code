@@ -1,6 +1,6 @@
  <!-- Prompt Space-->
- <div  fxLayout="column" fxLayoutAlign="start stretch" class="workspace-card" >
-    <!-- style=" min-width: 45%; min-height: 50%;" -->
+ <div  fxLayout="column" fxLayoutAlign="start stretch" class="workspace-card" [ngClass]="{'dark1': dark, 'light1': !dark}">
+    <!-- style=" min-width: 45%; min-height: 50%;" style="background-color: #030e1a;" -->
             
         <div>
         <mat-button-toggle-group appearance="legacy" fxLayout="row" fxLayoutAlign="start start" #group="matButtonToggleGroup" [value]="selectedVal1" (change)="onVal1Change(group.value)" >
@@ -13,10 +13,10 @@
             <button mat-button style="background-color: #0e639c; border-radius: 0pt 0pt;" *ngIf="solution" >Run Code</button> -->
         </mat-button-toggle-group>
         </div>
-        <div style="background-color: #030e1a;" class="answer-card"> 
+        <div  class="answer-card "> 
     
 
-                    <div *ngIf="question noQuestions" style="margin-left: 12px; margin-right: 12px;"> 
+                    <div *ngIf="question noQuestions" style="margin-left: 12px; margin-right: 12px; "> 
                         <div  class="collection">
                                 <div   class="collection-question">
                                     <br/>
@@ -37,27 +37,27 @@
                                     </h2>
                                     
                                     <br/>
-                                    <p style="color: #e4ded6;">
+                                    <p>
                                         {{question.description}}
                                     </p>
                                     
                                     <br/>
                              
                                 
-                                    <div fxLayout="row" fxLayoutAlign="start start" style="color: wheat;">
-                                        <p style = "margin-right: 4pt; color: whitesmoke;"> Using the function: </p>
+                                    <!-- <div fxLayout="row" fxLayoutAlign="start start" >
+                                        <p style = "margin-right: 4pt;"> Using the function: </p>
                                 
-                                        <p style = " margin-right: 4pt;">{{  question.functionName}}</p>
-                                        (<div > 
+                                        <p style = " margin-right: 4pt; color: #2381fc;">{{  question.functionName}}</p>
+                                        ( <div > 
                                         
                                             <div >
-                                                <p   style = "color: #ffa1a1;"> 
-                                                    {{question.variables}}
+                                                <p   style = "color: #8a0909;"> 
+                                                     {{question.variables}} 
                                                 </p>
                                             </div>   
-                                        </div>)
+                                        </div> )
                                     
-                                    </div>
+                                    </div> -->
                           
                                     <br/>
                                 
