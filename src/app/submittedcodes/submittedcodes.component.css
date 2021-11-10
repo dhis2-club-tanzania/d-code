@@ -1,0 +1,110 @@
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 300;
+    line-height: 1.5;
+    text-transform: uppercase;
+    margin: 0 0 1.5rem 0; }
+    h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+      color: inherit whitesmoke;
+      text-decoration: none; }
+  
+  h1 {
+    font-size: 3rem;
+    line-height: 1.2; }
+  
+  h2 {
+    font-size: 2.25rem;
+    line-height: 1.3; }
+  
+  h3 {
+    font-size: 1.25rem; }
+  
+  h4 {
+    font-size: 1rem; }
+  
+  h5 {
+    font-size: 0.9rem; }
+  
+  h6 {
+    font-size: 0.7rem; }
+  
+  @media screen and (max-width: 736px) {
+    h1 {
+      font-size: 2.75rem;
+      line-height: 1.3; }
+  
+    h2 {
+      font-size: 1.75rem;
+      line-height: 1.5; }
+  
+    h3 {
+      font-size: 1.25rem; } }
+  
+      /* Wrapper */
+  .wrapper {
+    padding: 8rem 0 6rem 0 ;
+    position: relative;
+    z-index: 1; }
+    @media screen and (max-width: 1280px) {
+      .wrapper {
+        padding: 4rem 0 2rem 0 ; } }
+    @media screen and (max-width: 736px) {
+      .wrapper {
+        padding: 3rem 0 1rem 0 ; } }
+    @media screen and (max-width: 480px) {
+      .wrapper {
+        padding: 2rem 0 0.1rem 0 ; } }
+  
+  
+      /* Wrapper */
+      .wrapper {
+          padding: 8rem 0 6rem 0 ;
+          position: relative;
+          z-index: 1; }
+          @media screen and (max-width: 1280px) {
+            .wrapper {
+              padding: 4rem 0 2rem 0 ; } }
+          @media screen and (max-width: 736px) {
+            .wrapper {
+              padding: 3rem 0 1rem 0 ; } }
+          @media screen and (max-width: 480px) {
+            .wrapper {
+              padding: 2rem 0 0.1rem 0 ; } }
+  
+  .btn-image{
+      background-image: url('/assets/images/logo.png') !important;
+
+
+      background-repeat: no-repeat;
+       /* background-position: left;  */
+       background-color: #367dce00;
+        width: 200px;
+         height: 200px;
+
+
+      background-size: 400px;
+      background-position: center;
+      background-repeat: no-repeat;
+      /* min-height: 64px; max-width: 205px; */
+      flex: 1 1 auto;
+      border: 0px;
+     } 
+  
+     @media screen {
+      .btn-image{ 
+      background-size: 130px;
+      background-position: center;
+      background-repeat: no-repeat;
+      min-height: 30px; min-width: 105px;
+      flex: 1 1 auto;
+      border: 0px; 
+      }
+     }
+
+     .mat-form-field + .mat-form-field {
+        margin-left: 8px;
+        
+      }
+
+      .example-spacer {
+        flex: 1 1 auto;
+      }

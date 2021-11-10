@@ -11,7 +11,7 @@ import { AuthGuardService} from './guards/auth-guard.service';
 import { QuestionsComponent } from './questions-page/questions/questions.component';
 import { AuthHomepageComponent } from './auth-homepage/auth-homepage.component';
 import { YourSolutionsComponent } from './workspace-page/your-solutions/your-solutions.component';
-
+import { SubmittedcodesComponent } from './submittedcodes/submittedcodes.component';
 
    const routes: Routes = [
     { path: '', redirectTo: '/homepage', pathMatch: 'full' },
@@ -43,7 +43,10 @@ import { YourSolutionsComponent } from './workspace-page/your-solutions/your-sol
      },
      { path: 'ys',
       component:  YourSolutionsComponent
-     }
+     },
+     { path: 'codes',
+     component:  SubmittedcodesComponent
+    }
    ];
 
 

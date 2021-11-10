@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 // import { Subscription } from 'rxjs';
 import { Observable } from 'rxjs';
 
-import { Question } from 'src/app/models/Question';
+import { Question, SCode } from 'src/app/models/Question';
 import { QuestionsService } from 'src/app/services/questions.service';
 
 
@@ -22,6 +22,12 @@ export class CodeOutputsComponent implements OnInit {
   questions: Question[] = [];
   question: Question | undefined;
   id!: Observable<Question>;
+  scodes: SCode[] = [];
+  // scodes: SCode = {
+  //   questionName: '',
+  //   submittedCode: '',
+  //   user: ''
+  // }
   constructor( private qs: QuestionsService,
     private route: ActivatedRoute) { }
 
@@ -32,6 +38,8 @@ export class CodeOutputsComponent implements OnInit {
   userData: any[] = [];
   finalC!: string;
   code!: string;
+
+  scode!: SCode ;
   
   
   ngOnInit() {
@@ -49,6 +57,12 @@ export class CodeOutputsComponent implements OnInit {
       
     }) ;
 
+////add submitted codes view
+    this.qs.getCodes().subscribe((scodes: any)  => {
+      console.log(scodes); 
+      this.scodes = scodes;
+      
+    }) ;
 
   // this.questionDetail();
 
@@ -56,7 +70,7 @@ export class CodeOutputsComponent implements OnInit {
   //   (data: any) => this.data = data
   // );
 
-  // this.qs.currentfinalC.subscribe(finalC => this.finalC = finalC);
+  // this.qs.currentfinalC.subscribe(finalC => this.finalC = finalC); ///submit code
   this.qs.currentfinalC.subscribe(code => this.code = code);
 
   } 
@@ -76,31 +90,33 @@ export class CodeOutputsComponent implements OnInit {
     // this.qs.changefinalC(this.childMessage)
 
     this.coderesults = this.childMessage;
-    console.log(this.coderesults);
+    // console.log(this.coderesults);
     // this.myEvent.emit(null)
+
+    // this.childMessage = `${this.scode?.submittedCode}`  ;
+    console.log(this.childMessage);
   }
 
 
-  sCode(){
-    this.qs.changefinalC(this.code)
+  // sCode(){
+  //   this.qs.changefinalC(this.code)
 
-    console.log(this.code)
-    // this.myEvent.emit(null)
-  }
+  //   console.log(this.code)
+  //   // this.myEvent.emit(null)
+  // }
 
 
   @Input()
   childMessage!: string;
   
-  // results = this.childMessage;
+  onSubmit(){
+    // const submittedCode = `${this.scode?.questionName}`;
+    this.scode.submittedCode = this.childMessage;
+    // this.childMessage = `${this.scode?.submittedCode}`  ;
+    console.log(this.childMessage);
 
+  }
 
-  // @Input()
-  // coderesults = this.childMessage;
-
-
-  // const ys = require('./ys');
-  // console.log(`User: ${ys.getName()}`);
   
   // var func = Function("var exports ={}; function maxProfitWithKTransactions(prices, k) {};exports.maxProfitWithKTransactions = maxProfitWithKTransactions;return exports;") 
 

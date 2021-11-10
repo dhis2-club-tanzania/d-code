@@ -5,15 +5,20 @@
         <mat-button-toggle-group appearance="legacy" fxLayout="row" fxLayoutAlign="start start"
          #group="matButtonToggleGroup" [value]="selectedVal2" (change)="onVal2Change(group.value)">
             <mat-button-toggle  value="Your Solutions">Your Solutions</mat-button-toggle>
-            <span class="example-spacer"> </span>
-            <button mat-button style="border-radius: 0pt 0pt;" fxShow="true" fxHide.lt-md="true" 
-            (click)="fullscreenFunction()" *ngIf="fullscreen"  matTooltip="fullscreen"> <!--(click)="fullscreenFunction()" *ngIf="fullscreen"-->
-                <mat-icon>fullscreen</mat-icon> </button>
+            <span class="example-spacer"> </span>  
+            <!--(click)="fullscreenFunction()" *ngIf="fullscreen"-->
+            <!--*ngIf="fullscreen_exit" (click)="fullscreen_exitFunction()" -->
 
-                <button mat-button style="border-radius: 0pt 0pt;" fxShow="true" fxHide.lt-md="true" 
-                *ngIf="fullscreen_exit" (click)="fullscreen_exitFunction()" matTooltip="fullscreen_exit"> <!--*ngIf="fullscreen_exit" (click)="fullscreen_exitFunction()" -->
+            
+            <!-- <button mat-button style="border-radius: 0pt 0pt;" fxShow="true" fxHide.lt-md="true" 
+            (click)="fullscreenFunction()" *ngIf="fullscreen"  matTooltip="fullscreen">
+                <mat-icon>fullscreen</mat-icon>
+            </button>
+
+            <button mat-button style="border-radius: 0pt 0pt;" fxShow="true" fxHide.lt-md="true" 
+                *ngIf="fullscreen_exit" (click)="fullscreen_exitFunction()" matTooltip="fullscreen_exit"> 
                  <mat-icon>fullscreen_exit</mat-icon> 
-                </button>
+            </button> -->
 
             <button mat-button style="border-radius: 0pt 0pt;" (click) = "refresh()" matTooltip="refresh" > <mat-icon>replay</mat-icon> </button>
             <button mat-button style="border-radius: 0pt 0pt; background-color: #0e639c;" (click)="runCode()" >Run Code</button>

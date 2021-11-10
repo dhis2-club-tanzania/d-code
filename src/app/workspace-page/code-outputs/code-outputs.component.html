@@ -8,24 +8,29 @@
 [class.active]="status === 1 || status === 2"
 (mousedown)="setStatus($event, 2)"
 (window:mouseup)="setStatus($event, 0)"> -->
-<div fxLayout="column" fxLayoutAlign="start stretch" class="workspace-card1" >
+<div fxLayout="column" fxLayoutAlign="start stretch" class="workspace-card1" (ngSubmit) = "onSubmit()" >
     <mat-button-toggle-group appearance="legacy" fxLayout="row" fxLayoutAlign="start start" #group="matButtonToggleGroup" [value]="selectedVal4" (change)="onVal4Change(group.value)" >
         <mat-button-toggle  value="Custom Output">Custom Output</mat-button-toggle>
         <!-- <mat-button-toggle value="Raw Output">Raw Output</mat-button-toggle> -->
         
         <span class="example-spacer"> </span>
-        <button mat-button style="background-color: #18ad38; color: white; border-radius: 0pt 0pt;" (click)="submitCode()" >Submit Code</button>
-        <!-- <button mat-button style="color: #18ad38; background-color: white; border-radius: 0pt 0pt;" (click)="sCode()" >SCode</button> -->
+        <button mat-button style="background-color: #18ad38; color: white; border-radius: 0pt 0pt;"  (click)="submitCode()"  >Submit Code</button>
+        <!-- <button mat-button style="color: #18ad38; background-color: white; border-radius: 0pt 0pt;" (click)="sCode()" >SCode</button> (click)="submitCode()" (ngSubmit) = "onSubmit()"-->
     </mat-button-toggle-group>
     <div  class="answer-card1">
 
 
+        <div *ngIf = "scode" >
+            <div class="collection-question" *ngFor = "let scode of scodes " class="collection" >
+                <p  [(ngModel)]="scode.questionName" >  heey {{  scode.questionName}}</p>  
+            </div>
+        </div>
         <div *ngIf=" question noQuestions" >
             <div  class="collection">
                 <div   class="collection-question">
 
 
-                    {{code}}
+                   <!-- hii {{code}} -->
 
                     <!-- {{childMessage}} style="background-color: #1c3653; color: white;" -->
                         <br/>
@@ -34,6 +39,8 @@
                         <div *ngFor = "let tests of question.tests ">
                             <li>
                                 <mat-card class="card" >
+                                    
+                                   
                                     Test name: {{  tests.name}}
                                     <br/> 
                                     Expected Output: {{  tests.output | json}}
@@ -47,8 +54,12 @@
                                     <br/>
                                     {{childMessage}}
                                     <br/>
+
+                                  
                             
                                 </mat-card>
+
+                               
 
                             <!-- {{coderesults}} -->
 

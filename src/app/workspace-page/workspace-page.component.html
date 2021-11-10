@@ -66,12 +66,12 @@ cdkAutosizeMaxRows="5" > <!--   022949 style=" margin-left: 10px; margin-right: 
 
                                 <!-- On Larger Screens-->
                             <div fxShow="true" fxHide.lt-md="true"  id="header" [ngClass]="{'old': button_header, 'new': ! button_header}" class="old"><!-- fxShow="true" fxHide.lt-md="true"  -->
-                                <button mat-raised-button class="example-icon" matTooltip="Next Question" 
+                                <!-- <button mat-raised-button class="example-icon" matTooltip="Next Question" 
                                 [ngClass]="{'button': dark, 'light': !dark}" class="button"> 
             
                                     <mat-icon>arrow_forward</mat-icon> 
                     
-                                </button>
+                                </button> -->
                                 
                                 <button mat-raised-button  matTooltip="Workspace" style="min-width: 130px; color: #030e1a !important;"
                                  [ngClass]="{'button': dark, 'light': !dark}" class="button" > 
@@ -115,7 +115,7 @@ cdkAutosizeMaxRows="5" > <!--   022949 style=" margin-left: 10px; margin-right: 
                                 <button mat-raised-button matTooltip="Editor Font Size" style="min-width: 90px;" 
                                 [ngClass]="{'button': dark, 'light': !dark}" class="button"> 
 
-                                <mat-select #fontSize value="16px" (selectionChange)="triggerResize()" disableOptionCentering  panelClass="myPanelClass">
+                                <mat-select #fontSize value="14px" (selectionChange)="triggerResize()" disableOptionCentering  panelClass="myPanelClass">
                                   <mat-option value="10px">10px</mat-option>
                                   <mat-option value="12px">12px</mat-option>
                                   <mat-option value="14px">14px</mat-option>
@@ -126,7 +126,7 @@ cdkAutosizeMaxRows="5" > <!--   022949 style=" margin-left: 10px; margin-right: 
 
                             </button>
                             
-                                <button mat-raised-button matTooltip="Editor Key Maps" style="min-width: 110px;"
+                                <!-- <button mat-raised-button matTooltip="Editor Key Maps" style="min-width: 110px;"
                                 [ngClass]="{'button': dark, 'light': !dark}" class="button" >
                                 
                                     <mat-select [(value)]="selectedEditor" disableOptionCentering  panelClass="myPanelClass" > 
@@ -136,7 +136,7 @@ cdkAutosizeMaxRows="5" > <!--   022949 style=" margin-left: 10px; margin-right: 
                                         {{editor.viewValue}}
                                     </mat-option>
                                     </mat-select>
-                                </button>
+                                </button> -->
                                 
                                 <button *ngIf = "dark" mat-raised-button matTooltip="light theme"  (click)="darkFunction()"
                                 [ngClass]="{'button': dark, 'light': !dark}" class="button">
@@ -215,12 +215,12 @@ cdkAutosizeMaxRows="5" > <!--   022949 style=" margin-left: 10px; margin-right: 
                         <!--on smaller screens-->
                     <div *ngIf="button_header"  class="button-header " fxShow="true" fxHide.gt-sm="true" >
                                         
-                        <button mat-raised-button  matTooltip="Next Question" 
+                        <!-- <button mat-raised-button  matTooltip="Next Question" 
                         [ngClass]="{'button': dark, 'light': !dark}" class="button"> 
 
                             <mat-icon>arrow_forward</mat-icon> 
 
-                        </button>
+                        </button> -->
                         
                         <button mat-raised-button  matTooltip="Workspace" style="min-width: 130px; " 
                         [ngClass]="{'button': dark, 'light': !dark}" class="button" > 
@@ -273,7 +273,7 @@ cdkAutosizeMaxRows="5" > <!--   022949 style=" margin-left: 10px; margin-right: 
 
                             </button> -->
                     
-                        <button mat-raised-button matTooltip="Editor Key Maps" style="min-width: 110px;" 
+                        <!-- <button mat-raised-button matTooltip="Editor Key Maps" style="min-width: 110px;" 
                         [ngClass]="{'button': dark, 'light': !dark}" class="button">
                         
                             <mat-select [(value)]="selectedEditor" disableOptionCentering  panelClass="myPanelClass" > 
@@ -283,7 +283,7 @@ cdkAutosizeMaxRows="5" > <!--   022949 style=" margin-left: 10px; margin-right: 
                                 {{editor.viewValue}}
                             </mat-option>
                             </mat-select>
-                        </button>
+                        </button> -->
                         
                         <button *ngIf = "dark" mat-raised-button matTooltip="light theme"  (click)="darkFunction()"
                                 [ngClass]="{'button': dark, 'light': !dark}" class="button">
@@ -296,7 +296,7 @@ cdkAutosizeMaxRows="5" > <!--   022949 style=" margin-left: 10px; margin-right: 
                                 <mat-icon>brightness_3</mat-icon>
                                 </button>
                                 
-                                <button mat-raised-button matTooltip="Syntax Highlighting Theme" style="min-width: 110px;" 
+                                <!-- <button mat-raised-button matTooltip="Syntax Highlighting Theme" style="min-width: 110px;" 
                                 [ngClass]="{'button': dark, 'light': !dark}" class="button" >  
                             
                                     <mat-select  [(value)]="selectedSyntaxTheme" disableOptionCentering  panelClass="myPanelClass" > 
@@ -316,7 +316,7 @@ cdkAutosizeMaxRows="5" > <!--   022949 style=" margin-left: 10px; margin-right: 
                                 <button mat-raised-button matTooltip="Data Structure Visualizer" 
                                 [ngClass]="{'button': dark, 'light': !dark}" class="button" >
                                     <mat-icon>share</mat-icon> 
-                                </button>
+                                </button> -->
 
                     </div> 
 

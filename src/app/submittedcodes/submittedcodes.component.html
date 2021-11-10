@@ -1,0 +1,85 @@
+<!-- <p>submittedcodes works!</p> -->
+
+<div class="wrapper" style="background-color: #001f3f; height: 605px;  ">
+    <div fxLayout="row" fxLayoutAlign="space-around center" >
+      <div > 
+        <h2 style="  font-weight:bolder; font-size: 40pt; color: #f8f8f8; text-align: center;">D-CODE Codes</h2>
+        <br/>
+        <p style="padding-inline: 20px; line-height: 2.5; font-size: 12pt; text-align: center; color: #f8f8f8;">
+          Find answers to questions that you challenged yourself and compare with other D-Coders!
+        </p>
+      </div>
+
+        
+    </div>
+    
+      <br/>
+    <div style="background-color: #f8f8f8; color: #0a1431; height: 460px;  " >
+      <!-- <h2 style=" text-align: center; ">Categories</h2> -->
+
+        <!--Codes-->
+     <div  fxLayout="row" fxLayoutAlign="space-around center">
+        <br/>
+
+        <div class="collection-question" *ngFor = "let scode of scodes " class="collection">
+            
+            <!-- <mat-card style="margin: 10px;">
+                <strong>
+                    <a 
+                    [title]="scode.questionName" style="color: #001f3f;">
+                    {{scode.questionName}}
+
+                    {{scode.submittedCode}}
+
+                    {{scode.user}}
+                  
+                    </a>
+                </strong> 
+            </mat-card> -->
+
+            <mat-accordion style="margin: 10px;">
+                <!-- <mat-expansion-panel hideToggle>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      This is the expansion title
+                    </mat-panel-title>
+                    <mat-panel-description>
+                      This is a summary of the content
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                  <p>This is the primary content of the panel.</p>
+                </mat-expansion-panel> -->
+
+                <!-- <br/> -->
+
+                <mat-expansion-panel (opened)="panelOpenState = true"
+                                     (closed)="panelOpenState = false">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title style="color: #001f3f; font-weight: bold;">
+                        {{scode.questionName}}
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        <!-- {{scode.submittedCode}} -->
+
+                        <span class="example-spacer"></span>
+
+                      {{panelOpenState ? 'hide' : 'view'}} code
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                  <p> By {{scode.user}}</p>
+                  <p>{{scode.submittedCode}}</p>
+                </mat-expansion-panel>
+              </mat-accordion>
+             
+        </div>
+     </div>
+  
+     
+
+      <br/>
+
+     
+    </div>
+    
+
+</div>

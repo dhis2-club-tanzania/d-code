@@ -27,3 +27,11 @@ export interface Question{
 
   }
 
+
+  export interface SCode{
+    id?:string;
+    questionName?:string;
+    submittedCode?:string;
+    user? : string,
+  
+    }

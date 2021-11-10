@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 // import {  AngularFirestoreDocument } from '@angular/fire/firestore';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 // import { Observable } from 'rxjs';
-import { Question } from '../models/Question';
+import { Question, SCode } from '../models/Question';
 import {of, BehaviorSubject, Observable} from 'rxjs';
 import { YourSolutionsComponent } from '../workspace-page/your-solutions/your-solutions.component';
 
@@ -26,6 +26,9 @@ export class QuestionsService {
         // Cquestions:  Observable<Question[]> | any;
         Dquestions:  any;
         Rquestions:  any;
+
+        sCodesCollection!: AngularFirestoreCollection<SCode>;
+        scodes:  Observable<SCode[]> | any;
    
         public userdata!: Observable<YourSolutionsComponent[]> | any;
 
@@ -43,6 +46,16 @@ export class QuestionsService {
 
             this.Cquestions = this.questionsCData.valueChanges();
             this.Dquestions = this.questionsDData.valueChanges();
+
+
+            this.scodes = this.afs.collection<SCode>('SubmittedCodes').valueChanges();
+            // this.scodes = this.afs.collection<SCode>('SubmittedCodes').snapshotChanges().map ((changes: any[]) => {
+            //   return changes.map(a => {
+            //     const data = a.payload.doc.data() as SCode;
+            //     data.id = a.payload.doc.id;
+            //     return data;
+            //   })
+            // });
   
   }
 
@@ -66,6 +79,12 @@ export class QuestionsService {
  
   }
 
+  getCodes(){
+    
+    return this.scodes;
+ 
+  }
+
 
   async getQDetails(id: string):Promise<any>{
     const doc = await this.afs
@@ -77,6 +96,15 @@ export class QuestionsService {
     return Object.assign(doc.data(), {id: doc.id} );
   }
 
+  async getCodeDetails(id: string):Promise<any>{
+    const doc = await this.afs
+      // .doc('collectionName/docID'); 
+      .collection("SubmittedCodes")
+      .doc(id)
+      .ref.get();
+      console.log("Doc:",doc);
+    return Object.assign(doc.data(), {id: doc.id} );
+  }
 
   default(){
     // else{

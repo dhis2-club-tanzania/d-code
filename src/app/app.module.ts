@@ -55,6 +55,8 @@ import { TimerComponent } from './workspace-page/timer/timer.component';
 import { AuthHomepageComponent } from './auth-homepage/auth-homepage.component';
 import { BugReportComponent } from './dialogues/bug-report/bug-report.component';
 import { MoreInfoComponent } from './dialogues/more-info/more-info.component';
+import { SubmittedcodesComponent } from './submittedcodes/submittedcodes.component';
+import {MatExpansionModule} from '@angular/material/expansion';
 // import { MONACO_PATH } from '@materia-ui/ngx-monaco-editor';
 
 // import {   } from '@materia-ui/ngx-monaco-editor';
@@ -116,7 +118,8 @@ import { MoreInfoComponent } from './dialogues/more-info/more-info.component';
     TimerComponent,
     AuthHomepageComponent,
     BugReportComponent,
-    MoreInfoComponent
+    MoreInfoComponent,
+    SubmittedcodesComponent
     
   ],
   imports: [
@@ -136,7 +139,7 @@ import { MoreInfoComponent } from './dialogues/more-info/more-info.component';
    AngularFirestoreModule, // imports firebase/firestore, only needed for database features  , 'yesplease'
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
     SocialLoginModule, MatTableModule, MatSortModule,
-    MatGridListModule, TextFieldModule, TextareaAutosizeModule,
+    MatGridListModule, TextFieldModule, TextareaAutosizeModule, MatExpansionModule
    // MonacoEditorModule.forRoot(monacoConfig) // use forRoot() in main app module only.
     // AngularFirestore
   

@@ -80,7 +80,7 @@ export class YourSolutionsComponent implements OnInit {
             console.log("Questions:",question);
             this.originalcode = `function ${this.question?.functionName}(${this.question?.variables }) {
                          
-              // Write your code here
+              // Write your code here 
         
           }
         
